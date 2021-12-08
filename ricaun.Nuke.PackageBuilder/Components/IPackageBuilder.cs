@@ -1,15 +1,9 @@
 ﻿using Nuke.Common;
-using Nuke.Common.Git;
 using Nuke.Common.IO;
 using Nuke.Common.Tooling;
-using Nuke.Common.Tools.GitHub;
 using Nuke.Common.Tools.InnoSetup;
 using Nuke.Common.Utilities.Collections;
-using Nuke.Common.ValueInjection;
-using Octokit;
 using ricaun.Nuke.Extensions;
-using System;
-using System.IO;
 
 namespace ricaun.Nuke.Components
 {
