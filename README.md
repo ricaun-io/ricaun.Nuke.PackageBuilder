@@ -1,6 +1,9 @@
 # ricaun.Nuke.PackageBuilder
 
-This package is to simplify the build automation system using [Nuke.Common](https://www.nuget.org/packages/Nuke.Common/) and [ricaun.Nuke](https://www.nuget.org/packages/ricaun.Nuke).
+This package is to simplify the build automation system using to RevitAddin Application. 
+- [ricaun.Nuke](https://www.nuget.org/packages/ricaun.Nuke) 
+- [Autodesk.PackageBuilder](https://www.nuget.org/packages/Autodesk.PackageBuilder/)
+- [InnoSetup.ScriptBuilder](https://www.nuget.org/packages/InnoSetup.ScriptBuilder/)
 
 [![Publish](https://github.com/ricaun-io/ricaun.Nuke.PackageBuilder/actions/workflows/Publish.yml/badge.svg)](https://github.com/ricaun-io/ricaun.Nuke.PackageBuilder/actions)
 [![Develop](https://github.com/ricaun-io/ricaun.Nuke.PackageBuilder/actions/workflows/Develop.yml/badge.svg)](https://github.com/ricaun-io/ricaun.Nuke.PackageBuilder/actions)
