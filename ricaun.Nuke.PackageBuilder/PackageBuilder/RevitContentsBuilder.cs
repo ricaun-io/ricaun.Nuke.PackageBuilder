@@ -1,8 +1,11 @@
 ﻿using Autodesk.PackageBuilder;
+using Nuke.Common;
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 using ricaun.Nuke.Extensions;
 using System.IO;
+using System.Linq;
+using System.Reflection;
 
 namespace ricaun.Nuke.Components
 {
@@ -29,14 +32,16 @@ namespace ricaun.Nuke.Components
                 var moduleName = ((string)file).Replace(bundleDirectory, ".");
                 if (moduleName.StartsWith("."))
                 {
-                    var version = Path.GetFileName(Path.GetDirectoryName(file));
-                    var i = int.Parse(version);
+                    var folder = Path.GetDirectoryName(file);
+                    var dll = PathConstruction.GlobFiles(folder, $"*{project.Name}*.dll").FirstOrDefault();
+                    var version = RevitExtension.GetRevitVersion(dll);
                     Components
-                        .CreateEntry($"{AutodeskProducts.Revit} {i}")
+                        .CreateEntry($"{AutodeskProducts.Revit} {version}")
                         .AppName(appName)
                         .ModuleName(moduleName)
-                        .RevitPlatform(i);
+                        .RevitPlatform(version);
 
+                    Logger.Normal($"Component Revit {version}: {Path.GetFileName(dll)}");
                 }
             }
         }
