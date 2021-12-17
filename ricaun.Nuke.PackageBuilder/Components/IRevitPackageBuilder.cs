@@ -36,7 +36,7 @@ namespace ricaun.Nuke.Components
             new RevitContentsBuilder(project, BundleDirectory)
                 .Build(BundleDirectory / "PackageContents.xml");
 
-            new IssRevitBuilder(project)
+            new IssRevitBuilder(project, PackageBuilderDirectory)
                 .CreateFile(PackageBuilderDirectory);
 
             // Deploy File

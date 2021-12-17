@@ -1,4 +1,5 @@
 ﻿using InnoSetup.ScriptBuilder;
+using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 using ricaun.Nuke.Extensions;
 using System.IO;
@@ -7,8 +8,14 @@ namespace ricaun.Nuke.Components
 {
     public class IssRevitBuilder : IssBuilder
     {
+        private const string IMAGE = "image.bmp";
+        private const string IMAGESMALL = "imageSmall.bmp";
+        private const string ICON = "icon.ico";
+        private const string LICENSE = "License.rtf";
+        private const string LICENSE_BR = "License-br.rtf";
+
         Project project;
-        public IssRevitBuilder(Project project)
+        public IssRevitBuilder(Project project, AbsolutePath packageBuilderDirectory)
         {
             this.project = project;
             var assembly = project.GetAssemblyGreaterVersion();
@@ -41,6 +48,18 @@ namespace ricaun.Nuke.Components
                     .DisableDirPage(YesNo.Yes)
                     .ShowLanguageDialog(YesNo.No);
 
+            if (FileSystemTasks.FileExists(packageBuilderDirectory / ICON))
+                setup.SetupIconFile(ICON);
+
+            if (FileSystemTasks.FileExists(packageBuilderDirectory / IMAGE))
+                setup.WizardImageFile(IMAGE);
+
+            if (FileSystemTasks.FileExists(packageBuilderDirectory / IMAGESMALL))
+                setup.WizardSmallImageFile(IMAGESMALL);
+
+            if (FileSystemTasks.FileExists(packageBuilderDirectory / LICENSE))
+                setup.LicenseFile(LICENSE);
+
             /*
             setup
                 .SetupIconFile("icon.ico")
@@ -54,8 +73,10 @@ namespace ricaun.Nuke.Components
 
             Languages.CreateEntry(name: "en", messagesFile: @"compiler:Default.isl");
 
-            var brLanguage =
-                Languages.CreateEntry(name: "br", messagesFile: @"compiler:Languages\BrazilianPortuguese.isl");
+            var brLanguage = Languages.CreateEntry(name: "br", messagesFile: @"compiler:Languages\BrazilianPortuguese.isl");
+
+            if (FileSystemTasks.FileExists(packageBuilderDirectory / LICENSE_BR))
+                brLanguage.LicenseFile(LICENSE_BR);
 
             //brLanguage.LicenseFile("CLUF.rtf");
 
