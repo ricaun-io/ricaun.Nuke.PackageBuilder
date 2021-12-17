@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>RevitAddin.PackageBuilder.Example Application</Name>
+    <Assembly>RevitAddin.PackageBuilder.Example.dll</Assembly>
+    <FullClassName>RevitAddin.PackageBuilder.Example.Revit.App</FullClassName>
+    <ClientId>d2797a34-4696-490d-a97a-c17afb5f0225</ClientId>
+    <VendorId>RevitAddin.PackageBuilder.Example</VendorId>
+    <VendorDescription>RevitAddin.PackageBuilder.Example</VendorDescription>
+    <AllowLoadingIntoExistingSession>true</AllowLoadingIntoExistingSession>
+  </AddIn>
+</RevitAddIns>

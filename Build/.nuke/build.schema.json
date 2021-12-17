@@ -6,9 +6,15 @@
     "build": {
       "type": "object",
       "properties": {
+        "Application": {
+          "type": "string"
+        },
         "Continue": {
           "type": "boolean",
           "description": "Indicates to continue a previously failed build attempt"
+        },
+        "Folder": {
+          "type": "string"
         },
         "Help": {
           "type": "boolean",
@@ -53,6 +59,9 @@
             "type": "string"
           }
         },
+        "Project": {
+          "type": "string"
+        },
         "Root": {
           "type": "string",
           "description": "Root directory during build execution"
@@ -66,8 +75,10 @@
               "Build",
               "Clean",
               "Compile",
+              "CompileExample",
               "GitRelease",
               "Pack",
+              "PackageBuilder",
               "Release",
               "Sign"
             ]
@@ -86,8 +97,10 @@
               "Build",
               "Clean",
               "Compile",
+              "CompileExample",
               "GitRelease",
               "Pack",
+              "PackageBuilder",
               "Release",
               "Sign"
             ]

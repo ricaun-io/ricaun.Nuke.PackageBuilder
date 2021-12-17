@@ -22,4 +22,8 @@
   <ItemGroup>
     <None Include="..\.github\workflows\*.yml" LinkBase="ci" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ricaun.Nuke.PackageBuilder\ricaun.Nuke.PackageBuilder.csproj" />
+  </ItemGroup>
 </Project>

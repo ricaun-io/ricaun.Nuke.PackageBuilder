@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.0.6] / 2021-12-17
+- Change name to `IRevitPackageBuilder`
+- Test Example Release
+- Add Configuration on Solution
+- Add IHazInput
+- Add Example
+- Change `IExternalApplication` base name to `App`
+- Add IHazPackageBuilderProject
+
 ## [0.0.5] / 2021-12-09
 - Remove Parse Folder
 - Add RevitExtension
