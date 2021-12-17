@@ -1,9 +1,7 @@
 using Nuke.Common;
 using Nuke.Common.Execution;
-using Nuke.Common.ProjectModel;
 using ricaun.Nuke;
 using ricaun.Nuke.Components;
-using ricaun.Nuke.Extensions;
 
 [CheckBuildProjectConfigurations]
 class Build : NukeBuild, IPublishPack, ICompileExample, IRevitPackageBuilder
