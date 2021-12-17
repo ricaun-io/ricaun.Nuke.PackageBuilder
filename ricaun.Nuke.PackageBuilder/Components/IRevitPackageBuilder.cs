@@ -8,7 +8,7 @@ using ricaun.Nuke.Extensions;
 
 namespace ricaun.Nuke.Components
 {
-    public interface IRevitPackageBuilder : IHazPackageBuilderProject, IRelease, ISign, IHazPackageBuilder, IHazInput, IHazOutput, INukeBuild
+    public interface IRevitPackageBuilder : IHazPackageBuilderProject, IHazInstallationFiles, IRelease, ISign, IHazPackageBuilder, IHazInput, IHazOutput, INukeBuild
     {
         Target PackageBuilder => _ => _
             .TriggeredBy(Sign)
@@ -32,6 +32,9 @@ namespace ricaun.Nuke.Components
             {
                 new ProjectAddInsBuilder(project, file, Application).Build(file);
             });
+
+            // CopyInstallationFiles If Exists
+            CopyInstallationFilesTo(PackageBuilderDirectory);
 
             new RevitContentsBuilder(project, BundleDirectory)
                 .Build(BundleDirectory / "PackageContents.xml");
