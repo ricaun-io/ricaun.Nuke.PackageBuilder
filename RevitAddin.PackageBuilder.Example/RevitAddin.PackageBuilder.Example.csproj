@@ -77,7 +77,7 @@
 
   <PropertyGroup>
     <PackageId>RevitAddin.PackageBuilder.Example</PackageId>
-    <Version>$(RevitVersion).0.0</Version>
+    <Version>$(RevitVersion).0.1</Version>
     <ProjectGuid>{d2797a34-4696-490d-a97a-c17afb5f0225}</ProjectGuid>
   </PropertyGroup>
 
@@ -106,8 +106,7 @@
   <ItemGroup>
     <None Include="Revit\App.cs" />
     <None Include="Revit\Commands\Command.cs" />
-    <None Include="RevitAddin.PackageBuilder.Example.addin" />
-    <None Include="FodyWeavers.xml"/>
+    <None Include="FodyWeavers.xml" />
   </ItemGroup>
 
 

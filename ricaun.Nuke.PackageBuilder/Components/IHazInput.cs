@@ -1,9 +1,8 @@
-﻿using System;
-using Nuke.Common;
+﻿using Nuke.Common;
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 using Nuke.Common.ValueInjection;
-using ricaun.Nuke.Extensions;
+
 namespace ricaun.Nuke.Components
 {
     public interface IHazInput : IHazPackageBuilderProject, IHazSolution, INukeBuild
