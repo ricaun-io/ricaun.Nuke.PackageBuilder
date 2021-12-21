@@ -17,6 +17,12 @@ namespace ricaun.Nuke.Components
         string Name => ValueInjectionUtility.TryGetValue(() => Name) ?? MainName;
 
         /// <summary>
+        /// PackageBuilder Project Name
+        /// </summary>
+        [Parameter]
+        bool ReleasePackageBuilder => ValueInjectionUtility.TryGetValue<bool?>(() => ReleasePackageBuilder) ?? false;
+
+        /// <summary>
         /// GetPackageBuilderProject
         /// </summary>
         /// <returns></returns>

@@ -5,6 +5,7 @@ using Nuke.Common.Tooling;
 using Nuke.Common.Tools.InnoSetup;
 using Nuke.Common.Utilities.Collections;
 using ricaun.Nuke.Extensions;
+using System.IO;
 
 namespace ricaun.Nuke.Components
 {
@@ -21,14 +22,15 @@ namespace ricaun.Nuke.Components
             .Before(Release)
             .Executes(() =>
             {
-                CreatePackageBuilder(GetPackageBuilderProject());
+                CreatePackageBuilder(GetPackageBuilderProject(), ReleasePackageBuilder);
             });
 
         /// <summary>
         /// CreatePackageBuilder
         /// </summary>
         /// <param name="project"></param>
-        public void CreatePackageBuilder(Project project)
+        /// <param name="releasePackageBuilder"></param>
+        public void CreatePackageBuilder(Project project, bool releasePackageBuilder = false)
         {
             var fileName = $"{project.Name}";
             var bundleName = $"{fileName}.bundle";
@@ -73,6 +75,12 @@ namespace ricaun.Nuke.Components
             {
                 PathConstruction.GlobFiles(outputInno, "**/*.zip")
                     .ForEach(file => FileSystemTasks.CopyFileToDirectory(file, ReleaseDirectory));
+            }
+
+            if (releasePackageBuilder)
+            {
+                var folder = Path.GetFileName(PackageBuilderDirectory);
+                ZipExtension.CreateFromDirectory(PackageBuilderDirectory, ReleaseDirectory / $"{project.Name} {folder}.zip");
             }
         }
     }
