@@ -5,12 +5,19 @@ using Nuke.Common.ProjectModel;
 using ricaun.Nuke.Extensions;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 
 namespace ricaun.Nuke.Components
 {
+    /// <summary>
+    /// RevitContentsBuilder
+    /// </summary>
     public class RevitContentsBuilder : PackageContentsBuilder
     {
+        /// <summary>
+        /// RevitContentsBuilder
+        /// </summary>
+        /// <param name="project"></param>
+        /// <param name="bundleDirectory"></param>
         public RevitContentsBuilder(Project project, AbsolutePath bundleDirectory)
         {
             var appName = project.Name;

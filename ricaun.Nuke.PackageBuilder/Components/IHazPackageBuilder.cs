@@ -2,9 +2,11 @@
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 using Nuke.Common.ValueInjection;
-using ricaun.Nuke.Extensions;
 namespace ricaun.Nuke.Components
 {
+    /// <summary>
+    /// IHazPackageBuilder
+    /// </summary>
     public interface IHazPackageBuilder : IHazPackageBuilderProject, IHazSolution, INukeBuild
     {
         /// <summary>
@@ -25,7 +27,16 @@ namespace ricaun.Nuke.Components
         [Parameter]
         Project Project => ValueInjectionUtility.TryGetValue(() => Project) ?? GetPackageBuilderProject();
 
+        /// <summary>
+        /// PackageBuilderDirectory
+        /// </summary>
         AbsolutePath PackageBuilderDirectory => GetPackageBuilderDirectory(Project);
+
+        /// <summary>
+        /// GetPackageBuilderDirectory
+        /// </summary>
+        /// <param name="project"></param>
+        /// <returns></returns>
         public AbsolutePath GetPackageBuilderDirectory(Project project) => project.Directory / "bin" / Folder;
     }
 }

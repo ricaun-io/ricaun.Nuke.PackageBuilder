@@ -6,6 +6,9 @@ using System.IO;
 
 namespace ricaun.Nuke.Components
 {
+    /// <summary>
+    /// IssRevitBuilder
+    /// </summary>
     public class IssRevitBuilder : IssBuilder
     {
         private const string IMAGE = "image.bmp";
@@ -15,6 +18,12 @@ namespace ricaun.Nuke.Components
         private const string LICENSE_BR = "License-br.rtf";
 
         Project project;
+
+        /// <summary>
+        /// IssRevitBuilder
+        /// </summary>
+        /// <param name="project"></param>
+        /// <param name="packageBuilderDirectory"></param>
         public IssRevitBuilder(Project project, AbsolutePath packageBuilderDirectory)
         {
             this.project = project;
@@ -96,6 +105,11 @@ namespace ricaun.Nuke.Components
                 .Parameter("Permissions", $"users-full");
         }
 
+        /// <summary>
+        /// CreateFile
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public string CreateFile(string path)
         {
             if (Path.GetExtension(path) != ".iss")

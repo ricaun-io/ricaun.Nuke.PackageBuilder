@@ -8,8 +8,16 @@ using System.Threading.Tasks;
 
 namespace ricaun.Nuke.Extensions
 {
+    /// <summary>
+    /// RevitExtension
+    /// </summary>
     public static class RevitExtension
     {
+        /// <summary>
+        /// GetRevitVersion using the RevitAPI ReferencedAssemblies
+        /// </summary>
+        /// <param name="dll"></param>
+        /// <returns></returns>
         public static int GetRevitVersion(string dll)
         {
             var assemblyTest = Assembly.Load(File.ReadAllBytes(dll));
