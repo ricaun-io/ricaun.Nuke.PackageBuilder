@@ -6,9 +6,6 @@
     "build": {
       "type": "object",
       "properties": {
-        "Application": {
-          "type": "string"
-        },
         "Continue": {
           "type": "boolean",
           "description": "Indicates to continue a previously failed build attempt"
@@ -40,7 +37,7 @@
             "VSCode"
           ]
         },
-        "MainName": {
+        "Name": {
           "type": "string"
         },
         "NoLogo": {
@@ -78,9 +75,7 @@
               "Build",
               "Clean",
               "Compile",
-              "CompileExample",
               "GitRelease",
-              "Pack",
               "PackageBuilder",
               "Release",
               "Sign"
@@ -100,9 +95,7 @@
               "Build",
               "Clean",
               "Compile",
-              "CompileExample",
               "GitRelease",
-              "Pack",
               "PackageBuilder",
               "Release",
               "Sign"
