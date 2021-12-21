@@ -8,8 +8,14 @@ using ricaun.Nuke.Extensions;
 
 namespace ricaun.Nuke.Components
 {
+    /// <summary>
+    /// IRevitPackageBuilder
+    /// </summary>
     public interface IRevitPackageBuilder : IHazPackageBuilderProject, IHazInstallationFiles, IRelease, ISign, IHazPackageBuilder, IHazInput, IHazOutput, INukeBuild
     {
+        /// <summary>
+        /// Target PackageBuilder
+        /// </summary>
         Target PackageBuilder => _ => _
             .TriggeredBy(Sign)
             .Before(Release)
@@ -18,6 +24,10 @@ namespace ricaun.Nuke.Components
                 CreatePackageBuilder(GetPackageBuilderProject());
             });
 
+        /// <summary>
+        /// CreatePackageBuilder
+        /// </summary>
+        /// <param name="project"></param>
         public void CreatePackageBuilder(Project project)
         {
             var fileName = $"{project.Name}";

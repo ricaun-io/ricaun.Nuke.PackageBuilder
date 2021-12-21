@@ -5,6 +5,9 @@ using Nuke.Common.ValueInjection;
 
 namespace ricaun.Nuke.Components
 {
+    /// <summary>
+    /// IHazInput
+    /// </summary>
     public interface IHazInput : IHazPackageBuilderProject, IHazSolution, INukeBuild
     {
         /// <summary>
@@ -18,7 +21,17 @@ namespace ricaun.Nuke.Components
         /// </summary>
         [Parameter]
         Project Project => ValueInjectionUtility.TryGetValue(() => Project) ?? GetPackageBuilderProject();
+
+        /// <summary>
+        /// InputDirectory
+        /// </summary>
         AbsolutePath InputDirectory => GetInputDirectory(Project);
+
+        /// <summary>
+        /// GetInputDirectory
+        /// </summary>
+        /// <param name="project"></param>
+        /// <returns></returns>
         public AbsolutePath GetInputDirectory(Project project) => project.Directory / "bin" / Folder;
     }
 }

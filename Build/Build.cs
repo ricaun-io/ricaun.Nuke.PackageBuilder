@@ -6,24 +6,20 @@ using ricaun.Nuke.Components;
 [CheckBuildProjectConfigurations]
 class Build : NukeBuild, IPublishPack, ICompileExample, IRevitPackageBuilder
 {
-    string IHazInput.Folder => "Content";
-    string IHazPackageBuilderProject.Name => "RevitAddin.PackageBuilder.Example";
-
-    string IHazExample.Name => "RevitAddin.PackageBuilder.Example";
-    string IHazExample.Folder => "Content";
-
-    string IHazContent.Folder => "Release";
-    string IHazRelease.Folder => "ReleasePack";
+    private const string RevitProjectName = "RevitAddin.PackageBuilder.Example";
+    string IHazPackageBuilderProject.Name => RevitProjectName;
+    string IHazPackageBuilder.Application => "Revit.App";
+    string IHazExample.Name => RevitProjectName;
     public static int Main() => Execute<Build>(x => x.From<IPublishPack>().Build);
 }
 
 /*
+// Create RevitProjectName
 [CheckBuildProjectConfigurations]
 class Build : NukeBuild, IPublishRevit
 {
-    string IHazMainProject.MainName => "RevitAddin.PackageBuilder.Example";
-    string IHazInput.Folder => "Content";
-    string IHazContent.Folder => "Content";
+    private const string RevitProjectName = "RevitAddin.PackageBuilder.Example";
+    string IHazMainProject.MainName => RevitProjectName;
     string IHazPackageBuilder.Application => "Revit.App";
     public static int Main() => Execute<Build>(x => x.From<IPublishRevit>().Build);
 }

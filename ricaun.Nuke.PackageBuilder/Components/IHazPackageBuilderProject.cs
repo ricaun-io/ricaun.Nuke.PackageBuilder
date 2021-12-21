@@ -5,6 +5,9 @@ using Nuke.Common.ValueInjection;
 using ricaun.Nuke.Extensions;
 namespace ricaun.Nuke.Components
 {
+    /// <summary>
+    /// IHazPackageBuilderProject
+    /// </summary>
     public interface IHazPackageBuilderProject : IHazMainProject, IHazSolution, INukeBuild
     {
         /// <summary>
@@ -12,6 +15,11 @@ namespace ricaun.Nuke.Components
         /// </summary>
         [Parameter]
         string Name => ValueInjectionUtility.TryGetValue(() => Name) ?? MainName;
+
+        /// <summary>
+        /// GetPackageBuilderProject
+        /// </summary>
+        /// <returns></returns>
         public Project GetPackageBuilderProject() => Solution.GetOtherProject(Name);
     }
 }

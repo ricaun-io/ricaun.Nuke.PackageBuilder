@@ -6,8 +6,17 @@ using System.Reflection;
 
 namespace ricaun.Nuke.Components
 {
+    /// <summary>
+    /// ProjectAddInsBuilder
+    /// </summary>
     public class ProjectAddInsBuilder : RevitAddInsBuilder
     {
+        /// <summary>
+        /// ProjectAddInsBuilder
+        /// </summary>
+        /// <param name="project"></param>
+        /// <param name="assemblyFile"></param>
+        /// <param name="application"></param>
         public ProjectAddInsBuilder(Project project, string assemblyFile, string application)
         {
             var addInId = project.GetAppId();
