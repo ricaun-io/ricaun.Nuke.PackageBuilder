@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [0.0.8] / 2021-12-21
+- Test and Release
+- Update `RevitAddin.PackageBuilder.Example` to version *.0.2 
 - Add Documentation on the main project
 - Add `xml` DocumentationFile
 - Force to `ricaun.Nuke` Version - 0.0.12

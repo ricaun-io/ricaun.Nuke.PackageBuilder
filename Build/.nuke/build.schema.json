@@ -37,7 +37,7 @@
             "VSCode"
           ]
         },
-        "Name": {
+        "MainName": {
           "type": "string"
         },
         "NoLogo": {
@@ -75,7 +75,9 @@
               "Build",
               "Clean",
               "Compile",
+              "CompileExample",
               "GitRelease",
+              "Pack",
               "PackageBuilder",
               "Release",
               "Sign"
@@ -95,7 +97,9 @@
               "Build",
               "Clean",
               "Compile",
+              "CompileExample",
               "GitRelease",
+              "Pack",
               "PackageBuilder",
               "Release",
               "Sign"
