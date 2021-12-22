@@ -2,6 +2,8 @@
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 using Nuke.Common.ValueInjection;
+using ricaun.Nuke.Extensions;
+
 namespace ricaun.Nuke.Components
 {
     /// <summary>
@@ -16,21 +18,33 @@ namespace ricaun.Nuke.Components
         string Application => ValueInjectionUtility.TryGetValue(() => Application) ?? "App";
 
         /// <summary>
+        /// GetApplication
+        /// </summary>
+        /// <returns></returns>
+        public string GetApplication() => Application;
+
+        /// <summary>
+        /// VendorId
+        /// </summary>
+        [Parameter]
+        string VendorId => ValueInjectionUtility.TryGetValue(() => VendorId) ?? GetPackageBuilderProject().GetCompany();
+
+        /// <summary>
+        /// VendorDescription
+        /// </summary>
+        [Parameter]
+        string VendorDescription => ValueInjectionUtility.TryGetValue(() => VendorDescription) ?? VendorId;
+
+        /// <summary>
         /// Folder PackageBuilder 
         /// </summary>
         [Parameter]
         string Folder => ValueInjectionUtility.TryGetValue(() => Folder) ?? "PackageBuilder";
 
         /// <summary>
-        /// Project (default: <seealso cref="IHazPackageBuilderProject.GetPackageBuilderProject"/>)
-        /// </summary>
-        [Parameter]
-        Project Project => ValueInjectionUtility.TryGetValue(() => Project) ?? GetPackageBuilderProject();
-
-        /// <summary>
         /// PackageBuilderDirectory
         /// </summary>
-        AbsolutePath PackageBuilderDirectory => GetPackageBuilderDirectory(Project);
+        AbsolutePath PackageBuilderDirectory => GetPackageBuilderDirectory(GetPackageBuilderProject());
 
         /// <summary>
         /// GetPackageBuilderDirectory

@@ -93,8 +93,8 @@
     <AssemblyName>$(PackageId)$(PackageAssemblyVersion)</AssemblyName>
     <Description>Revit Add-In Description for $(PackageId).</Description>
     <Product>$(PackageId)</Product>
-    <Company>Company</Company>
-    <Authors>Authors</Authors>
+    <Company>ricaun</Company>
+    <Authors>Luiz Henrique Cassettari</Authors>
     <Copyright>Copyright © 2021</Copyright>
   </PropertyGroup>
 

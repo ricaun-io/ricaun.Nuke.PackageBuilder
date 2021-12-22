@@ -2,7 +2,6 @@
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 using Nuke.Common.ValueInjection;
-
 namespace ricaun.Nuke.Components
 {
     /// <summary>
@@ -17,15 +16,9 @@ namespace ricaun.Nuke.Components
         string Folder => ValueInjectionUtility.TryGetValue(() => Folder) ?? "Release";
 
         /// <summary>
-        /// Project (default: <seealso cref="IHazPackageBuilderProject.GetPackageBuilderProject"/>)
-        /// </summary>
-        [Parameter]
-        Project Project => ValueInjectionUtility.TryGetValue(() => Project) ?? GetPackageBuilderProject();
-
-        /// <summary>
         /// InputDirectory
         /// </summary>
-        AbsolutePath InputDirectory => GetInputDirectory(Project);
+        AbsolutePath InputDirectory => GetInputDirectory(GetPackageBuilderProject());
 
         /// <summary>
         /// GetInputDirectory
