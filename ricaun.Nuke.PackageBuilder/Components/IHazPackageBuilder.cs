@@ -12,7 +12,6 @@ namespace ricaun.Nuke.Components
         /// <summary>
         /// IExternalApplication Class 
         /// </summary>
-        [Parameter]
         string Application => ValueInjectionUtility.TryGetValue(() => Application) ?? "App";
 
         /// <summary>
@@ -22,9 +21,18 @@ namespace ricaun.Nuke.Components
         public string GetApplication() => Application;
 
         /// <summary>
+        /// VendorId
+        /// </summary>
+        string VendorId => ValueInjectionUtility.TryGetValue(() => VendorId) ?? null;
+
+        /// <summary>
+        /// VendorDescription
+        /// </summary>
+        string VendorDescription => ValueInjectionUtility.TryGetValue(() => VendorDescription) ?? null;
+
+        /// <summary>
         /// Folder PackageBuilder 
         /// </summary>
-        [Parameter]
         string Folder => ValueInjectionUtility.TryGetValue(() => Folder) ?? "PackageBuilder";
 
         /// <summary>

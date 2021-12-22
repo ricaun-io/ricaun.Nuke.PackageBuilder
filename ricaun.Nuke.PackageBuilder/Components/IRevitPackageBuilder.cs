@@ -42,7 +42,7 @@ namespace ricaun.Nuke.Components
             var addInFiles = PathConstruction.GlobFiles(ContentsDirectory, $"**/*{project.Name}*.dll");
             addInFiles.ForEach(file =>
             {
-                new ProjectAddInsBuilder(project, file, Application).Build(file);
+                new ProjectAddInsBuilder(project, file, Application, VendorId, VendorDescription).Build(file);
             });
 
             // CopyInstallationFiles If Exists

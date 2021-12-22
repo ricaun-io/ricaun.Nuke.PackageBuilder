@@ -3,7 +3,6 @@ using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 using Nuke.Common.Utilities.Collections;
 using Nuke.Common.ValueInjection;
-
 namespace ricaun.Nuke.Components
 {
     /// <summary>
@@ -14,7 +13,6 @@ namespace ricaun.Nuke.Components
         /// <summary>
         /// Folder InstallationFiles 
         /// </summary>
-        [Parameter]
         string Folder => ValueInjectionUtility.TryGetValue(() => Folder) ?? "InstallationFiles";
 
         /// <summary>

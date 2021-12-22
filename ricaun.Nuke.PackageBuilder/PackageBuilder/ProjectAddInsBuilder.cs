@@ -17,19 +17,24 @@ namespace ricaun.Nuke.Components
         /// <param name="project"></param>
         /// <param name="assemblyFile"></param>
         /// <param name="application"></param>
-        public ProjectAddInsBuilder(Project project, string assemblyFile, string application)
+        /// <param name="vendorId"></param>
+        /// <param name="vendorDescription"></param>
+        public ProjectAddInsBuilder(Project project, string assemblyFile, string application, string vendorId = null, string vendorDescription = null)
         {
             var addInId = project.GetAppId();
             var name = project.Name;
             var assemblyName = Path.GetFileName(assemblyFile);
+
+            if (vendorId == null) vendorId = name;
+            if (vendorDescription == null) vendorDescription = name;
 
             AddIn.CreateEntry()
                 .Name(name)
                 .AddInId(addInId)
                 .Assembly(assemblyName)
                 .FullClassName($"{name}.{application}")
-                .VendorId(name)
-                .VendorDescription(name);
+                .VendorId(vendorId)
+                .VendorDescription(vendorDescription);
         }
     }
 }

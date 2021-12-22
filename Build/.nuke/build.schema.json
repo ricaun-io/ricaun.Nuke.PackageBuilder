@@ -59,9 +59,6 @@
             "type": "string"
           }
         },
-        "Project": {
-          "type": "string"
-        },
         "Root": {
           "type": "string",
           "description": "Root directory during build execution"
