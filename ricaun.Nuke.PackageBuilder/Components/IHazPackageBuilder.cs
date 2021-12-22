@@ -16,21 +16,21 @@ namespace ricaun.Nuke.Components
         string Application => ValueInjectionUtility.TryGetValue(() => Application) ?? "App";
 
         /// <summary>
+        /// GetApplication
+        /// </summary>
+        /// <returns></returns>
+        public string GetApplication() => Application;
+
+        /// <summary>
         /// Folder PackageBuilder 
         /// </summary>
         [Parameter]
         string Folder => ValueInjectionUtility.TryGetValue(() => Folder) ?? "PackageBuilder";
 
         /// <summary>
-        /// Project (default: <seealso cref="IHazPackageBuilderProject.GetPackageBuilderProject"/>)
-        /// </summary>
-        [Parameter]
-        Project Project => ValueInjectionUtility.TryGetValue(() => Project) ?? GetPackageBuilderProject();
-
-        /// <summary>
         /// PackageBuilderDirectory
         /// </summary>
-        AbsolutePath PackageBuilderDirectory => GetPackageBuilderDirectory(Project);
+        AbsolutePath PackageBuilderDirectory => GetPackageBuilderDirectory(GetPackageBuilderProject());
 
         /// <summary>
         /// GetPackageBuilderDirectory

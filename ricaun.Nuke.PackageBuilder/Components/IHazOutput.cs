@@ -18,15 +18,9 @@ namespace ricaun.Nuke.Components
         string Folder => ValueInjectionUtility.TryGetValue(() => Folder) ?? "Output";
 
         /// <summary>
-        /// Project (default: <seealso cref="IHazPackageBuilderProject.GetPackageBuilderProject"/>)
-        /// </summary>
-        [Parameter]
-        public Project Project => ValueInjectionUtility.TryGetValue(() => Project) ?? GetPackageBuilderProject();
-
-        /// <summary>
         /// OutputDirectory
         /// </summary>
-        AbsolutePath OutputDirectory => GetOutputDirectory(Project);
+        AbsolutePath OutputDirectory => GetOutputDirectory(GetPackageBuilderProject());
 
         /// <summary>
         /// GetOutputDirectory
