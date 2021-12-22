@@ -13,6 +13,7 @@ namespace ricaun.Nuke.Components
         /// <summary>
         /// Folder InstallationFiles 
         /// </summary>
+        [Parameter]
         string Folder => ValueInjectionUtility.TryGetValue(() => Folder) ?? "InstallationFiles";
 
         /// <summary>

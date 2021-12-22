@@ -12,6 +12,7 @@ namespace ricaun.Nuke.Components
         /// <summary>
         /// Folder Output 
         /// </summary>
+        [Parameter]
         string Folder => ValueInjectionUtility.TryGetValue(() => Folder) ?? "Output";
 
         /// <summary>

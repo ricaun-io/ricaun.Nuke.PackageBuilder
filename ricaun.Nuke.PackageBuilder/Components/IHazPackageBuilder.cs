@@ -2,6 +2,8 @@
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 using Nuke.Common.ValueInjection;
+using ricaun.Nuke.Extensions;
+
 namespace ricaun.Nuke.Components
 {
     /// <summary>
@@ -12,6 +14,7 @@ namespace ricaun.Nuke.Components
         /// <summary>
         /// IExternalApplication Class 
         /// </summary>
+        [Parameter]
         string Application => ValueInjectionUtility.TryGetValue(() => Application) ?? "App";
 
         /// <summary>
@@ -23,16 +26,19 @@ namespace ricaun.Nuke.Components
         /// <summary>
         /// VendorId
         /// </summary>
-        string VendorId => ValueInjectionUtility.TryGetValue(() => VendorId) ?? null;
+        [Parameter]
+        string VendorId => ValueInjectionUtility.TryGetValue(() => VendorId) ?? GetPackageBuilderProject().GetCompany();
 
         /// <summary>
         /// VendorDescription
         /// </summary>
-        string VendorDescription => ValueInjectionUtility.TryGetValue(() => VendorDescription) ?? null;
+        [Parameter]
+        string VendorDescription => ValueInjectionUtility.TryGetValue(() => VendorDescription) ?? VendorId;
 
         /// <summary>
         /// Folder PackageBuilder 
         /// </summary>
+        [Parameter]
         string Folder => ValueInjectionUtility.TryGetValue(() => Folder) ?? "PackageBuilder";
 
         /// <summary>

@@ -13,11 +13,13 @@ namespace ricaun.Nuke.Components
         /// <summary>
         /// PackageBuilder Project Name
         /// </summary>
+        [Parameter]
         string Name => ValueInjectionUtility.TryGetValue(() => Name) ?? MainName;
 
         /// <summary>
         /// ReleasePackageBuilder (default: false)
         /// </summary>
+        [Parameter]
         bool ReleasePackageBuilder => ValueInjectionUtility.TryGetValue<bool?>(() => ReleasePackageBuilder) ?? false;
 
         /// <summary>
