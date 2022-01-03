@@ -69,14 +69,6 @@ namespace ricaun.Nuke.Components
             if (FileSystemTasks.FileExists(packageBuilderDirectory / LICENSE))
                 setup.LicenseFile(LICENSE);
 
-            /*
-            setup
-                .SetupIconFile("icon.ico")
-                .WizardImageFile("image.bmp")
-                .WizardSmallImageFile("imageSmall.bmp")
-                .LicenseFile("EULA.rtf");
-            */
-
             Files.CreateEntry(source: sourceFiles, destDir: InnoConstants.App)
                 .Flags(FileFlags.IgnoreVersion | FileFlags.RecurseSubdirs);
 
@@ -86,8 +78,6 @@ namespace ricaun.Nuke.Components
 
             if (FileSystemTasks.FileExists(packageBuilderDirectory / LICENSE_BR))
                 brLanguage.LicenseFile(LICENSE_BR);
-
-            //brLanguage.LicenseFile("CLUF.rtf");
 
             Sections.CreateParameterSection("UninstallDelete")
                 .CreateEntry()
