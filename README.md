@@ -25,7 +25,15 @@ class Build : NukeBuild, IPublishRevit
 }
 ```
 
+## License
+
+This package is [licensed](LICENSE) under the [MIT Licence](https://en.wikipedia.org/wiki/MIT_License).
+
 ---
 
-Copyright © 2021 ricaun
+Do you like this package? Please [star this project on GitHub](https://github.com/ricaun-io/ricaun.Nuke.PackageBuilder/stargazers)!
+
+---
+
+Copyright © 2022 ricaun
 

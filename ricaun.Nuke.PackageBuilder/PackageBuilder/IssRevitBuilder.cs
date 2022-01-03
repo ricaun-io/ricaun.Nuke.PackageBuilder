@@ -11,12 +11,6 @@ namespace ricaun.Nuke.Components
     /// </summary>
     public class IssRevitBuilder : IssBuilder
     {
-        private const string IMAGE = "image.bmp";
-        private const string IMAGESMALL = "imageSmall.bmp";
-        private const string ICON = "icon.ico";
-        private const string LICENSE = "License.rtf";
-        private const string LICENSE_BR = "License-br.rtf";
-
         Project project;
 
         /// <summary>
@@ -24,7 +18,10 @@ namespace ricaun.Nuke.Components
         /// </summary>
         /// <param name="project"></param>
         /// <param name="packageBuilderDirectory"></param>
-        public IssRevitBuilder(Project project, AbsolutePath packageBuilderDirectory)
+        /// <param name="issConfiguration"></param>
+        public IssRevitBuilder(Project project,
+            AbsolutePath packageBuilderDirectory,
+            IssConfiguration issConfiguration)
         {
             this.project = project;
             var assembly = project.GetAssemblyGreaterVersion();
@@ -57,38 +54,35 @@ namespace ricaun.Nuke.Components
                     .DisableDirPage(YesNo.Yes)
                     .ShowLanguageDialog(YesNo.No);
 
-            if (FileSystemTasks.FileExists(packageBuilderDirectory / ICON))
-                setup.SetupIconFile(ICON);
+            if (FileSystemTasks.FileExists(packageBuilderDirectory / issConfiguration.Icon))
+                setup.SetupIconFile(issConfiguration.Icon);
 
-            if (FileSystemTasks.FileExists(packageBuilderDirectory / IMAGE))
-                setup.WizardImageFile(IMAGE);
+            if (FileSystemTasks.FileExists(packageBuilderDirectory / issConfiguration.Image))
+                setup.WizardImageFile(issConfiguration.Image);
 
-            if (FileSystemTasks.FileExists(packageBuilderDirectory / IMAGESMALL))
-                setup.WizardSmallImageFile(IMAGESMALL);
+            if (FileSystemTasks.FileExists(packageBuilderDirectory / issConfiguration.ImageSmall))
+                setup.WizardSmallImageFile(issConfiguration.ImageSmall);
 
-            if (FileSystemTasks.FileExists(packageBuilderDirectory / LICENSE))
-                setup.LicenseFile(LICENSE);
-
-            /*
-            setup
-                .SetupIconFile("icon.ico")
-                .WizardImageFile("image.bmp")
-                .WizardSmallImageFile("imageSmall.bmp")
-                .LicenseFile("EULA.rtf");
-            */
+            if (FileSystemTasks.FileExists(packageBuilderDirectory / issConfiguration.Licence))
+                setup.LicenseFile(issConfiguration.Licence);
 
             Files.CreateEntry(source: sourceFiles, destDir: InnoConstants.App)
                 .Flags(FileFlags.IgnoreVersion | FileFlags.RecurseSubdirs);
 
-            Languages.CreateEntry(name: "en", messagesFile: @"compiler:Default.isl");
+            Languages.CreateEntry(name: issConfiguration.Language.Name,
+                messagesFile: issConfiguration.Language.MessagesFile);
 
-            var brLanguage = Languages.CreateEntry(name: "br", messagesFile: @"compiler:Languages\BrazilianPortuguese.isl");
+            if (issConfiguration.IssLanguageLicences != null)
+            {
+                foreach (var IssLanguageLicence in issConfiguration.IssLanguageLicences)
+                {
+                    var language = Languages.CreateEntry(name: IssLanguageLicence.Name,
+                        messagesFile: IssLanguageLicence.MessagesFile);
 
-            if (FileSystemTasks.FileExists(packageBuilderDirectory / LICENSE_BR))
-                brLanguage.LicenseFile(LICENSE_BR);
-
-            //brLanguage.LicenseFile("CLUF.rtf");
-
+                    if (FileSystemTasks.FileExists(packageBuilderDirectory / IssLanguageLicence.Licence))
+                        language.LicenseFile(IssLanguageLicence.Licence);
+                }
+            }
             Sections.CreateParameterSection("UninstallDelete")
                 .CreateEntry()
                 .Parameter("Type", "filesandordirs")
