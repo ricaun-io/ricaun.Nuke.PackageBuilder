@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [0.0.11] / 2022-01-03
 - Clear IssRevitBuilder
+- Add IssLanguageLicence
+- Add IssLanguage
+- Add IssConfiguration
+- Add Files on Installation Example
+- Clear IssRevitBuilder
 - Update Readme
 
 ## [0.0.10] / 2021-12-22

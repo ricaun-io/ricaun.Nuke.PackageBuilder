@@ -15,14 +15,22 @@ class Build : NukeBuild, IPublishPack, ICompileExample, IRevitPackageBuilder
     public static int Main() => Execute<Build>(x => x.From<IPublishPack>().Build);
 }
 
-/// <summary>
-/// Create RevitProjectName
-/// </summary>
+///// <summary>
+///// Create RevitProjectName
+///// </summary>
 //[CheckBuildProjectConfigurations]
 //class Build : NukeBuild, IPublishRevit
 //{
 //    private const string RevitProjectName = "RevitAddin.PackageBuilder.Example";
 //    string IHazMainProject.MainName => RevitProjectName;
 //    string IHazPackageBuilder.Application => "Revit.App";
+
+//    IssConfiguration IHazInstallationFiles.IssConfiguration => new IssConfiguration()
+//    {
+//        IssLanguageLicences
+//            = new[] {
+//                new IssLanguageLicence() { Name="br", Licence = "License-br.rtf", MessagesFile = @"compiler:Languages\BrazilianPortuguese.isl"}
+//            }
+//    };
 //    public static int Main() => Execute<Build>(x => x.From<IPublishRevit>().Build);
 //}

@@ -17,6 +17,12 @@ namespace ricaun.Nuke.Components
         string Folder => ValueInjectionUtility.TryGetValue(() => Folder) ?? "InstallationFiles";
 
         /// <summary>
+        /// Configuration
+        /// </summary>
+        [Parameter]
+        IssConfiguration IssConfiguration => ValueInjectionUtility.TryGetValue(() => IssConfiguration) ?? new IssConfiguration();
+
+        /// <summary>
         /// InstallationFilesDirectory
         /// </summary>
         AbsolutePath InstallationFilesDirectory => GetInstallationFilesDirectory(GetPackageBuilderProject());
