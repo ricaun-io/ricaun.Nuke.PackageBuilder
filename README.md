@@ -25,6 +25,15 @@ class Build : NukeBuild, IPublishRevit
 }
 ```
 
+## Environment Variables
+
+```yml
+env:
+    GitHubToken: ${{ secrets.GITHUB_TOKEN }}
+    SignFile: ${{ secrets.SIGN_FILE }}
+    SignPassword: ${{ secrets.SIGN_PASSWORD }}
+```
+
 ## License
 
 This package is [licensed](LICENSE) under the [MIT Licence](https://en.wikipedia.org/wiki/MIT_License).
