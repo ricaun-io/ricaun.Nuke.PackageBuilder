@@ -6,8 +6,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [0.0.12] / 2022-01-04
 - Add Environment Variables
-
-## [0.0.12] / 2022-01-04
 - Remove rtf files
 - Change IssConfiguration to License.txt
 
