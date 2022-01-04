@@ -20,7 +20,7 @@
         /// <summary>
         /// LICENSE
         /// </summary>
-        public const string LICENSE = "License.rtf";
+        public const string LICENSE = "License.txt";
 
         /// <summary>
         /// Image (default <see cref="IMAGE"/>)

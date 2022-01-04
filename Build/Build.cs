@@ -29,7 +29,7 @@ class Build : NukeBuild, IPublishPack, ICompileExample, IRevitPackageBuilder
 //    {
 //        IssLanguageLicences
 //            = new[] {
-//                new IssLanguageLicence() { Name="br", Licence = "License-br.rtf", MessagesFile = @"compiler:Languages\BrazilianPortuguese.isl"}
+//                new IssLanguageLicence() { Name="br", Licence = "License-br.txt", MessagesFile = @"compiler:Languages\BrazilianPortuguese.isl"}
 //            }
 //    };
 //    public static int Main() => Execute<Build>(x => x.From<IPublishRevit>().Build);
