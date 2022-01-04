@@ -11,7 +11,7 @@ namespace ricaun.Nuke.Components
     /// </summary>
     public class IssRevitBuilder : IssBuilder
     {
-        Project project;
+        private readonly Project project;
 
         /// <summary>
         /// IssRevitBuilder

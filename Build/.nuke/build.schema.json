@@ -37,7 +37,10 @@
             "VSCode"
           ]
         },
-        "Name": {
+        "IssConfiguration": {
+          "type": "string"
+        },
+        "MainName": {
           "type": "string"
         },
         "NoLogo": {
@@ -59,9 +62,6 @@
             "type": "string"
           }
         },
-        "ReleasePackageBuilder": {
-          "type": "boolean"
-        },
         "Root": {
           "type": "string",
           "description": "Root directory during build execution"
@@ -75,7 +75,9 @@
               "Build",
               "Clean",
               "Compile",
+              "CompileExample",
               "GitRelease",
+              "Pack",
               "PackageBuilder",
               "Release",
               "Sign"
@@ -95,7 +97,9 @@
               "Build",
               "Clean",
               "Compile",
+              "CompileExample",
               "GitRelease",
+              "Pack",
               "PackageBuilder",
               "Release",
               "Sign"
