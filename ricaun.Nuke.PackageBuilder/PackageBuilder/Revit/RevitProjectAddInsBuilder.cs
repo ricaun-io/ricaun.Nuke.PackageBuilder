@@ -2,24 +2,23 @@
 using Nuke.Common.ProjectModel;
 using ricaun.Nuke.Extensions;
 using System.IO;
-using System.Reflection;
 
 namespace ricaun.Nuke.Components
 {
     /// <summary>
-    /// ProjectAddInsBuilder
+    /// RevitProjectAddInsBuilder
     /// </summary>
-    public class ProjectAddInsBuilder : RevitAddInsBuilder
+    public class RevitProjectAddInsBuilder : RevitAddInsBuilder
     {
         /// <summary>
-        /// ProjectAddInsBuilder
+        /// RevitProjectAddInsBuilder
         /// </summary>
         /// <param name="project"></param>
         /// <param name="assemblyFile"></param>
         /// <param name="application"></param>
         /// <param name="vendorId"></param>
         /// <param name="vendorDescription"></param>
-        public ProjectAddInsBuilder(Project project, string assemblyFile, string application, string vendorId = null, string vendorDescription = null)
+        public RevitProjectAddInsBuilder(Project project, string assemblyFile, string application, string vendorId = null, string vendorDescription = null)
         {
             var addInId = project.GetAppId();
             var name = project.Name;

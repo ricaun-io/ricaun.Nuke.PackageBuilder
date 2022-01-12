@@ -13,6 +13,10 @@
         "Folder": {
           "type": "string"
         },
+        "GitHubToken": {
+          "type": "string",
+          "default": "Secrets must be entered via 'nuke :secret [profile]'"
+        },
         "Help": {
           "type": "boolean",
           "description": "Shows the help text for this build assembly"
@@ -37,10 +41,7 @@
             "VSCode"
           ]
         },
-        "IssConfiguration": {
-          "type": "string"
-        },
-        "MainName": {
+        "Name": {
           "type": "string"
         },
         "NoLogo": {
@@ -62,9 +63,20 @@
             "type": "string"
           }
         },
+        "ReleasePackageBuilder": {
+          "type": "boolean"
+        },
         "Root": {
           "type": "string",
           "description": "Root directory during build execution"
+        },
+        "SignFile": {
+          "type": "string",
+          "default": "Secrets must be entered via 'nuke :secret [profile]'"
+        },
+        "SignPassword": {
+          "type": "string",
+          "default": "Secrets must be entered via 'nuke :secret [profile]'"
         },
         "Skip": {
           "type": "array",
@@ -75,9 +87,7 @@
               "Build",
               "Clean",
               "Compile",
-              "CompileExample",
               "GitRelease",
-              "Pack",
               "PackageBuilder",
               "Release",
               "Sign"
@@ -97,9 +107,7 @@
               "Build",
               "Clean",
               "Compile",
-              "CompileExample",
               "GitRelease",
-              "Pack",
               "PackageBuilder",
               "Release",
               "Sign"

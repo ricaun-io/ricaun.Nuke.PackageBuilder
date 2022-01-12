@@ -5,8 +5,8 @@ This package is to simplify the build automation system using to RevitAddin Appl
 - [Autodesk.PackageBuilder](https://www.nuget.org/packages/Autodesk.PackageBuilder/)
 - [InnoSetup.ScriptBuilder](https://www.nuget.org/packages/InnoSetup.ScriptBuilder/)
 
-[![Publish](https://github.com/ricaun-io/ricaun.Nuke.PackageBuilder/actions/workflows/Publish.yml/badge.svg)](https://github.com/ricaun-io/ricaun.Nuke.PackageBuilder/actions)
-[![Develop](https://github.com/ricaun-io/ricaun.Nuke.PackageBuilder/actions/workflows/Develop.yml/badge.svg)](https://github.com/ricaun-io/ricaun.Nuke.PackageBuilder/actions)
+[![Publish](../../actions/workflows/Publish.yml/badge.svg)](../../actions)
+[![Develop](../../actions/workflows/Develop.yml/badge.svg)](../../actions)
 [![Release](https://img.shields.io/nuget/v/ricaun.Nuke.PackageBuilder?logo=nuget&label=release&color=blue)](https://www.nuget.org/packages/ricaun.Nuke.PackageBuilder)
 
 # Example
@@ -40,7 +40,7 @@ This package is [licensed](LICENSE) under the [MIT Licence](https://en.wikipedia
 
 ---
 
-Do you like this package? Please [star this project on GitHub](https://github.com/ricaun-io/ricaun.Nuke.PackageBuilder/stargazers)!
+Do you like this package? Please [star this project on GitHub](../../stargazers)!
 
 ---
 
