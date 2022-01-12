@@ -10,6 +10,7 @@ class Build : NukeBuild, IPublishPack, ICompileExample, IRevitPackageBuilder
     string IHazPackageBuilderProject.Name => RevitProjectName;
     bool IHazPackageBuilderProject.ReleasePackageBuilder => true;
     string IHazRevitPackageBuilder.Application => "Revit.App";
+    bool IHazRevitPackageBuilder.NewVersions => true;
     string IHazExample.Name => RevitProjectName;
     bool IHazExample.ReleaseExample => false;
     public static int Main() => Execute<Build>(x => x.From<IPublishPack>().Build);
@@ -23,7 +24,8 @@ class Build : NukeBuild, IPublishPack, ICompileExample, IRevitPackageBuilder
 //{
 //    private const string RevitProjectName = "RevitAddin.PackageBuilder.Example";
 //    string IHazMainProject.MainName => RevitProjectName;
-//    string IHazPackageBuilder.Application => "Revit.App";
+//    bool IHazRevitPackageBuilder.NewVersions => true;
+//    string IHazRevitPackageBuilder.Application => "Revit.App";
 
 //    IssConfiguration IHazInstallationFiles.IssConfiguration => new IssConfiguration()
 //    {

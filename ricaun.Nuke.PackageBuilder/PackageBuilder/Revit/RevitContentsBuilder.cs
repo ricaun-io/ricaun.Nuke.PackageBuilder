@@ -3,6 +3,7 @@ using Nuke.Common;
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 using ricaun.Nuke.Extensions;
+using System;
 using System.IO;
 using System.Linq;
 
@@ -18,7 +19,8 @@ namespace ricaun.Nuke.Components
         /// </summary>
         /// <param name="project"></param>
         /// <param name="bundleDirectory"></param>
-        public RevitContentsBuilder(Project project, AbsolutePath bundleDirectory)
+        /// <param name="lastVersionRevit"></param>
+        public RevitContentsBuilder(Project project, AbsolutePath bundleDirectory, bool lastVersionRevit = false)
         {
             var appName = project.Name;
 
@@ -34,21 +36,29 @@ namespace ricaun.Nuke.Components
 
             var addinFiles = PathConstruction.GlobFiles(bundleDirectory, $"**/*{project.Name}*.addin");
 
+            var lastVersion = 0;
             foreach (var addinFile in addinFiles)
-            {
-                var moduleName = ((string)addinFile).Replace(bundleDirectory, ".");
-                if (moduleName.StartsWith("."))
+                lastVersion = AddRevitComponentsByFileVersion(project, addinFile, bundleDirectory);
+
+            if (lastVersionRevit)
+                while (lastVersion <= DateTime.Now.Year)
                 {
-                    AddRevitComponentsByFileVersion(project, addinFile, appName, moduleName);
+                    lastVersion = AddRevitComponentsByFileVersion(project, addinFiles.Last(), bundleDirectory, lastVersion + 1);
                 }
-            }
+
         }
 
-        private void AddRevitComponentsByFileVersion(Project project, AbsolutePath addinFile, string appName, string moduleName)
+        private int AddRevitComponentsByFileVersion(Project project, AbsolutePath addinFile, AbsolutePath bundleDirectory, int version = 0)
         {
+            var appName = project.Name;
+
+            var moduleName = ((string)addinFile).Replace(bundleDirectory, ".");
+
             var folder = Path.GetDirectoryName(addinFile);
             var dll = PathConstruction.GlobFiles(folder, $"*{project.Name}*.dll").FirstOrDefault();
-            var version = RevitExtension.GetRevitVersion(dll);
+
+            if (version == 0)
+                version = RevitExtension.GetRevitVersion(dll);
 
             Components
                 .CreateEntry($"{AutodeskProducts.Revit} {version}")
@@ -57,6 +67,8 @@ namespace ricaun.Nuke.Components
                 .RevitPlatform(version);
 
             Logger.Normal($"Component Revit {version}: {Path.GetFileName(dll)}");
+
+            return version;
         }
     }
 }

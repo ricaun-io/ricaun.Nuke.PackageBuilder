@@ -24,6 +24,12 @@ namespace ricaun.Nuke.Components
         public string GetApplication() => Application;
 
         /// <summary>
+        /// Add New Versions
+        /// </summary>
+        [Parameter]
+        bool NewVersions => ValueInjectionUtility.TryGetValue<bool?>(() => NewVersions) ?? false;
+
+        /// <summary>
         /// VendorId
         /// </summary>
         [Parameter]

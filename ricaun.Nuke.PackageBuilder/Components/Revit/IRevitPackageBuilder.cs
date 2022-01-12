@@ -48,7 +48,7 @@ namespace ricaun.Nuke.Components
             // CopyInstallationFiles If Exists
             CopyInstallationFilesTo(PackageBuilderDirectory);
 
-            new RevitContentsBuilder(project, BundleDirectory)
+            new RevitContentsBuilder(project, BundleDirectory, NewVersions)
                 .Build(BundleDirectory / "PackageContents.xml");
 
             new IssRevitBuilder(project, PackageBuilderDirectory, IssConfiguration)
