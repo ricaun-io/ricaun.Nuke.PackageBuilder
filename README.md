@@ -20,7 +20,7 @@ using ricaun.Nuke.Components;
 [CheckBuildProjectConfigurations]
 class Build : NukeBuild, IPublishRevit
 {
-    // string IHazPackageBuilder.Application => "Revit.App";
+    // string IHazRevitPackageBuilder.Application => "Revit.App";
     public static int Main() => Execute<Build>(x => x.From<IPublishRevit>().Build);
 }
 ```
