@@ -32,25 +32,31 @@ namespace ricaun.Nuke.Components
             CompanyDetails
                 .Create(project.GetCompany());
 
-            var files = PathConstruction.GlobFiles(bundleDirectory, $"**/*{project.Name}*.addin");
+            var addinFiles = PathConstruction.GlobFiles(bundleDirectory, $"**/*{project.Name}*.addin");
 
-            foreach (var file in files)
+            foreach (var addinFile in addinFiles)
             {
-                var moduleName = ((string)file).Replace(bundleDirectory, ".");
+                var moduleName = ((string)addinFile).Replace(bundleDirectory, ".");
                 if (moduleName.StartsWith("."))
                 {
-                    var folder = Path.GetDirectoryName(file);
-                    var dll = PathConstruction.GlobFiles(folder, $"*{project.Name}*.dll").FirstOrDefault();
-                    var version = RevitExtension.GetRevitVersion(dll);
-                    Components
-                        .CreateEntry($"{AutodeskProducts.Revit} {version}")
-                        .AppName(appName)
-                        .ModuleName(moduleName)
-                        .RevitPlatform(version);
-
-                    Logger.Normal($"Component Revit {version}: {Path.GetFileName(dll)}");
+                    AddRevitComponentsByFileVersion(project, addinFile, appName, moduleName);
                 }
             }
+        }
+
+        private void AddRevitComponentsByFileVersion(Project project, AbsolutePath addinFile, string appName, string moduleName)
+        {
+            var folder = Path.GetDirectoryName(addinFile);
+            var dll = PathConstruction.GlobFiles(folder, $"*{project.Name}*.dll").FirstOrDefault();
+            var version = RevitExtension.GetRevitVersion(dll);
+
+            Components
+                .CreateEntry($"{AutodeskProducts.Revit} {version}")
+                .AppName(appName)
+                .ModuleName(moduleName)
+                .RevitPlatform(version);
+
+            Logger.Normal($"Component Revit {version}: {Path.GetFileName(dll)}");
         }
     }
 }

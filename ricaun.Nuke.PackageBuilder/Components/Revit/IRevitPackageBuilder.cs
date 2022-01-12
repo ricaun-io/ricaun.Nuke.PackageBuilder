@@ -12,7 +12,7 @@ namespace ricaun.Nuke.Components
     /// <summary>
     /// IRevitPackageBuilder
     /// </summary>
-    public interface IRevitPackageBuilder : IHazPackageBuilderProject, IHazInstallationFiles, IRelease, ISign, IHazPackageBuilder, IHazInput, IHazOutput, INukeBuild
+    public interface IRevitPackageBuilder : IHazRevitPackageBuilder, IHazPackageBuilderProject, IHazInstallationFiles, IRelease, ISign, IHazPackageBuilder, IHazInput, IHazOutput, INukeBuild
     {
         /// <summary>
         /// Target PackageBuilder
@@ -42,7 +42,7 @@ namespace ricaun.Nuke.Components
             var addInFiles = PathConstruction.GlobFiles(ContentsDirectory, $"**/*{project.Name}*.dll");
             addInFiles.ForEach(file =>
             {
-                new ProjectAddInsBuilder(project, file, Application, VendorId, VendorDescription).Build(file);
+                new RevitProjectAddInsBuilder(project, file, Application, VendorId, VendorDescription).Build(file);
             });
 
             // CopyInstallationFiles If Exists
