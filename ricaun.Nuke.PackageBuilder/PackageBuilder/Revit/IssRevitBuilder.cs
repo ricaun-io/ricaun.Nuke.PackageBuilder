@@ -25,11 +25,11 @@ namespace ricaun.Nuke.Components
         {
             this.project = project;
             var assembly = project.GetAssemblyGreaterVersion();
-            string product = assembly.GetProduct();
+            string title = assembly.GetTitle();
             string appCopyright = assembly.GetCopyright();
             string appId = project.GetAppId();
 
-            string app = $"{product}";
+            string app = $"{title}";
             string appPath = $"{project.Name}";
             string appVersion = assembly.GetInformationalVersion();
 
@@ -48,7 +48,7 @@ namespace ricaun.Nuke.Components
                     .AppComments(appComments)
                     .AppCopyright(appCopyright)
                     .DefaultDirName($@"{InnoConstants.CommonAppData}\Autodesk\ApplicationPlugins\{bundle}")
-                    .OutputBaseFilename($"{product} {appVersion}")
+                    .OutputBaseFilename($"{title} {appVersion}")
                     .UninstallDisplayIcon($@"{InnoConstants.App}\unins000.exe")
                     .DisableWelcomePage(YesNo.No)
                     .DisableDirPage(YesNo.Yes)

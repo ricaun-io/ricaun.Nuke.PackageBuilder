@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] / 2022-01-19
+- Change product to Title Name
+
 ## [1.0.0] / 2022-01-19
 - Update to public Repo
 
@@ -87,6 +90,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - First Release
 
 [vNext]: ../../compare/1.0.0...HEAD
+[1.0.1]: ../../compare/1.0.0...1.0.1
 [1.0.0]: ../../compare/0.0.13...1.0.0
 [0.0.13]: ../../compare/0.0.12...0.0.13
 [0.0.12]: ../../compare/0.0.11...0.0.12
