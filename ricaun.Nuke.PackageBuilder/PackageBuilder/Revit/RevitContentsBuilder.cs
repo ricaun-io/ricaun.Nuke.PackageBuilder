@@ -66,7 +66,7 @@ namespace ricaun.Nuke.Components
                 .ModuleName(moduleName)
                 .RevitPlatform(version);
 
-            Logger.Normal($"Component Revit {version}: {Path.GetFileName(dll)}");
+            Serilog.Log.Information($"Component Revit {version}: {Path.GetFileName(dll)}");
 
             return version;
         }

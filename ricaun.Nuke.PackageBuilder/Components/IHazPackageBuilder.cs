@@ -1,7 +1,7 @@
 ﻿using Nuke.Common;
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
-using Nuke.Common.ValueInjection;
+
 using ricaun.Nuke.Extensions;
 
 namespace ricaun.Nuke.Components
@@ -15,7 +15,7 @@ namespace ricaun.Nuke.Components
         /// Folder PackageBuilder 
         /// </summary>
         [Parameter]
-        string Folder => ValueInjectionUtility.TryGetValue(() => Folder) ?? "PackageBuilder";
+        string Folder => TryGetValue(() => Folder) ?? "PackageBuilder";
 
         /// <summary>
         /// PackageBuilderDirectory

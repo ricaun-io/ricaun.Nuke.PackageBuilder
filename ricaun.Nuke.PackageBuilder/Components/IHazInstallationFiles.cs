@@ -2,7 +2,7 @@
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 using Nuke.Common.Utilities.Collections;
-using Nuke.Common.ValueInjection;
+
 namespace ricaun.Nuke.Components
 {
     /// <summary>
@@ -14,13 +14,13 @@ namespace ricaun.Nuke.Components
         /// Folder InstallationFiles 
         /// </summary>
         [Parameter]
-        string Folder => ValueInjectionUtility.TryGetValue(() => Folder) ?? "InstallationFiles";
+        string Folder => TryGetValue(() => Folder) ?? "InstallationFiles";
 
         /// <summary>
         /// Configuration
         /// </summary>
         [Parameter]
-        IssConfiguration IssConfiguration => ValueInjectionUtility.TryGetValue(() => IssConfiguration) ?? new IssConfiguration();
+        IssConfiguration IssConfiguration => TryGetValue(() => IssConfiguration) ?? new IssConfiguration();
 
         /// <summary>
         /// InstallationFilesDirectory
