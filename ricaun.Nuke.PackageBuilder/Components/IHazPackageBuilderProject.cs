@@ -1,7 +1,7 @@
 ﻿using Nuke.Common;
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
-using Nuke.Common.ValueInjection;
+
 using ricaun.Nuke.Extensions;
 namespace ricaun.Nuke.Components
 {
@@ -14,13 +14,13 @@ namespace ricaun.Nuke.Components
         /// PackageBuilder Project Name
         /// </summary>
         [Parameter]
-        string Name => ValueInjectionUtility.TryGetValue(() => Name) ?? MainName;
+        string Name => TryGetValue(() => Name) ?? MainName;
 
         /// <summary>
         /// ReleasePackageBuilder (default: false)
         /// </summary>
         [Parameter]
-        bool ReleasePackageBuilder => ValueInjectionUtility.TryGetValue<bool?>(() => ReleasePackageBuilder) ?? false;
+        bool ReleasePackageBuilder => TryGetValue<bool?>(() => ReleasePackageBuilder) ?? false;
 
         /// <summary>
         /// GetPackageBuilderProject

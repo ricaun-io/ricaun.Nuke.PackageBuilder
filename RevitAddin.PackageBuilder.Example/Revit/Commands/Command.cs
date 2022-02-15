@@ -12,6 +12,8 @@ namespace RevitAddin.PackageBuilder.Example.Revit.Commands
         {
             UIApplication uiapp = commandData.Application;
 
+            System.Windows.MessageBox.Show("-");
+
             return Result.Succeeded;
         }
     }
