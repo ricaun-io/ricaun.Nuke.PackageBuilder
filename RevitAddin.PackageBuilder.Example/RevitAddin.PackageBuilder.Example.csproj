@@ -77,7 +77,7 @@
 
   <PropertyGroup>
     <PackageId>RevitAddin.PackageBuilder.Example</PackageId>
-    <Version>$(RevitVersion).1.0</Version>
+    <Version>$(RevitVersion).1.1</Version>
     <ProjectGuid>{d2797a34-4696-490d-a97a-c17afb5f0225}</ProjectGuid>
   </PropertyGroup>
 
@@ -95,7 +95,7 @@
     <Product>$(PackageId)</Product>
     <Company>ricaun</Company>
     <Authors>Luiz Henrique Cassettari</Authors>
-    <Copyright>Copyright © 2021</Copyright>
+    <Copyright>Copyright © ricaun 2021</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
