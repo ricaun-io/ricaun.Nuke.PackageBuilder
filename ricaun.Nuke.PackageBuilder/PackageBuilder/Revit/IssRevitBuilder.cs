@@ -24,18 +24,17 @@ namespace ricaun.Nuke.Components
             IssConfiguration issConfiguration)
         {
             this.project = project;
-            var assembly = project.GetAssemblyGreaterVersion();
-            string title = assembly.GetTitle();
-            string appCopyright = assembly.GetCopyright();
+            string title = project.GetTitle();
+            string appCopyright = project.GetCopyright();
             string appId = project.GetAppId();
 
             string app = $"{title}";
             string appPath = $"{project.Name}";
-            string appVersion = assembly.GetInformationalVersion();
+            string appVersion = project.GetInformationalVersion();
 
             string bundle = $"{appPath}.bundle";
-            string appPublisher = assembly.GetCompany();
-            string appComments = assembly.GetDescription();
+            string appPublisher = project.GetCompany();
+            string appComments = project.GetDescription();
 
             string sourceFiles = $@"{bundle}\*";
 
