@@ -9,6 +9,7 @@ class Build : NukeBuild, IPublishPack, ICompileExample, IRevitPackageBuilder
     private const string RevitProjectName = "RevitAddin.PackageBuilder.Example";
     string IHazPackageBuilderProject.Name => RevitProjectName;
     bool IHazPackageBuilderProject.ReleasePackageBuilder => true;
+    bool IHazPackageBuilderProject.ReleaseBundle => true;
     string IHazRevitPackageBuilder.Application => "Revit.App";
     bool IHazRevitPackageBuilder.NewVersions => true;
     string IHazExample.Name => RevitProjectName;

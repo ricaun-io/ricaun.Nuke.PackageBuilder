@@ -23,6 +23,12 @@ namespace ricaun.Nuke.Components
         bool ReleasePackageBuilder => TryGetValue<bool?>(() => ReleasePackageBuilder) ?? false;
 
         /// <summary>
+        /// ReleaseBundle (default: false)
+        /// </summary>
+        [Parameter]
+        bool ReleaseBundle => TryGetValue<bool?>(() => ReleaseBundle) ?? false;
+
+        /// <summary>
         /// GetPackageBuilderProject
         /// </summary>
         /// <returns></returns>

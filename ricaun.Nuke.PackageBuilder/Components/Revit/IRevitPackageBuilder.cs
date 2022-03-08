@@ -22,7 +22,7 @@ namespace ricaun.Nuke.Components
             .Before(Release)
             .Executes(() =>
             {
-                CreatePackageBuilder(GetPackageBuilderProject(), ReleasePackageBuilder);
+                CreatePackageBuilder(GetPackageBuilderProject(), ReleasePackageBuilder, ReleaseBundle);
             });
 
         /// <summary>
@@ -30,7 +30,8 @@ namespace ricaun.Nuke.Components
         /// </summary>
         /// <param name="project"></param>
         /// <param name="releasePackageBuilder"></param>
-        public void CreatePackageBuilder(Project project, bool releasePackageBuilder = false)
+        /// <param name="releaseBundle"></param>
+        public void CreatePackageBuilder(Project project, bool releasePackageBuilder = false, bool releaseBundle = false)
         {
             var fileName = $"{project.Name}";
             var bundleName = $"{fileName}.bundle";
@@ -81,6 +82,11 @@ namespace ricaun.Nuke.Components
             {
                 var folder = Path.GetFileName(PackageBuilderDirectory);
                 ZipExtension.CreateFromDirectory(PackageBuilderDirectory, ReleaseDirectory / $"{project.Name} {folder}.zip");
+            }
+
+            if (releaseBundle)
+            {
+                ZipExtension.CreateFromDirectory(BundleDirectory, ReleaseDirectory / $"{bundleName}.zip");
             }
         }
     }
