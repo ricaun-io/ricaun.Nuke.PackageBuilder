@@ -117,13 +117,13 @@ namespace ricaun.Nuke.Components
 
             var max = PathConstruction.GlobFiles(packageBuilderDirectory, "**/*").Max(file => file.ToString().Length);
 
-            Serilog.Log.Warning($"Path Max: {max}");
+            Serilog.Log.Information($"Path Max: {max}");
             if (max >= 260)
             {
                 if (FileSystemTasks.DirectoryExists(temp)) FileSystemTasks.DeleteDirectory(temp);
                 FileSystemTasks.CopyDirectoryRecursively(packageBuilderDirectory, temp);
                 var limit = max - file.ToString().Length + temp.ToString().Length;
-                Serilog.Log.Warning($"Path Max: {limit} - {temp}");
+                Serilog.Log.Information($"Path Max: {limit} - {temp}");
                 return (AbsolutePath)temp;
             }
 
