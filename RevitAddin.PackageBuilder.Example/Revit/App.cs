@@ -11,7 +11,7 @@ namespace RevitAddin.PackageBuilder.Example.Revit
         private static RibbonPanel ribbonPanel;
         public Result OnStartup(UIControlledApplication application)
         {
-            ribbonPanel = application.CreatePanel("");
+            ribbonPanel = application.CreatePanel("-");
             ribbonPanel.AddPushButton<Commands.Command>("-");
             return Result.Succeeded;
         }

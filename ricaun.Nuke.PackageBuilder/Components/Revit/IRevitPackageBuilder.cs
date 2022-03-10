@@ -38,6 +38,12 @@ namespace ricaun.Nuke.Components
             var BundleDirectory = PackageBuilderDirectory / bundleName;
             var ContentsDirectory = BundleDirectory / "Contents";
 
+            if (ProjectNameFolder)
+                ContentsDirectory = ContentsDirectory / project.Name;
+
+            if (ProjectVersionFolder)
+                ContentsDirectory = ContentsDirectory / project.GetInformationalVersion();
+
             FileSystemTasks.CopyDirectoryRecursively(InputDirectory, ContentsDirectory);
 
             var addInFiles = PathConstruction.GlobFiles(ContentsDirectory, $"**/*{project.Name}*.dll");

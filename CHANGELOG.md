@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.1.4] / 2022-03-09
+- Add ProjectNameFolder Option
+- Add ProjectVersionFolder Option
+- Clear Example Project
+
 ## [1.1.3] / 2022-03-08
 - Add ReleaseBundle Option
 
@@ -108,6 +113,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - First Release
 
 [vNext]: ../../compare/1.0.0...HEAD
+[1.1.4]: ../../compare/1.1.3...1.1.4
 [1.1.3]: ../../compare/1.1.2...1.1.3
 [1.1.2]: ../../compare/1.1.1...1.1.2
 [1.1.1]: ../../compare/1.1.0...1.1.1
