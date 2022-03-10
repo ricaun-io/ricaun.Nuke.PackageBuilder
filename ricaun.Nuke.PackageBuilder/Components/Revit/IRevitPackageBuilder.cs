@@ -38,6 +38,8 @@ namespace ricaun.Nuke.Components
             var BundleDirectory = PackageBuilderDirectory / bundleName;
             var ContentsDirectory = BundleDirectory / "Contents";
 
+            ContentsDirectory = ContentsDirectory / "1234567890456789"; // <<<<<<<<<<<<<<<<<<<<<<<<< 
+
             if (ProjectNameFolder)
                 ContentsDirectory = ContentsDirectory / project.Name;
 
@@ -60,6 +62,22 @@ namespace ricaun.Nuke.Components
 
             new IssRevitBuilder(project, PackageBuilderDirectory, IssConfiguration)
                 .CreateFile(PackageBuilderDirectory);
+
+
+            string result = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+            Serilog.Log.Warning($"{result.ToString().Length} - {result}");
+
+            string temp = Path.GetTempFileName();
+            Serilog.Log.Warning($"{temp.ToString().Length} - {temp}");
+
+            var file = PackageBuilderDirectory;
+            Serilog.Log.Warning($"{file.ToString().Length} - {Path.GetFileName(file)}");
+
+            PathConstruction.GlobFiles(PackageBuilderDirectory, "**/*")
+                .ForEach(file =>
+                {
+                    Serilog.Log.Warning($"{file.ToString().Length} - {Path.GetFileName(file)}");
+                });
 
             // Deploy File
             var outputInno = OutputDirectory;
