@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [1.1.4] / 2022-03-09
 - Add ProjectNameFolder Option
 - Add ProjectVersionFolder Option
-- Clear Example Project
+- Update Example Project
 
 ## [1.1.3] / 2022-03-08
 - Add ReleaseBundle Option

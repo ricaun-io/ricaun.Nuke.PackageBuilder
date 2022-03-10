@@ -12,7 +12,7 @@ namespace RevitAddin.PackageBuilder.Example.Revit.Commands
         {
             UIApplication uiapp = commandData.Application;
 
-            System.Windows.MessageBox.Show("-");
+            System.Windows.MessageBox.Show(App.GetRevitVersion());
 
             return Result.Succeeded;
         }
