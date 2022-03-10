@@ -5,7 +5,9 @@ using Nuke.Common.Tooling;
 using Nuke.Common.Tools.InnoSetup;
 using Nuke.Common.Utilities.Collections;
 using ricaun.Nuke.Extensions;
+using System;
 using System.IO;
+using System.Linq;
 
 namespace ricaun.Nuke.Components
 {
@@ -38,7 +40,7 @@ namespace ricaun.Nuke.Components
             var BundleDirectory = PackageBuilderDirectory / bundleName;
             var ContentsDirectory = BundleDirectory / "Contents";
 
-            ContentsDirectory = ContentsDirectory / "567890456789"; // <<<<<<<<<<<<<<<<<<<<<<<<< 1234 \\?\
+            ContentsDirectory = ContentsDirectory / "12345678904567890"; // <<<<<<<<<<<<<<<<<<<<<<<<< 1234 \\?\
 
             if (ProjectNameFolder)
                 ContentsDirectory = ContentsDirectory / project.Name;
@@ -63,25 +65,10 @@ namespace ricaun.Nuke.Components
             new IssRevitBuilder(project, PackageBuilderDirectory, IssConfiguration)
                 .CreateFile(PackageBuilderDirectory);
 
-
-            string result = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
-            Serilog.Log.Warning($"{result.ToString().Length} - {result}");
-
-            string temp = Path.GetTempFileName();
-            Serilog.Log.Warning($"{temp.ToString().Length} - {temp}");
-
-            var file = PackageBuilderDirectory;
-            Serilog.Log.Warning($"{file.ToString().Length} - {Path.GetFileName(file)}");
-
-            PathConstruction.GlobFiles(PackageBuilderDirectory, "**/*")
-                .ForEach(file =>
-                {
-                    Serilog.Log.Warning($"{file.ToString().Length} - {Path.GetFileName(file)}");
-                });
-
             // Deploy File
             var outputInno = OutputDirectory;
-            var issFiles = PathConstruction.GlobFiles(PackageBuilderDirectory, $"*{project.Name}.iss");
+            var packageBuilderDirectory = GetFolderWithMaxPath(PackageBuilderDirectory);
+            var issFiles = PathConstruction.GlobFiles(packageBuilderDirectory, $"*{project.Name}.iss");
             issFiles.ForEach(file =>
             {
                 InnoSetupTasks.InnoSetup(config => config
@@ -112,6 +99,34 @@ namespace ricaun.Nuke.Components
             {
                 ZipExtension.CreateFromDirectory(BundleDirectory, ReleaseDirectory / $"{bundleName}.zip");
             }
+        }
+
+        private AbsolutePath GetFolderWithMaxPath(AbsolutePath packageBuilderDirectory)
+        {
+            var temp = (AbsolutePath)Path.Combine(Path.GetTempPath(), "PackageBuilder");
+            Serilog.Log.Information($"Path Max: {temp.ToString().Length} - {temp}");
+
+            var file = packageBuilderDirectory;
+            Serilog.Log.Information($"Path Max: {file.ToString().Length} - {Path.GetFileName(file)}");
+
+            PathConstruction.GlobFiles(packageBuilderDirectory, "**/*")
+                .ForEach(file =>
+                {
+                    Serilog.Log.Information($"Path Max: {file.ToString().Length} - {Path.GetFileName(file)}");
+                });
+
+            var max = PathConstruction.GlobFiles(packageBuilderDirectory, "**/*").Max(file => file.ToString().Length);
+
+            Serilog.Log.Warning($"Path Max: {max}");
+            if (max >= 260)
+            {
+                if (FileSystemTasks.DirectoryExists(temp)) FileSystemTasks.DeleteDirectory(temp);
+                FileSystemTasks.CopyDirectoryRecursively(packageBuilderDirectory, temp);
+                Serilog.Log.Warning($"Path Max: {temp}");
+                return (AbsolutePath)temp;
+            }
+
+            return packageBuilderDirectory;
         }
     }
 }
