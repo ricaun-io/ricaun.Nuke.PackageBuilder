@@ -10,6 +10,8 @@ class Build : NukeBuild, IPublishPack, ICompileExample, IRevitPackageBuilder
     string IHazPackageBuilderProject.Name => RevitProjectName;
     bool IHazPackageBuilderProject.ReleasePackageBuilder => true;
     bool IHazPackageBuilderProject.ReleaseBundle => true;
+    bool IHazPackageBuilderProject.ProjectVersionFolder => true;
+    bool IHazPackageBuilderProject.ProjectNameFolder => true;
     string IHazRevitPackageBuilder.Application => "Revit.App";
     bool IHazRevitPackageBuilder.NewVersions => true;
     string IHazExample.Name => RevitProjectName;
