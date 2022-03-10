@@ -40,7 +40,7 @@ namespace ricaun.Nuke.Components
             var BundleDirectory = PackageBuilderDirectory / bundleName;
             var ContentsDirectory = BundleDirectory / "Contents";
 
-            ContentsDirectory = ContentsDirectory / "12345678904567890" / "13a2s213d132as132312ads" / "12345678901234567890"; // <<<<<<<<<<<<<<<<<<<<<<<<< 1234 \\?\
+            //ContentsDirectory = ContentsDirectory / "12345678904567890" / "13a2s213d132as132312ads" / "12345678901234567890"; // <<<<<<<<<<<<<<<<<<<<<<<<< 1234 \\?\
 
             if (ProjectNameFolder)
                 ContentsDirectory = ContentsDirectory / project.Name;
