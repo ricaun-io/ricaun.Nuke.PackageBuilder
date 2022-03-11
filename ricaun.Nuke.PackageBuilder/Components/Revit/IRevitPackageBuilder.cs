@@ -5,7 +5,9 @@ using Nuke.Common.Tooling;
 using Nuke.Common.Tools.InnoSetup;
 using Nuke.Common.Utilities.Collections;
 using ricaun.Nuke.Extensions;
+using System;
 using System.IO;
+using System.Linq;
 
 namespace ricaun.Nuke.Components
 {
@@ -63,7 +65,8 @@ namespace ricaun.Nuke.Components
 
             // Deploy File
             var outputInno = OutputDirectory;
-            var issFiles = PathConstruction.GlobFiles(PackageBuilderDirectory, $"*{project.Name}.iss");
+            var packageBuilderDirectory = GetMaxPathFolderOrTempFolder(PackageBuilderDirectory);
+            var issFiles = PathConstruction.GlobFiles(packageBuilderDirectory, $"*{project.Name}.iss");
             issFiles.ForEach(file =>
             {
                 InnoSetupTasks.InnoSetup(config => config
@@ -72,8 +75,8 @@ namespace ricaun.Nuke.Components
                     .SetOutputDir(outputInno));
             });
 
-            // Sign Project
-            SignProject(project);
+            // Sign outputInno
+            SignFolder(outputInno);
 
             var exeFiles = PathConstruction.GlobFiles(outputInno, "**/*.exe");
             exeFiles.ForEach(file => ZipExtension.ZipFileCompact(file));
@@ -94,6 +97,43 @@ namespace ricaun.Nuke.Components
             {
                 ZipExtension.CreateFromDirectory(BundleDirectory, ReleaseDirectory / $"{bundleName}.zip");
             }
+        }
+
+        /// <summary>
+        /// Check Folder if pass max path lenght return a copy with a temp folder
+        /// </summary>
+        /// <param name="packageBuilderDirectory"></param>
+        /// <returns></returns>
+        private AbsolutePath GetMaxPathFolderOrTempFolder(AbsolutePath packageBuilderDirectory)
+        {
+            const string TEMP_FOLDER = "PackageBuilder";
+            const int MAX_PATH = 260;
+
+            var temp = (AbsolutePath)Path.Combine(Path.GetTempPath(), TEMP_FOLDER);
+            Serilog.Log.Information($"Path Max: {temp.ToString().Length} - {temp}");
+
+            var file = packageBuilderDirectory;
+            Serilog.Log.Information($"Path Max: {file.ToString().Length} - {Path.GetFileName(file)}");
+
+            PathConstruction.GlobFiles(packageBuilderDirectory, "**/*")
+                .ForEach(file =>
+                {
+                    Serilog.Log.Information($"Path Max: {file.ToString().Length} - {Path.GetFileName(file)}");
+                });
+
+            var max = PathConstruction.GlobFiles(packageBuilderDirectory, "**/*").Max(file => file.ToString().Length);
+
+            Serilog.Log.Information($"Path Max: {max}");
+            if (max >= MAX_PATH)
+            {
+                if (FileSystemTasks.DirectoryExists(temp)) FileSystemTasks.DeleteDirectory(temp);
+                FileSystemTasks.CopyDirectoryRecursively(packageBuilderDirectory, temp);
+                var limit = max - file.ToString().Length + temp.ToString().Length;
+                Serilog.Log.Information($"Path Max: {limit} - {temp}");
+                return (AbsolutePath)temp;
+            }
+
+            return packageBuilderDirectory;
         }
     }
 }
