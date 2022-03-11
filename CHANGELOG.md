@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [1.1.5] / 2022-03-10
+### Changed
+- IHazPackageBuilderProject.Name works with EndWith
 ### Bug Fixes
 - Path Length 260 Limitation (Create a temp folder)
 

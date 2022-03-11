@@ -6,15 +6,13 @@ using ricaun.Nuke.Components;
 [CheckBuildProjectConfigurations]
 class Build : NukeBuild, IPublishPack, ICompileExample, IRevitPackageBuilder
 {
-    private const string RevitProjectName = "RevitAddin.PackageBuilder.Example";
-    string IHazPackageBuilderProject.Name => RevitProjectName;
+    string IHazPackageBuilderProject.Name => "Example";
     bool IHazPackageBuilderProject.ReleasePackageBuilder => true;
     bool IHazPackageBuilderProject.ReleaseBundle => true;
     bool IHazPackageBuilderProject.ProjectVersionFolder => true;
     bool IHazPackageBuilderProject.ProjectNameFolder => true;
     string IHazRevitPackageBuilder.Application => "Revit.App";
     bool IHazRevitPackageBuilder.NewVersions => true;
-    string IHazExample.Name => RevitProjectName;
     bool IHazExample.ReleaseExample => false;
     public static int Main() => Execute<Build>(x => x.From<IPublishPack>().Build);
 }

@@ -3,6 +3,8 @@ using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 
 using ricaun.Nuke.Extensions;
+using System.Linq;
+
 namespace ricaun.Nuke.Components
 {
     /// <summary>
@@ -11,7 +13,7 @@ namespace ricaun.Nuke.Components
     public interface IHazPackageBuilderProject : IHazMainProject, IHazSolution, INukeBuild
     {
         /// <summary>
-        /// PackageBuilder Project Name
+        /// PackageBuilder Project Name or EndWith Name
         /// </summary>
         [Parameter]
         string Name => TryGetValue(() => Name) ?? MainName;
@@ -41,9 +43,14 @@ namespace ricaun.Nuke.Components
         bool ProjectVersionFolder => TryGetValue<bool?>(() => ProjectVersionFolder) ?? false;
 
         /// <summary>
-        /// GetPackageBuilderProject
+        /// GetPackageBuilderProject by the Name
         /// </summary>
         /// <returns></returns>
-        public Project GetPackageBuilderProject() => Solution.GetOtherProject(Name);
+        public Project GetPackageBuilderProject()
+        {
+            if (Solution.GetOtherProject(Name) is Project project)
+                return project;
+            return Solution.GetOtherProjects(Name).First();
+        }
     }
 }

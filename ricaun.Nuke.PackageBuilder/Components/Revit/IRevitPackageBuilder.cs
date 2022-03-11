@@ -75,8 +75,8 @@ namespace ricaun.Nuke.Components
                     .SetOutputDir(outputInno));
             });
 
-            // Sign Project
-            SignProject(project);
+            // Sign outputInno
+            SignFolder(outputInno);
 
             var exeFiles = PathConstruction.GlobFiles(outputInno, "**/*.exe");
             exeFiles.ForEach(file => ZipExtension.ZipFileCompact(file));
