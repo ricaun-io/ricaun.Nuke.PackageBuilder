@@ -40,8 +40,6 @@ namespace ricaun.Nuke.Components
             var BundleDirectory = PackageBuilderDirectory / bundleName;
             var ContentsDirectory = BundleDirectory / "Contents";
 
-            //ContentsDirectory = ContentsDirectory / "12345678904567890" / "13a2s213d132as132312ads" / "12345678901234567890"; // <<<<<<<<<<<<<<<<<<<<<<<<< 1234 \\?\
-
             if (ProjectNameFolder)
                 ContentsDirectory = ContentsDirectory / project.Name;
 
@@ -67,7 +65,7 @@ namespace ricaun.Nuke.Components
 
             // Deploy File
             var outputInno = OutputDirectory;
-            var packageBuilderDirectory = GetFolderWithMaxPath(PackageBuilderDirectory);
+            var packageBuilderDirectory = GetMaxPathFolderOrTempFolder(PackageBuilderDirectory);
             var issFiles = PathConstruction.GlobFiles(packageBuilderDirectory, $"*{project.Name}.iss");
             issFiles.ForEach(file =>
             {
@@ -101,9 +99,17 @@ namespace ricaun.Nuke.Components
             }
         }
 
-        private AbsolutePath GetFolderWithMaxPath(AbsolutePath packageBuilderDirectory)
+        /// <summary>
+        /// Check Folder if pass max path lenght return a copy with a temp folder
+        /// </summary>
+        /// <param name="packageBuilderDirectory"></param>
+        /// <returns></returns>
+        private AbsolutePath GetMaxPathFolderOrTempFolder(AbsolutePath packageBuilderDirectory)
         {
-            var temp = (AbsolutePath)Path.Combine(Path.GetTempPath(), "PackageBuilder");
+            const string TEMP_FOLDER = "PackageBuilder";
+            const int MAX_PATH = 260;
+
+            var temp = (AbsolutePath)Path.Combine(Path.GetTempPath(), TEMP_FOLDER);
             Serilog.Log.Information($"Path Max: {temp.ToString().Length} - {temp}");
 
             var file = packageBuilderDirectory;
@@ -118,7 +124,7 @@ namespace ricaun.Nuke.Components
             var max = PathConstruction.GlobFiles(packageBuilderDirectory, "**/*").Max(file => file.ToString().Length);
 
             Serilog.Log.Information($"Path Max: {max}");
-            if (max >= 260)
+            if (max >= MAX_PATH)
             {
                 if (FileSystemTasks.DirectoryExists(temp)) FileSystemTasks.DeleteDirectory(temp);
                 FileSystemTasks.CopyDirectoryRecursively(packageBuilderDirectory, temp);
