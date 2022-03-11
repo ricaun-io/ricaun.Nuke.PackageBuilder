@@ -65,7 +65,7 @@ namespace ricaun.Nuke.Components
             if (FileSystemTasks.FileExists(packageBuilderDirectory / issConfiguration.Licence))
                 setup.LicenseFile(issConfiguration.Licence);
 
-            Files.CreateEntry(source: sourceFiles, destDir: InnoConstants.App)
+            Files.CreateEntry(source: sourceFiles, destDir: $@"\\?\{ InnoConstants.App}")
                 .Flags(FileFlags.IgnoreVersion | FileFlags.RecurseSubdirs);
 
             Languages.CreateEntry(name: issConfiguration.Language.Name,
