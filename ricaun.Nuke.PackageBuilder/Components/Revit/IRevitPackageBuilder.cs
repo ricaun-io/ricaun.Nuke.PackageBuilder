@@ -24,7 +24,16 @@ namespace ricaun.Nuke.Components
             .Before(Release)
             .Executes(() =>
             {
-                CreatePackageBuilder(GetPackageBuilderProject(), ReleasePackageBuilder, ReleaseBundle);
+                Project packageBuilderProject = GetPackageBuilderProject();
+                if (GetMainProject() != packageBuilderProject)
+                    Solution.BuildProject(packageBuilderProject, (project) =>
+                        {
+                            SignProject(project);
+                            project.ShowInformation();
+                        }
+                    );
+
+                CreatePackageBuilder(packageBuilderProject, ReleasePackageBuilder, ReleaseBundle);
             });
 
         /// <summary>
