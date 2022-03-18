@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31911.196
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ricaun.Nuke.PackageBuilder", "ricaun.Nuke.PackageBuilder\ricaun.Nuke.PackageBuilder.csproj", "{BD946DCE-6BC5-4DF0-A82B-16541C2074FB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project", "Project", "{71BAF847-E387-47A9-8B67-CF7F915E23B4}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution", "Solution", "{71BAF847-E387-47A9-8B67-CF7F915E23B4}"
 	ProjectSection(SolutionItems) = preProject
 		CHANGELOG.md = CHANGELOG.md
 		README.md = README.md

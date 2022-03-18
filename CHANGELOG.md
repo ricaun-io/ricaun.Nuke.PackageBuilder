@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.1.6] / 2022-03-18
+### Changed
+- Force `IRevitPackageBuilder` to compile if different from MainProject
+- Change NewVersion default `true`
+- Change ProjectVersionFolder default `true`
+- Change ProjectNameFolder default `true`
+- Change ReleasePackageBuilder default `true`
+- Change ReleaseBundle default `true`
+
 ## [1.1.5] / 2022-03-10
 ### Changed
 - IHazPackageBuilderProject.Name works with EndWith

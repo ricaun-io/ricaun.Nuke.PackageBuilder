@@ -19,28 +19,28 @@ namespace ricaun.Nuke.Components
         string Name => TryGetValue(() => Name) ?? MainName;
 
         /// <summary>
-        /// ReleasePackageBuilder (default: false)
+        /// ReleasePackageBuilder (default: true)
         /// </summary>
         [Parameter]
-        bool ReleasePackageBuilder => TryGetValue<bool?>(() => ReleasePackageBuilder) ?? false;
+        bool ReleasePackageBuilder => TryGetValue<bool?>(() => ReleasePackageBuilder) ?? true;
 
         /// <summary>
-        /// ReleaseBundle (default: false)
+        /// ReleaseBundle (default: true)
         /// </summary>
         [Parameter]
-        bool ReleaseBundle => TryGetValue<bool?>(() => ReleaseBundle) ?? false;
+        bool ReleaseBundle => TryGetValue<bool?>(() => ReleaseBundle) ?? true;
 
         /// <summary>
-        /// Add ProjectNameFolder on the Contents (default: false)
+        /// Add ProjectNameFolder on the Contents (default: true)
         /// </summary>
         [Parameter]
-        bool ProjectNameFolder => TryGetValue<bool?>(() => ProjectNameFolder) ?? false;
+        bool ProjectNameFolder => TryGetValue<bool?>(() => ProjectNameFolder) ?? true;
 
         /// <summary>
-        /// Add ProjectVersionFolder on the Contents (default: false)
+        /// Add ProjectVersionFolder on the Contents (default: true)
         /// </summary>
         [Parameter]
-        bool ProjectVersionFolder => TryGetValue<bool?>(() => ProjectVersionFolder) ?? false;
+        bool ProjectVersionFolder => TryGetValue<bool?>(() => ProjectVersionFolder) ?? true;
 
         /// <summary>
         /// GetPackageBuilderProject by the Name
