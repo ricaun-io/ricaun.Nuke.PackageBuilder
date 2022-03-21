@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.1.7] / 2022-03-21
+### Changed
+- On IHazInstallationFiles change `Folder` to `InstallationFiles`
+- `InstallationFiles` download files if has a valid url
+
 ## [1.1.6] / 2022-03-18
 ### Changed
 - Force `IRevitPackageBuilder` to compile if different from MainProject

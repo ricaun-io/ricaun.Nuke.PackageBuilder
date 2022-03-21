@@ -2,6 +2,9 @@
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 using Nuke.Common.Utilities.Collections;
+using System;
+using System.IO;
+using System.IO.Compression;
 
 namespace ricaun.Nuke.Components
 {
@@ -14,7 +17,7 @@ namespace ricaun.Nuke.Components
         /// Folder InstallationFiles 
         /// </summary>
         [Parameter]
-        string Folder => TryGetValue(() => Folder) ?? "InstallationFiles";
+        string InstallationFiles => TryGetValue(() => InstallationFiles) ?? "InstallationFiles";
 
         /// <summary>
         /// Configuration
@@ -32,7 +35,7 @@ namespace ricaun.Nuke.Components
         /// </summary>
         /// <param name="project"></param>
         /// <returns></returns>
-        public AbsolutePath GetInstallationFilesDirectory(Project project) => project.Directory / Folder;
+        public AbsolutePath GetInstallationFilesDirectory(Project project) => project.Directory / InstallationFiles;
 
         /// <summary>
         /// CopyInstallationFilesTo
@@ -40,8 +43,39 @@ namespace ricaun.Nuke.Components
         /// <param name="packageBuilderDirectory"></param>
         public void CopyInstallationFilesTo(AbsolutePath packageBuilderDirectory)
         {
+            Serilog.Log.Information($"InstallationFiles: {InstallationFiles}");
+            DownloadFiles(InstallationFiles, packageBuilderDirectory);
+
             PathConstruction.GlobFiles(InstallationFilesDirectory, "*")
                 .ForEach(file => FileSystemTasks.CopyFileToDirectory(file, packageBuilderDirectory));
+        }
+
+        /// <summary>
+        /// Download Files from url
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="downloadFolder"></param>
+        /// <returns></returns>
+        private bool DownloadFiles(string url, string downloadFolder)
+        {
+            try
+            {
+                var fileName = Path.GetFileName(url);
+                var file = Path.Combine(downloadFolder, fileName);
+                using (var client = new System.Net.WebClient())
+                {
+                    client.DownloadFile(url, file);
+                }
+                if (Path.GetExtension(file).EndsWith("zip"))
+                {
+                    ZipFile.ExtractToDirectory(file, Path.GetDirectoryName(file));
+                    File.Delete(file);
+                }
+                Serilog.Log.Information($"DownloadFiles: {fileName}");
+                return true;
+            }
+            catch { }
+            return false;
         }
     }
 }
