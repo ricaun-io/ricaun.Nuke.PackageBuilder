@@ -20,8 +20,8 @@ namespace ricaun.Nuke.Components
         /// Target PackageBuilder
         /// </summary>
         Target PackageBuilder => _ => _
-            .TriggeredBy(Sign)
-            .Before(Release)
+            .TriggeredBy(Compile)
+            .Before(Sign)
             .Executes(() =>
             {
                 Project packageBuilderProject = GetPackageBuilderProject();
