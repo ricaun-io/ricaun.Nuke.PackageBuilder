@@ -57,11 +57,7 @@ namespace ricaun.Nuke.Components
 
             FileSystemTasks.CopyDirectoryRecursively(InputDirectory, ContentsDirectory);
 
-            var addInFiles = PathConstruction.GlobFiles(ContentsDirectory, $"**/*{project.Name}*.dll");
-            addInFiles.ForEach(file =>
-            {
-                new RevitProjectAddInsBuilder(project, file, Application, VendorId, VendorDescription).Build(file);
-            });
+            CreateRevitAddinOnProjectFiles(project, ContentsDirectory);
 
             // CopyInstallationFiles If Exists
             CopyInstallationFilesTo(PackageBuilderDirectory);
@@ -106,6 +102,23 @@ namespace ricaun.Nuke.Components
             {
                 ZipExtension.CreateFromDirectory(BundleDirectory, ReleaseDirectory / $"{bundleName}.zip");
             }
+        }
+
+        /// <summary>
+        /// Create AddIns on each dll with the valid name
+        /// </summary>
+        /// <param name="project"></param>
+        /// <param name="directory"></param>
+        private void CreateRevitAddinOnProjectFiles(Project project, AbsolutePath directory)
+        {
+            var addInFiles = PathConstruction.GlobFiles(directory, $"**/*{project.Name}*.dll")
+                            .Where(file => !file.Name.EndsWith("resources.dll"));
+
+            addInFiles.ForEach(file =>
+            {
+                new RevitProjectAddInsBuilder(project, file, Application, VendorId, VendorDescription)
+                    .Build(file);
+            });
         }
 
         /// <summary>

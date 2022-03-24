@@ -34,6 +34,8 @@ namespace ricaun.Nuke.Components
                 .FullClassName($"{name}.{application}")
                 .VendorId(vendorId)
                 .VendorDescription(vendorDescription);
+
+            Serilog.Log.Information($"Create AddIns Application: {assemblyName} {application}");
         }
     }
 }
