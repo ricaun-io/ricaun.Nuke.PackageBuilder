@@ -25,6 +25,8 @@ namespace ricaun.Nuke.Extensions
             var revit = assemblyTest.GetReferencedAssemblies()
                 .FirstOrDefault(e => e.Name.StartsWith("RevitAPI"));
 
+            if (revit == null) return 0;
+
             var version = revit.Version.Major;
             if (version < 2000) version += 2000;
 

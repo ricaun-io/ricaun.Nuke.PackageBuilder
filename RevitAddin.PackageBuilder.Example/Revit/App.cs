@@ -12,7 +12,7 @@ namespace RevitAddin.PackageBuilder.Example.Revit
         public Result OnStartup(UIControlledApplication application)
         {
             ribbonPanel = application.CreatePanel(GetRevitVersion());
-            ribbonPanel.AddPushButton<Commands.Command>("-");
+            ribbonPanel.AddPushButton<Commands.Command>(Properties.Resource.Text);
             return Result.Succeeded;
         }
 
