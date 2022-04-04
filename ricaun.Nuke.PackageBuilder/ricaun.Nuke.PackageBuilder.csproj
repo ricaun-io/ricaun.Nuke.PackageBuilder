@@ -7,7 +7,7 @@
 
   <PropertyGroup>
     <PackageId>ricaun.Nuke.PackageBuilder</PackageId>
-    <Version>1.1.9</Version>
+    <Version>1.2.0</Version>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -25,7 +25,7 @@
 
   <PropertyGroup>
     <AssemblyName>$(PackageId)$(PackageAssemblyVersion)</AssemblyName>
-    <Description>Package $(PackageId).</Description>
+    <Description>Nuke PackageBuilder for Autodesk Application.</Description>
     <Product>$(PackageId)</Product>
     <Copyright>Copyright © $(CopyrightYears) $(Company)</Copyright>
   </PropertyGroup>
