@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] / 2022-04-04
+### Changed
+- Normalize version with `ricaun.Nuke`
+### Fixed
+- Sign Error TimeStamp Server
+
 ## [1.1.9] / 2022-03-24
 ### Fixed
 - Fix `resources.dll` problem, remove from `.addin`
@@ -144,6 +150,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - First Release
 
 [vNext]: ../../compare/1.0.0...HEAD
+[1.2.0]: ../../compare/1.1.9...1.2.0
 [1.1.9]: ../../compare/1.1.8...1.1.9
 [1.1.8]: ../../compare/1.1.7...1.1.8
 [1.1.7]: ../../compare/1.1.6...1.1.7
