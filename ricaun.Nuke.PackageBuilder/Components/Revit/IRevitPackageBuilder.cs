@@ -20,8 +20,10 @@ namespace ricaun.Nuke.Components
         /// Target PackageBuilder
         /// </summary>
         Target PackageBuilder => _ => _
-            .TriggeredBy(Compile)
-            .Before(Sign)
+            //.TriggeredBy(Compile)
+            //.Before(Sign)
+            .TriggeredBy(Sign)
+            .Before(Release)
             .Executes(() =>
             {
                 Project packageBuilderProject = GetPackageBuilderProject();
@@ -116,6 +118,7 @@ namespace ricaun.Nuke.Components
 
             addInFiles.ForEach(file =>
             {
+                SignFolder(file);
                 new RevitProjectAddInsBuilder(project, file, Application, VendorId, VendorDescription)
                     .Build(file);
             });
