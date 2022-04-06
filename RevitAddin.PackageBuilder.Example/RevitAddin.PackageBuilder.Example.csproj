@@ -9,7 +9,7 @@
     <LangVersion>9</LangVersion>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
-    <Configurations>Debug 2019;2019;Debug 2020;2020;Debug 2021;2021;Debug 2022;2022</Configurations>
+    <Configurations>Debug 2019;2019;Debug 2020;2020;Debug 2021;2021;Debug 2022;2022;2023</Configurations>
   </PropertyGroup>
 
   <!-- RevitVersion -->
@@ -50,6 +50,12 @@
         <TargetFramework>net48</TargetFramework>
       </PropertyGroup>
     </When>
+    <When Condition="$(Configuration.Contains('2023'))">
+      <PropertyGroup>
+        <RevitVersion>2023</RevitVersion>
+        <TargetFramework>net48</TargetFramework>
+      </PropertyGroup>
+    </When>
     <Otherwise>
       <PropertyGroup>
         <RevitVersion>2017</RevitVersion>
@@ -77,7 +83,7 @@
 
   <PropertyGroup>
     <PackageId>RevitAddin.PackageBuilder.Example</PackageId>
-    <Version>1.2.0</Version>
+    <Version>1.2.1</Version>
     <ProjectGuid>{d2797a34-4696-490d-a97a-c17afb5f0225}</ProjectGuid>
   </PropertyGroup>
 
