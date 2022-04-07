@@ -20,8 +20,6 @@ namespace ricaun.Nuke.Components
         /// Target PackageBuilder
         /// </summary>
         Target PackageBuilder => _ => _
-            //.TriggeredBy(Compile)
-            //.Before(Sign)
             .TriggeredBy(Sign)
             .Before(Release)
             .Executes(() =>
@@ -94,15 +92,18 @@ namespace ricaun.Nuke.Components
                     .ForEach(file => FileSystemTasks.CopyFileToDirectory(file, ReleaseDirectory));
             }
 
+            var version = project.GetInformationalVersion();
+
             if (releasePackageBuilder)
             {
                 var folder = Path.GetFileName(PackageBuilderDirectory);
-                ZipExtension.CreateFromDirectory(PackageBuilderDirectory, ReleaseDirectory / $"{project.Name} {folder}.zip");
+                ZipExtension.CreateFromDirectory(PackageBuilderDirectory, ReleaseDirectory / $"{project.Name} {version}.{folder}.zip");
             }
 
             if (releaseBundle)
             {
-                ZipExtension.CreateFromDirectory(BundleDirectory, ReleaseDirectory / $"{bundleName}.zip");
+                var bundleVersionName = $"{fileName} {version}.bundle";
+                ZipExtension.CreateFromDirectory(BundleDirectory, ReleaseDirectory / $"{bundleVersionName}.zip");
             }
         }
 
