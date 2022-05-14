@@ -36,6 +36,8 @@ namespace RevitAddin.PackageBuilder.Example.Revit
             return "2021";
 #elif Revit2022
             return "2022";
+#elif Revit2023
+            return "2023";
 #else
             return "Undefined";
 #endif
