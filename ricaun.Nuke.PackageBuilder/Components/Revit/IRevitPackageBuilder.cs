@@ -120,7 +120,7 @@ namespace ricaun.Nuke.Components
             addInFiles.ForEach(file =>
             {
                 SignFolder(file);
-                new RevitProjectAddInsBuilder(project, file, Application, VendorId, VendorDescription)
+                new RevitProjectAddInsBuilder(project, file, Application, ApplicationType, VendorId, VendorDescription)
                     .Build(file);
             });
         }
