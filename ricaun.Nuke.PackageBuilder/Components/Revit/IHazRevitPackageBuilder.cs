@@ -12,10 +12,16 @@ namespace ricaun.Nuke.Components
     public interface IHazRevitPackageBuilder : IHazPackageBuilderProject, INukeBuild
     {
         /// <summary>
-        /// IExternalApplication Class 
+        /// IExternalApplication Class (default: "App")
         /// </summary>
         [Parameter]
         string Application => TryGetValue(() => Application) ?? "App";
+
+        /// <summary>
+        /// Application Type (default: "Application")
+        /// </summary>
+        [Parameter]
+        string ApplicationType => TryGetValue(() => ApplicationType) ?? "Application";
 
         /// <summary>
         /// GetApplication

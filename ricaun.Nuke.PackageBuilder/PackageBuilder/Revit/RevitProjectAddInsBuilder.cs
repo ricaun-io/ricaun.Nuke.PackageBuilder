@@ -18,7 +18,7 @@ namespace ricaun.Nuke.Components
         /// <param name="application"></param>
         /// <param name="vendorId"></param>
         /// <param name="vendorDescription"></param>
-        public RevitProjectAddInsBuilder(Project project, string assemblyFile, string application, string vendorId = null, string vendorDescription = null)
+        public RevitProjectAddInsBuilder(Project project, string assemblyFile, string application, string applicationType, string vendorId = null, string vendorDescription = null)
         {
             var addInId = project.GetAppId();
             var name = project.Name;
@@ -27,7 +27,7 @@ namespace ricaun.Nuke.Components
             if (vendorId == null) vendorId = name;
             if (vendorDescription == null) vendorDescription = name;
 
-            AddIn.CreateEntry()
+            AddIn.CreateEntry(applicationType)
                 .Name(name)
                 .AddInId(addInId)
                 .Assembly(assemblyName)
@@ -35,7 +35,7 @@ namespace ricaun.Nuke.Components
                 .VendorId(vendorId)
                 .VendorDescription(vendorDescription);
 
-            Serilog.Log.Information($"Create AddIns Application: {assemblyName} {application}");
+            Serilog.Log.Information($"Create AddIns Application: {assemblyName} {application} {applicationType}");
         }
     }
 }

@@ -9,6 +9,7 @@ class Build : NukeBuild, IPublishPack, IRevitPackageBuilder
 {
     string IHazPackageBuilderProject.Name => "Example";
     string IHazRevitPackageBuilder.Application => "Revit.App";
+    string IHazRevitPackageBuilder.ApplicationType => "Application";
     public static int Main() => Execute<Build>(x => x.From<IPublishPack>().Build);
 }
 #else
