@@ -103,7 +103,7 @@ namespace ricaun.Nuke.Components
             if (releaseBundle)
             {
                 var bundleVersionName = $"{fileName} {version}.bundle";
-                ZipExtension.CreateFromDirectory(BundleDirectory, ReleaseDirectory / $"{bundleVersionName}.zip");
+                ZipExtension.CreateFromDirectory(BundleDirectory, ReleaseDirectory / $"{bundleVersionName}.zip", true);
             }
         }
 
