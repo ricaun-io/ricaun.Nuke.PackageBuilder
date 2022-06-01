@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.2.6] / 2022-05-23
+### Added
+- Add `HasRevitVersion` on `RevitExtension`
+### Fixed
+- Add `.addin` only if `HasRevitVersion` 
+### Changed
+- Change `resources.dll` with `HasRevitVersion`
+
 ## [1.2.5] / 2022-05-23
 ### Changed
 - Change `.bundle.zip` to include BaseDirectory (Forge Compatibility)
@@ -172,6 +180,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - First Release
 
 [vNext]: ../../compare/1.0.0...HEAD
+[1.2.6]: ../../compare/1.2.5...1.2.6
+[1.2.5]: ../../compare/1.2.4...1.2.5
 [1.2.4]: ../../compare/1.2.3...1.2.4
 [1.2.3]: ../../compare/1.2.2...1.2.3
 [1.2.2]: ../../compare/1.2.1...1.2.2
