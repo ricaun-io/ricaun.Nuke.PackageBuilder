@@ -14,6 +14,16 @@ namespace ricaun.Nuke.Extensions
     public static class RevitExtension
     {
         /// <summary>
+        /// HasRevitVersion RevitAPI ReferencedAssemblies
+        /// </summary>
+        /// <param name="dll"></param>
+        /// <returns></returns>
+        public static bool HasRevitVersion(string dll)
+        {
+            return GetRevitVersion(dll) > 0;
+        }
+
+        /// <summary>
         /// GetRevitVersion using the RevitAPI ReferencedAssemblies
         /// </summary>
         /// <param name="dll"></param>

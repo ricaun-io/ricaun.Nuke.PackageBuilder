@@ -55,7 +55,15 @@ namespace ricaun.Nuke.Components
             var moduleName = ((string)addinFile).Replace(bundleDirectory, ".");
 
             var folder = Path.GetDirectoryName(addinFile);
-            var dll = PathConstruction.GlobFiles(folder, $"*{project.Name}*.dll").FirstOrDefault();
+            var dll = PathConstruction.GlobFiles(folder, $"*{project.Name}*.dll")
+                .Where(e => RevitExtension.HasRevitVersion(e))
+                .FirstOrDefault();
+
+            if (dll == null)
+            {
+                Serilog.Log.Warning($"File on Project {project.Name} does not have Revit Version");
+                return version;
+            }
 
             if (version == 0)
                 version = RevitExtension.GetRevitVersion(dll);

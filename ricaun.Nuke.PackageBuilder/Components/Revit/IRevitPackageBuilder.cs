@@ -115,7 +115,7 @@ namespace ricaun.Nuke.Components
         private void CreateRevitAddinOnProjectFiles(Project project, AbsolutePath directory)
         {
             var addInFiles = PathConstruction.GlobFiles(directory, $"**/*{project.Name}*.dll")
-                            .Where(file => !file.Name.EndsWith("resources.dll"));
+                            .Where(e => RevitExtension.HasRevitVersion(e));
 
             addInFiles.ForEach(file =>
             {
