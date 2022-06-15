@@ -2,6 +2,7 @@
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 using Nuke.Common.Utilities.Collections;
+using ricaun.Nuke.Extensions;
 using System;
 using System.IO;
 using System.IO.Compression;
@@ -44,7 +45,7 @@ namespace ricaun.Nuke.Components
         public void CopyInstallationFilesTo(AbsolutePath packageBuilderDirectory)
         {
             Serilog.Log.Information($"InstallationFiles: {InstallationFiles}");
-            DownloadFiles(InstallationFiles, packageBuilderDirectory);
+            DownloadFilesAndUnzip(InstallationFiles, packageBuilderDirectory);
 
             PathConstruction.GlobFiles(InstallationFilesDirectory, "*")
                 .ForEach(file => FileSystemTasks.CopyFileToDirectory(file, packageBuilderDirectory));
@@ -56,16 +57,15 @@ namespace ricaun.Nuke.Components
         /// <param name="url"></param>
         /// <param name="downloadFolder"></param>
         /// <returns></returns>
-        private bool DownloadFiles(string url, string downloadFolder)
+        private bool DownloadFilesAndUnzip(string url, string downloadFolder)
         {
             try
             {
                 var fileName = Path.GetFileName(url);
                 var file = Path.Combine(downloadFolder, fileName);
-                using (var client = new System.Net.WebClient())
-                {
-                    client.DownloadFile(url, file);
-                }
+
+                HttpClientExtension.DownloadFile(url, file);
+
                 if (Path.GetExtension(file).EndsWith("zip"))
                 {
                     ZipFile.ExtractToDirectory(file, Path.GetDirectoryName(file));
