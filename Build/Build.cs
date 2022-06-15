@@ -4,7 +4,6 @@ using ricaun.Nuke;
 using ricaun.Nuke.Components;
 
 #if !PUBLISH_ONLY_REVIT
-[CheckBuildProjectConfigurations]
 class Build : NukeBuild, IPublishPack, IRevitPackageBuilder
 {
     string IHazPackageBuilderProject.Name => "Example";
@@ -16,7 +15,6 @@ class Build : NukeBuild, IPublishPack, IRevitPackageBuilder
 /// <summary>
 /// Create IPublishRevit
 /// </summary>
-[CheckBuildProjectConfigurations]
 class Build : NukeBuild, IPublishRevit
 {
     private const string RevitProjectName = "RevitAddin.PackageBuilder.Example";
