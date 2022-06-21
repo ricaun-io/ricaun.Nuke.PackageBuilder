@@ -18,7 +18,7 @@ namespace ricaun.Nuke.Components
         /// <param name="application"></param>
         /// <param name="vendorId"></param>
         /// <param name="vendorDescription"></param>
-        public RevitProjectAddInsBuilder(Project project, string assemblyFile, string application, string applicationType, string vendorId = null, string vendorDescription = null)
+        public RevitProjectAddInsBuilder(Project project, string assemblyFile, string application, string applicationType, string vendorId, string vendorDescription)
         {
             var addInId = project.GetAppId();
             var name = project.Name;
