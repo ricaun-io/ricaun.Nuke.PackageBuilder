@@ -35,6 +35,7 @@ env:
     GitHubToken: ${{ secrets.GITHUB_TOKEN }}
     SignFile: ${{ secrets.SIGN_FILE }}
     SignPassword: ${{ secrets.SIGN_PASSWORD }}
+    InstallationFiles: ${{ secrets.INSTALLATION_FILES }}
 ```
 
 ## License
