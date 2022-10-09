@@ -7,7 +7,7 @@
 
   <PropertyGroup>
     <PackageId>ricaun.Nuke.PackageBuilder</PackageId>
-    <Version>1.3.5</Version>
+    <Version>1.4.0</Version>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -57,5 +57,16 @@
     <PackageReference Include="Autodesk.PackageBuilder" Version="*" />
     <PackageReference Include="ricaun.Nuke" Version="*" />
   </ItemGroup>
+
+  <!--
+  <ItemGroup>
+    <PackageReference Include="GitVersion.CommandLine" Version="*"/>
+    <PackageReference Include="NuGet.CommandLine" Version="*" />
+    <PackageReference Include="Nuke.Common" Version="*" />
+    <Reference Include="ricaun.Nuke">
+      <HintPath>..\..\ricaun.Nuke\ricaun.Nuke\bin\Release\ricaun.Nuke.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+    -->
 
 </Project>

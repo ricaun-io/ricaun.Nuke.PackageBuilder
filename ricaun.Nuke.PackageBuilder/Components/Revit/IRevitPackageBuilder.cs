@@ -44,16 +44,20 @@ namespace ricaun.Nuke.Components
         /// <param name="releaseBundle"></param>
         public void CreatePackageBuilder(Project project, bool releasePackageBuilder = false, bool releaseBundle = false)
         {
-            var fileName = $"{project.Name}";
-            var bundleName = $"{fileName}.bundle";
+            var projectName = project.Name;
+            var projectVersion = project.GetInformationalVersion();
+
+            var projectNameVersion = GetReleaseFileNameVersion(projectName, projectVersion);
+
+            var bundleName = $"{projectName}.bundle";
             var BundleDirectory = PackageBuilderDirectory / bundleName;
             var ContentsDirectory = BundleDirectory / "Contents";
 
             if (ProjectNameFolder)
-                ContentsDirectory = ContentsDirectory / project.Name;
+                ContentsDirectory = ContentsDirectory / projectName;
 
             if (ProjectVersionFolder)
-                ContentsDirectory = ContentsDirectory / project.GetInformationalVersion();
+                ContentsDirectory = ContentsDirectory / projectVersion;
 
             FileSystemTasks.CopyDirectoryRecursively(InputDirectory, ContentsDirectory);
 
@@ -71,7 +75,7 @@ namespace ricaun.Nuke.Components
             // Deploy File
             var outputInno = OutputDirectory;
             var packageBuilderDirectory = GetMaxPathFolderOrTempFolder(PackageBuilderDirectory);
-            var issFiles = PathConstruction.GlobFiles(packageBuilderDirectory, $"*{project.Name}.iss");
+            var issFiles = PathConstruction.GlobFiles(packageBuilderDirectory, $"*{projectName}.iss");
             issFiles.ForEach(file =>
             {
                 InnoSetupTasks.InnoSetup(config => config
@@ -83,8 +87,9 @@ namespace ricaun.Nuke.Components
             // Sign outputInno
             SignFolder(outputInno);
 
+            // Zip exe Files
             var exeFiles = PathConstruction.GlobFiles(outputInno, "**/*.exe");
-            exeFiles.ForEach(file => ZipExtension.ZipFileCompact(file));
+            exeFiles.ForEach(file => ZipExtension.ZipFileCompact(file, projectNameVersion));
 
             if (outputInno != ReleaseDirectory)
             {
@@ -92,18 +97,17 @@ namespace ricaun.Nuke.Components
                     .ForEach(file => FileSystemTasks.CopyFileToDirectory(file, ReleaseDirectory));
             }
 
-            var version = project.GetInformationalVersion();
-
             if (releasePackageBuilder)
             {
                 var folder = Path.GetFileName(PackageBuilderDirectory);
-                ZipExtension.CreateFromDirectory(PackageBuilderDirectory, ReleaseDirectory / $"{project.Name} {version}.{folder}.zip");
+                var releaseFileName = CreateReleaseFromDirectory(PackageBuilderDirectory, projectName, projectVersion, $".{folder}.zip");
+                Serilog.Log.Information($"Release: {releaseFileName}");
             }
 
             if (releaseBundle)
             {
-                var bundleVersionName = $"{fileName} {version}.bundle";
-                ZipExtension.CreateFromDirectory(BundleDirectory, ReleaseDirectory / $"{bundleVersionName}.zip", true);
+                var releaseFileName = CreateReleaseFromDirectory(BundleDirectory, projectName, projectVersion, ".bundle.zip", true);
+                Serilog.Log.Information($"Release: {releaseFileName}");
             }
         }
 
