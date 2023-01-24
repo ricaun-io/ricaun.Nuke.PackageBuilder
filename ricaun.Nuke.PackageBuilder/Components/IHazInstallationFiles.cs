@@ -64,7 +64,11 @@ namespace ricaun.Nuke.Components
                 var fileName = Path.GetFileName(url);
                 var file = Path.Combine(downloadFolder, fileName);
 
-                HttpClientExtension.DownloadFile(url, file);
+                if (!HttpClientExtension.DownloadFileRetry(url, file))
+                {
+                    Serilog.Log.Warning($"DownloadFileRetry Fail");
+                    return false;
+                }
 
                 if (Path.GetExtension(file).EndsWith("zip"))
                 {
