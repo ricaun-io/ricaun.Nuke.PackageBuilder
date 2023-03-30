@@ -46,9 +46,9 @@ namespace ricaun.Nuke.Components
                     .AppPublisher(appPublisher)
                     .AppComments(appComments)
                     .AppCopyright(appCopyright)
-                    .DefaultDirName($@"{InnoConstants.CommonAppData}\Autodesk\ApplicationPlugins\{bundle}")
+                    .DefaultDirName($@"{InnoConstants.Shell.CommonAppData}\Autodesk\ApplicationPlugins\{bundle}")
                     .OutputBaseFilename($"{title} {appVersion}")
-                    .UninstallDisplayIcon($@"{InnoConstants.App}\unins000.exe")
+                    .UninstallDisplayIcon($@"{InnoConstants.Directories.App}\unins000.exe")
                     .DisableWelcomePage(YesNo.No)
                     .DisableDirPage(YesNo.Yes)
                     .ShowLanguageDialog(YesNo.No);
@@ -65,7 +65,7 @@ namespace ricaun.Nuke.Components
             if (FileSystemTasks.FileExists(packageBuilderDirectory / issConfiguration.Licence))
                 setup.LicenseFile(issConfiguration.Licence);
 
-            Files.CreateEntry(source: sourceFiles, destDir: $@"\\?\{ InnoConstants.App}")
+            Files.CreateEntry(source: sourceFiles, destDir: $@"\\?\{InnoConstants.Directories.App}")
                 .Flags(FileFlags.IgnoreVersion | FileFlags.RecurseSubdirs);
 
             Languages.CreateEntry(name: issConfiguration.Language.Name,
@@ -85,16 +85,16 @@ namespace ricaun.Nuke.Components
             Sections.CreateParameterSection("UninstallDelete")
                 .CreateEntry()
                 .Parameter("Type", "filesandordirs")
-                .Parameter("Name", $@"{InnoConstants.App}\*");
+                .Parameter("Name", $@"{InnoConstants.Directories.App}\*");
 
             Sections.CreateParameterSection("InstallDelete")
                 .CreateEntry()
                 .Parameter("Type", "files")
-                .Parameter("Name", $@"{InnoConstants.App}\Contents\*");
+                .Parameter("Name", $@"{InnoConstants.Directories.App}\Contents\*");
 
             Sections.CreateParameterSection("Dirs")
                 .CreateEntry()
-                .Parameter("Name", $"{InnoConstants.App}")
+                .Parameter("Name", $"{InnoConstants.Directories.App}")
                 .Parameter("Permissions", $"users-full");
         }
 

@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.4.2] / 2023-03-30
+### Updated
+- Update `ricaun.Nuke` to `1.4.4`
+- Update `InnoSetup.ScriptBuilder` to `1.3.0`
+- Update `Build` project to `net7.0`
+
 ## [1.4.1] / 2023-01-24
 ### Features
 - Feature `DownloadFileRetry` to download `InstallationFiles`
@@ -217,6 +223,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - First Release
 
 [vNext]: ../../compare/1.0.0...HEAD
+[1.4.2]: ../../compare/1.4.1...1.4.2
 [1.4.1]: ../../compare/1.4.0...1.4.1
 [1.4.0]: ../../compare/1.3.5...1.4.0
 [1.3.5]: ../../compare/1.3.4...1.3.5
