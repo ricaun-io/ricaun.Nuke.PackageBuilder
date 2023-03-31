@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Update `ricaun.Nuke` to `1.4.4`
 - Update `InnoSetup.ScriptBuilder` to `1.3.0`
 - Update `Build` project to `net7.0`
+- Update `LAST_VERSION_PLUS_YEAR` to 1
 
 ## [1.4.1] / 2023-01-24
 ### Features
