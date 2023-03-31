@@ -15,6 +15,11 @@ namespace ricaun.Nuke.Components
     public class RevitContentsBuilder : PackageContentsBuilder
     {
         /// <summary>
+        /// Default plus year if lastVersionRevit is true
+        /// </summary>
+        private const int LAST_VERSION_PLUS_YEAR = 1;
+
+        /// <summary>
         /// RevitContentsBuilder
         /// </summary>
         /// <param name="project"></param>
@@ -41,7 +46,7 @@ namespace ricaun.Nuke.Components
                 lastVersion = AddRevitComponentsByFileVersion(project, addinFile, bundleDirectory);
 
             if (lastVersionRevit)
-                while (lastVersion <= DateTime.Now.Year)
+                while (lastVersion <= DateTime.Now.Year + LAST_VERSION_PLUS_YEAR)
                 {
                     lastVersion = AddRevitComponentsByFileVersion(project, addinFiles.Last(), bundleDirectory, lastVersion + 1);
                 }
