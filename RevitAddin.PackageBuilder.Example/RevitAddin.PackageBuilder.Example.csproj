@@ -2,14 +2,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net46</TargetFramework>
     <OutputType>Library</OutputType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <UseWPF>true</UseWPF>
-    <LangVersion>9</LangVersion>
+    <LangVersion>Latest</LangVersion>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
-    <Configurations>Debug 2019;2019;Debug 2020;2020;Debug 2021;2021;Debug 2022;2022;2023</Configurations>
+    <Configurations>Debug 2019;2019;Debug 2020;2020;Debug 2021;2021;Debug 2022;2022;2023;2017</Configurations>
   </PropertyGroup>
 
   <!-- RevitVersion -->
@@ -83,7 +82,7 @@
 
   <PropertyGroup>
     <PackageId>RevitAddin.PackageBuilder.Example</PackageId>
-    <Version>1.4.2</Version>
+    <Version>1.4.3</Version>
     <ProjectGuid>{d2797a34-4696-490d-a97a-c17afb5f0225}</ProjectGuid>
   </PropertyGroup>
 

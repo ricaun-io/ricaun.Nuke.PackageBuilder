@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31911.196
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ricaun.Nuke.PackageBuilder", "ricaun.Nuke.PackageBuilder\ricaun.Nuke.PackageBuilder.csproj", "{BD946DCE-6BC5-4DF0-A82B-16541C2074FB}"
 EndProject
@@ -17,6 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RevitAddin.PackageBuilder.E
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		2017|Any CPU = 2017|Any CPU
 		2019|Any CPU = 2019|Any CPU
 		2020|Any CPU = 2020|Any CPU
 		2021|Any CPU = 2021|Any CPU
@@ -26,6 +27,7 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD946DCE-6BC5-4DF0-A82B-16541C2074FB}.2017|Any CPU.ActiveCfg = Release|Any CPU
 		{BD946DCE-6BC5-4DF0-A82B-16541C2074FB}.2019|Any CPU.ActiveCfg = Release|Any CPU
 		{BD946DCE-6BC5-4DF0-A82B-16541C2074FB}.2020|Any CPU.ActiveCfg = Release|Any CPU
 		{BD946DCE-6BC5-4DF0-A82B-16541C2074FB}.2021|Any CPU.ActiveCfg = Release|Any CPU
@@ -35,6 +37,7 @@ Global
 		{BD946DCE-6BC5-4DF0-A82B-16541C2074FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD946DCE-6BC5-4DF0-A82B-16541C2074FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD946DCE-6BC5-4DF0-A82B-16541C2074FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{595F0BE9-3F26-40AA-BBEF-992BC1D377F6}.2017|Any CPU.ActiveCfg = Release|Any CPU
 		{595F0BE9-3F26-40AA-BBEF-992BC1D377F6}.2019|Any CPU.ActiveCfg = Release|Any CPU
 		{595F0BE9-3F26-40AA-BBEF-992BC1D377F6}.2020|Any CPU.ActiveCfg = Release|Any CPU
 		{595F0BE9-3F26-40AA-BBEF-992BC1D377F6}.2021|Any CPU.ActiveCfg = Release|Any CPU
@@ -42,6 +45,8 @@ Global
 		{595F0BE9-3F26-40AA-BBEF-992BC1D377F6}.2023|Any CPU.ActiveCfg = Release|Any CPU
 		{595F0BE9-3F26-40AA-BBEF-992BC1D377F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{595F0BE9-3F26-40AA-BBEF-992BC1D377F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2797A34-4696-490D-A97A-C17AFB5F0225}.2017|Any CPU.ActiveCfg = 2017|Any CPU
+		{D2797A34-4696-490D-A97A-C17AFB5F0225}.2017|Any CPU.Build.0 = 2017|Any CPU
 		{D2797A34-4696-490D-A97A-C17AFB5F0225}.2019|Any CPU.ActiveCfg = 2019|Any CPU
 		{D2797A34-4696-490D-A97A-C17AFB5F0225}.2019|Any CPU.Build.0 = 2019|Any CPU
 		{D2797A34-4696-490D-A97A-C17AFB5F0225}.2020|Any CPU.ActiveCfg = 2020|Any CPU

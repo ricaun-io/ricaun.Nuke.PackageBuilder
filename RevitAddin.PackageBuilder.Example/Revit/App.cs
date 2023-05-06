@@ -5,7 +5,7 @@ using System;
 
 namespace RevitAddin.PackageBuilder.Example.Revit
 {
-    [Console]
+    [AppLoader]
     public class App : IExternalApplication
     {
         private static RibbonPanel ribbonPanel;

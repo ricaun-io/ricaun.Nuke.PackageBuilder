@@ -37,6 +37,46 @@ env:
     InstallationFiles: ${{ secrets.INSTALLATION_FILES }}
 ```
 
+## IPublishRevit
+
+### IHazPackageBuilderProject
+```C#
+string IHazPackageBuilderProject.Name => "Example";
+bool IHazPackageBuilderProject.ReleasePackageBuilder => true;
+bool IHazPackageBuilderProject.ReleaseBundle => true;
+bool IHazPackageBuilderProject.ProjectNameFolder => true;
+bool IHazPackageBuilderProject.ProjectVersionFolder => true;
+```
+
+### IHazRevitPackageBuilder
+
+```C#
+string IHazRevitPackageBuilder.Application => "Revit.App";
+string IHazRevitPackageBuilder.ApplicationType => "Application";
+bool IHazRevitPackageBuilder.NewVersions => true;
+string IHazRevitPackageBuilder.VendorId => "VendorId";
+string IHazRevitPackageBuilder.VendorDescription => "VendorDescription";
+```
+
+### IHazInstallationFiles
+
+```C#
+string IHazInstallationFiles.InstallationFiles => "InstallationFiles";
+IssConfiguration IHazInstallationFiles.IssConfiguration => new IssConfiguration()
+{
+    Image = "image.bmp",
+    ImageSmall = "imageSmall.bmp",
+    Icon = "icon.ico",
+    Licence = "License.txt",
+    Language = new IssLanguage() { Name = "en", MessagesFile = "compiler:Default.isl"},
+    IssLanguageLicences
+        = new[] {
+            new IssLanguageLicence() { Name="br", Licence = "License-br.txt", MessagesFile = @"compiler:Languages\BrazilianPortuguese.isl"}
+        }
+};
+```
+
+
 ## License
 
 This package is [licensed](LICENSE) under the [MIT Licence](https://en.wikipedia.org/wiki/MIT_License).

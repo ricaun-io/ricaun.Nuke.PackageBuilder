@@ -76,8 +76,8 @@
     public class IssLanguageLicence : IssLanguage
     {
         /// <summary>
-        /// Licence (default "License.rtf")
+        /// Licence (default <see cref="IssConfiguration.LICENSE"/>)
         /// </summary>
-        public string Licence { get; set; } = "License.rtf";
+        public string Licence { get; set; } = IssConfiguration.LICENSE;
     }
 }
