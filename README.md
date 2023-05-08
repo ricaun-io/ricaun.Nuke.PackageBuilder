@@ -53,6 +53,7 @@ bool IHazPackageBuilderProject.ProjectVersionFolder => true;
 ```C#
 string IHazRevitPackageBuilder.Application => "Revit.App";
 string IHazRevitPackageBuilder.ApplicationType => "Application";
+bool IHazRevitPackageBuilder.MiddleVersions => true;
 bool IHazRevitPackageBuilder.NewVersions => true;
 string IHazRevitPackageBuilder.VendorId => "VendorId";
 string IHazRevitPackageBuilder.VendorDescription => "VendorDescription";

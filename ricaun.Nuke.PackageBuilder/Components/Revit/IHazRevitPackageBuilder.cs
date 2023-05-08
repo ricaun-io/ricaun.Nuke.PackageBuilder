@@ -30,6 +30,12 @@ namespace ricaun.Nuke.Components
         public string GetApplication() => Application;
 
         /// <summary>
+        /// Add Middle Versions (default: true)
+        /// </summary>
+        [Parameter]
+        bool MiddleVersions => TryGetValue<bool?>(() => MiddleVersions) ?? true;
+
+        /// <summary>
         /// Add New Versions (default: true)
         /// </summary>
         [Parameter]

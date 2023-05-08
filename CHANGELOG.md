@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [1.4.3] / 2023-05-06
 ### Updated
+- Update Readme
+- Update `RevitContentsBuilder` add `MiddleVersions`
 
 ## [1.4.2] / 2023-03-30
 ### Updated
