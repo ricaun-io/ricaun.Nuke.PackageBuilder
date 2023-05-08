@@ -4,6 +4,7 @@ using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 using ricaun.Nuke.Extensions;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -24,8 +25,10 @@ namespace ricaun.Nuke.Components
         /// </summary>
         /// <param name="project"></param>
         /// <param name="bundleDirectory"></param>
+        /// <param name="middleVersionRevit"></param>
         /// <param name="lastVersionRevit"></param>
-        public RevitContentsBuilder(Project project, AbsolutePath bundleDirectory, bool lastVersionRevit = false)
+        public RevitContentsBuilder(Project project, AbsolutePath bundleDirectory,
+            bool middleVersionRevit, bool lastVersionRevit)
         {
             var appName = project.Name;
 
@@ -41,15 +44,49 @@ namespace ricaun.Nuke.Components
 
             var addinFiles = PathConstruction.GlobFiles(bundleDirectory, $"**/*{project.Name}*.addin");
 
+            //var lastVersion = 0;
+            //foreach (var addinFile in addinFiles)
+            //    lastVersion = AddRevitComponentsByFileVersion(project, addinFile, bundleDirectory);
+
+            //if (lastVersionRevit)
+            //    while (lastVersion <= DateTime.Now.Year + LAST_VERSION_PLUS_YEAR)
+            //    {
+            //        lastVersion = AddRevitComponentsByFileVersion(project, addinFiles.Last(), bundleDirectory, lastVersion + 1);
+            //    }
+
+            var fileVersion = new Dictionary<int, AbsolutePath>();
+
             var lastVersion = 0;
             foreach (var addinFile in addinFiles)
+            {
                 lastVersion = AddRevitComponentsByFileVersion(project, addinFile, bundleDirectory);
+                fileVersion[lastVersion] = addinFile;
+            }
+
+            if (middleVersionRevit)
+            {
+                Serilog.Log.Information($"Components Middle Version");
+                var versions = fileVersion.Keys.ToList();
+                var lowVersion = versions.Min();
+                for (int v = versions.Min(); v < versions.Max(); v++)
+                {
+                    if (versions.Contains(v))
+                    {
+                        lowVersion = v;
+                        continue;
+                    }
+                    AddRevitComponentsByFileVersion(project, fileVersion[lowVersion], bundleDirectory, v);
+                }
+            }
 
             if (lastVersionRevit)
+            {
+                Serilog.Log.Information($"Components Last Version");
                 while (lastVersion <= DateTime.Now.Year + LAST_VERSION_PLUS_YEAR)
                 {
                     lastVersion = AddRevitComponentsByFileVersion(project, addinFiles.Last(), bundleDirectory, lastVersion + 1);
                 }
+            }
 
         }
 
