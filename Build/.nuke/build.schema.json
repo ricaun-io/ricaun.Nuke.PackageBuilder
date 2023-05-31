@@ -42,9 +42,6 @@
             "VSCode"
           ]
         },
-        "InstallationFiles": {
-          "type": "string"
-        },
         "IssConfiguration": {
           "type": "string"
         },
