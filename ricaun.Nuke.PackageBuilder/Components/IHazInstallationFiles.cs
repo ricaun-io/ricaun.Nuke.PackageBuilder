@@ -6,6 +6,7 @@ using ricaun.Nuke.Extensions;
 using System;
 using System.IO;
 using System.IO.Compression;
+using System.Security.Policy;
 
 namespace ricaun.Nuke.Components
 {
@@ -15,7 +16,7 @@ namespace ricaun.Nuke.Components
     public interface IHazInstallationFiles : IHazPackageBuilderProject, IHazSolution, INukeBuild
     {
         /// <summary>
-        /// Folder InstallationFiles 
+        /// Folder/Url (default: InstallationFiles)
         /// </summary>
         [Parameter]
         string InstallationFiles => TryGetValue(() => InstallationFiles) ?? "InstallationFiles";
@@ -47,7 +48,7 @@ namespace ricaun.Nuke.Components
             Serilog.Log.Information($"InstallationFiles: {InstallationFiles}");
             DownloadFilesAndUnzip(InstallationFiles, packageBuilderDirectory);
 
-            PathConstruction.GlobFiles(InstallationFilesDirectory, "*")
+            Globbing.GlobFiles(InstallationFilesDirectory, "*")
                 .ForEach(file => FileSystemTasks.CopyFileToDirectory(file, packageBuilderDirectory));
         }
 
@@ -61,6 +62,7 @@ namespace ricaun.Nuke.Components
         {
             try
             {
+                new Uri(url);
                 var fileName = Path.GetFileName(url);
                 var file = Path.Combine(downloadFolder, fileName);
 

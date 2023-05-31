@@ -6,6 +6,7 @@ using ricaun.Nuke.Components;
 #if !PUBLISH_ONLY_REVIT
 class Build : NukeBuild, IPublishPack, IRevitPackageBuilder
 {
+    string IHazInstallationFiles.InstallationFiles => "InstallationFiles";
     string IHazPackageBuilderProject.Name => "Example";
     string IHazRevitPackageBuilder.Application => "Revit.App";
     string IHazRevitPackageBuilder.ApplicationType => "Application";

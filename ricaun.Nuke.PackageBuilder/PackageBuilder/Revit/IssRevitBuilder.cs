@@ -53,16 +53,16 @@ namespace ricaun.Nuke.Components
                     .DisableDirPage(YesNo.Yes)
                     .ShowLanguageDialog(YesNo.No);
 
-            if (FileSystemTasks.FileExists(packageBuilderDirectory / issConfiguration.Icon))
+            if ((packageBuilderDirectory / issConfiguration.Icon).FileExists())
                 setup.SetupIconFile(issConfiguration.Icon);
 
-            if (FileSystemTasks.FileExists(packageBuilderDirectory / issConfiguration.Image))
+            if ((packageBuilderDirectory / issConfiguration.Image).FileExists())
                 setup.WizardImageFile(issConfiguration.Image);
 
-            if (FileSystemTasks.FileExists(packageBuilderDirectory / issConfiguration.ImageSmall))
+            if ((packageBuilderDirectory / issConfiguration.ImageSmall).FileExists())
                 setup.WizardSmallImageFile(issConfiguration.ImageSmall);
 
-            if (FileSystemTasks.FileExists(packageBuilderDirectory / issConfiguration.Licence))
+            if ((packageBuilderDirectory / issConfiguration.Licence).FileExists())
                 setup.LicenseFile(issConfiguration.Licence);
 
             Files.CreateEntry(source: sourceFiles, destDir: $@"\\?\{InnoConstants.Directories.App}")
@@ -78,7 +78,7 @@ namespace ricaun.Nuke.Components
                     var language = Languages.CreateEntry(name: IssLanguageLicence.Name,
                         messagesFile: IssLanguageLicence.MessagesFile);
 
-                    if (FileSystemTasks.FileExists(packageBuilderDirectory / IssLanguageLicence.Licence))
+                    if ((packageBuilderDirectory / IssLanguageLicence.Licence).FileExists())
                         language.LicenseFile(IssLanguageLicence.Licence);
                 }
             }
