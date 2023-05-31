@@ -82,7 +82,7 @@
 
   <PropertyGroup>
     <PackageId>RevitAddin.PackageBuilder.Example</PackageId>
-    <Version>1.4.3</Version>
+    <Version>1.5.0</Version>
     <ProjectGuid>{d2797a34-4696-490d-a97a-c17afb5f0225}</ProjectGuid>
   </PropertyGroup>
 
