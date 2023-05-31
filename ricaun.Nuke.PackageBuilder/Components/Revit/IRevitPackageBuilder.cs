@@ -75,11 +75,11 @@ namespace ricaun.Nuke.Components
             // Deploy File
             var outputInno = OutputDirectory;
             var packageBuilderDirectory = GetMaxPathFolderOrTempFolder(PackageBuilderDirectory);
-            var issFiles = PathConstruction.GlobFiles(packageBuilderDirectory, $"*{projectName}.iss");
+            var issFiles = Globbing.GlobFiles(packageBuilderDirectory, $"*{projectName}.iss");
             issFiles.ForEach(file =>
             {
                 InnoSetupTasks.InnoSetup(config => config
-                    .SetProcessToolPath(ToolPathResolver.GetPackageExecutable("Tools.InnoSetup", "ISCC.exe"))
+                    .SetProcessToolPath(NuGetToolPathResolver.GetPackageExecutable("Tools.InnoSetup", "ISCC.exe"))
                     .SetScriptFile(file)
                     .SetOutputDir(outputInno));
             });
@@ -88,12 +88,12 @@ namespace ricaun.Nuke.Components
             SignFolder(outputInno);
 
             // Zip exe Files
-            var exeFiles = PathConstruction.GlobFiles(outputInno, "**/*.exe");
+            var exeFiles = Globbing.GlobFiles(outputInno, "**/*.exe");
             exeFiles.ForEach(file => ZipExtension.ZipFileCompact(file, projectNameVersion));
 
             if (outputInno != ReleaseDirectory)
             {
-                PathConstruction.GlobFiles(outputInno, "**/*.zip")
+                Globbing.GlobFiles(outputInno, "**/*.zip")
                     .ForEach(file => FileSystemTasks.CopyFileToDirectory(file, ReleaseDirectory));
             }
 
@@ -118,7 +118,7 @@ namespace ricaun.Nuke.Components
         /// <param name="directory"></param>
         private void CreateRevitAddinOnProjectFiles(Project project, AbsolutePath directory)
         {
-            var addInFiles = PathConstruction.GlobFiles(directory, $"**/*{project.Name}*.dll")
+            var addInFiles = Globbing.GlobFiles(directory, $"**/*{project.Name}*.dll")
                             .Where(e => RevitExtension.HasRevitVersion(e));
 
             addInFiles.ForEach(file =>
@@ -145,18 +145,18 @@ namespace ricaun.Nuke.Components
             var file = packageBuilderDirectory;
             Serilog.Log.Information($"Path Max: {file.ToString().Length} - {Path.GetFileName(file)}");
 
-            PathConstruction.GlobFiles(packageBuilderDirectory, "**/*")
+            Globbing.GlobFiles(packageBuilderDirectory, "**/*")
                 .ForEach(file =>
                 {
                     Serilog.Log.Information($"Path Max: {file.ToString().Length} - {Path.GetFileName(file)}");
                 });
 
-            var max = PathConstruction.GlobFiles(packageBuilderDirectory, "**/*").Max(file => file.ToString().Length);
+            var max = Globbing.GlobFiles(packageBuilderDirectory, "**/*").Max(file => file.ToString().Length);
 
             Serilog.Log.Information($"Path Max: {max}");
             if (max >= MAX_PATH)
             {
-                if (FileSystemTasks.DirectoryExists(temp)) FileSystemTasks.DeleteDirectory(temp);
+                if (temp.DirectoryExists()) temp.DeleteDirectory();
                 FileSystemTasks.CopyDirectoryRecursively(packageBuilderDirectory, temp);
                 var limit = max - file.ToString().Length + temp.ToString().Length;
                 Serilog.Log.Information($"Path Max: {limit} - {temp}");

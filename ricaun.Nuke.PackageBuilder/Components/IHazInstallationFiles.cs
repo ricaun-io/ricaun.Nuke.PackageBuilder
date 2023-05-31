@@ -47,7 +47,7 @@ namespace ricaun.Nuke.Components
             Serilog.Log.Information($"InstallationFiles: {InstallationFiles}");
             DownloadFilesAndUnzip(InstallationFiles, packageBuilderDirectory);
 
-            PathConstruction.GlobFiles(InstallationFilesDirectory, "*")
+            Globbing.GlobFiles(InstallationFilesDirectory, "*")
                 .ForEach(file => FileSystemTasks.CopyFileToDirectory(file, packageBuilderDirectory));
         }
 

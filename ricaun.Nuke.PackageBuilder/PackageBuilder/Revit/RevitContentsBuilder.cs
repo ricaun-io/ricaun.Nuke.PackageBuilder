@@ -42,7 +42,7 @@ namespace ricaun.Nuke.Components
             CompanyDetails
                 .Create(project.GetCompany());
 
-            var addinFiles = PathConstruction.GlobFiles(bundleDirectory, $"**/*{project.Name}*.addin");
+            var addinFiles = Globbing.GlobFiles(bundleDirectory, $"**/*{project.Name}*.addin");
 
             //var lastVersion = 0;
             //foreach (var addinFile in addinFiles)
@@ -97,7 +97,7 @@ namespace ricaun.Nuke.Components
             var moduleName = ((string)addinFile).Replace(bundleDirectory, ".");
 
             var folder = Path.GetDirectoryName(addinFile);
-            var dll = PathConstruction.GlobFiles(folder, $"*{project.Name}*.dll")
+            var dll = Globbing.GlobFiles(folder, $"*{project.Name}*.dll")
                 .Where(e => RevitExtension.HasRevitVersion(e))
                 .FirstOrDefault();
 
