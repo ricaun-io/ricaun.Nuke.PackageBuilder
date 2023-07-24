@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Update `ricaun.Nuke` to `1.5.1`
 ### Tests
 - Add `Tests` project
+- Add `RevitExtension_Tests` with Example files
 
 ## [1.5.0] / 2023-05-31
 ### Updated
