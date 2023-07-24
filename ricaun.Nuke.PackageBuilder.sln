@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Build", "Build\Build.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RevitAddin.PackageBuilder.Example", "RevitAddin.PackageBuilder.Example\RevitAddin.PackageBuilder.Example.csproj", "{D2797A34-4696-490D-A97A-C17AFB5F0225}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ricaun.Nuke.PackageBuilder.Tests", "ricaun.Nuke.PackageBuilder.Tests\ricaun.Nuke.PackageBuilder.Tests.csproj", "{2FC8AFEC-D521-48F2-9368-73C8B9B81640}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		2017|Any CPU = 2017|Any CPU
@@ -60,6 +62,22 @@ Global
 		{D2797A34-4696-490D-A97A-C17AFB5F0225}.Debug|Any CPU.ActiveCfg = Debug 2019|Any CPU
 		{D2797A34-4696-490D-A97A-C17AFB5F0225}.Debug|Any CPU.Build.0 = Debug 2019|Any CPU
 		{D2797A34-4696-490D-A97A-C17AFB5F0225}.Release|Any CPU.ActiveCfg = Debug 2019|Any CPU
+		{2FC8AFEC-D521-48F2-9368-73C8B9B81640}.2017|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FC8AFEC-D521-48F2-9368-73C8B9B81640}.2017|Any CPU.Build.0 = Debug|Any CPU
+		{2FC8AFEC-D521-48F2-9368-73C8B9B81640}.2019|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FC8AFEC-D521-48F2-9368-73C8B9B81640}.2019|Any CPU.Build.0 = Debug|Any CPU
+		{2FC8AFEC-D521-48F2-9368-73C8B9B81640}.2020|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FC8AFEC-D521-48F2-9368-73C8B9B81640}.2020|Any CPU.Build.0 = Debug|Any CPU
+		{2FC8AFEC-D521-48F2-9368-73C8B9B81640}.2021|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FC8AFEC-D521-48F2-9368-73C8B9B81640}.2021|Any CPU.Build.0 = Debug|Any CPU
+		{2FC8AFEC-D521-48F2-9368-73C8B9B81640}.2022|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FC8AFEC-D521-48F2-9368-73C8B9B81640}.2022|Any CPU.Build.0 = Debug|Any CPU
+		{2FC8AFEC-D521-48F2-9368-73C8B9B81640}.2023|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FC8AFEC-D521-48F2-9368-73C8B9B81640}.2023|Any CPU.Build.0 = Debug|Any CPU
+		{2FC8AFEC-D521-48F2-9368-73C8B9B81640}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FC8AFEC-D521-48F2-9368-73C8B9B81640}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FC8AFEC-D521-48F2-9368-73C8B9B81640}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FC8AFEC-D521-48F2-9368-73C8B9B81640}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

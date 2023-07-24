@@ -121,7 +121,8 @@
               "Pack",
               "PackageBuilder",
               "Release",
-              "Sign"
+              "Sign",
+              "Test"
             ]
           }
         },
@@ -142,9 +143,19 @@
               "Pack",
               "PackageBuilder",
               "Release",
-              "Sign"
+              "Sign",
+              "Test"
             ]
           }
+        },
+        "TestBuildStopWhenFailed": {
+          "type": "boolean"
+        },
+        "TestProjectName": {
+          "type": "string"
+        },
+        "TestResults": {
+          "type": "boolean"
         },
         "VendorDescription": {
           "type": "string"

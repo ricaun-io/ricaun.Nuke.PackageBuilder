@@ -4,7 +4,7 @@ using ricaun.Nuke;
 using ricaun.Nuke.Components;
 
 #if !PUBLISH_ONLY_REVIT
-class Build : NukeBuild, IPublishPack, IRevitPackageBuilder
+class Build : NukeBuild, IPublishPack, IRevitPackageBuilder, ITest
 {
     string IHazInstallationFiles.InstallationFiles => "InstallationFiles";
     string IHazPackageBuilderProject.Name => "Example";
