@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution", "Solution", "{71BAF847-E387-47A9-8B67-CF7F915E23B4}"
 	ProjectSection(SolutionItems) = preProject
 		CHANGELOG.md = CHANGELOG.md
+		Directory.Build.props = Directory.Build.props
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -15,7 +16,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Build", "Build\Build.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RevitAddin.PackageBuilder.Example", "RevitAddin.PackageBuilder.Example\RevitAddin.PackageBuilder.Example.csproj", "{D2797A34-4696-490D-A97A-C17AFB5F0225}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ricaun.Nuke.PackageBuilder.Tests", "ricaun.Nuke.PackageBuilder.Tests\ricaun.Nuke.PackageBuilder.Tests.csproj", "{2FC8AFEC-D521-48F2-9368-73C8B9B81640}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ricaun.Nuke.PackageBuilder.Tests", "ricaun.Nuke.PackageBuilder.Tests\ricaun.Nuke.PackageBuilder.Tests.csproj", "{2FC8AFEC-D521-48F2-9368-73C8B9B81640}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

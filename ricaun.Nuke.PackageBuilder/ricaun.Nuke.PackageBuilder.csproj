@@ -7,7 +7,7 @@
 
   <PropertyGroup>
     <PackageId>ricaun.Nuke.PackageBuilder</PackageId>
-    <Version>1.5.1</Version>
+    <Version Condition="'$(Version)' == ''">1.5.1</Version>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -37,6 +37,7 @@
     <RepositoryUrl>https://github.com/$(GitHubRepositoryOwner)/$(PackageId)</RepositoryUrl>
     <RepositoryType>github</RepositoryType>
     <PackageIcon>icon.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIconUrl />
   </PropertyGroup>
 
@@ -48,6 +49,22 @@
     <None Include="Resources\icon.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+      <Visible>false</Visible>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+      <Visible>false</Visible>
     </None>
   </ItemGroup>
 
