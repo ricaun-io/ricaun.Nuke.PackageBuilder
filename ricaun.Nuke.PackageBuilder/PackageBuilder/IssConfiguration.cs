@@ -23,6 +23,11 @@
         public const string LICENSE = "License.txt";
 
         /// <summary>
+        /// Title (default null)
+        /// </summary>
+        public string Title { get; set; }
+
+        /// <summary>
         /// Image (default <see cref="IMAGE"/>)
         /// </summary>
         public string Image { get; set; } = IMAGE;

@@ -25,6 +25,10 @@ namespace ricaun.Nuke.Components
         {
             this.project = project;
             string title = project.GetTitle();
+
+            if (string.IsNullOrWhiteSpace(issConfiguration.Title) == false)
+                title = issConfiguration.Title;
+
             string appCopyright = project.GetCopyright();
             string appId = project.GetAppId();
 

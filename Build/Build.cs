@@ -4,13 +4,14 @@ using ricaun.Nuke;
 using ricaun.Nuke.Components;
 
 #if !PUBLISH_ONLY_REVIT
-class Build : NukeBuild, IPublishPack, IRevitPackageBuilder, ITest
+class Build : NukeBuild, IPublishPack, IRevitPackageBuilder, ITest, IPrePack
 {
     string IHazInstallationFiles.InstallationFiles => "InstallationFiles";
     string IHazPackageBuilderProject.Name => "Example";
     string IHazRevitPackageBuilder.Application => "Revit.App";
     string IHazRevitPackageBuilder.ApplicationType => "Application";
     public static int Main() => Execute<Build>(x => x.From<IPublishPack>().Build);
+
 }
 #else
 /// <summary>
@@ -25,6 +26,7 @@ class Build : NukeBuild, IPublishRevit
 
     IssConfiguration IHazInstallationFiles.IssConfiguration => new IssConfiguration()
     {
+        Title = "Example",
         IssLanguageLicences
             = new[] {
                 new IssLanguageLicence() { Name="br", Licence = "License-br.txt", MessagesFile = @"compiler:Languages\BrazilianPortuguese.isl"}
