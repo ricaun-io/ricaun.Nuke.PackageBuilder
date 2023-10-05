@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.6.0] / 2023-10-04
+### Updated
+- Update `ricaun.Nuke` to `1.7.0`
+- Add `Title` in `IssConfiguration` class.
+- Update `IssRevitBuilder` to abstract `IssPackageBuilder`.
+- Update `IRevitPackageBuilder` to generic `T` and base `IssRevitBuilder`.
+### Tests
+- Tests build with PackageBuilder `prerelease` version
+
 ## [1.5.1] / 2023-07-24
 ### Updated
 - Update `ricaun.Nuke` to `1.5.1`
@@ -245,6 +254,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - First Release
 
 [vNext]: ../../compare/1.0.0...HEAD
+[1.6.0]: ../../compare/1.5.1...1.6.0
 [1.5.1]: ../../compare/1.5.0...1.5.1
 [1.5.0]: ../../compare/1.4.3...1.5.0
 [1.4.3]: ../../compare/1.4.2...1.4.3

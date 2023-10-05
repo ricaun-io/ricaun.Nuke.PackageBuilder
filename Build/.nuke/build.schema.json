@@ -90,6 +90,9 @@
         "ReleaseBundle": {
           "type": "boolean"
         },
+        "ReleaseFolder": {
+          "type": "string"
+        },
         "ReleaseNameVersion": {
           "type": "boolean"
         },
@@ -117,9 +120,11 @@
               "Build",
               "Clean",
               "Compile",
+              "GitPreRelease",
               "GitRelease",
               "Pack",
               "PackageBuilder",
+              "PrePack",
               "Release",
               "Sign",
               "Test"
@@ -139,9 +144,11 @@
               "Build",
               "Clean",
               "Compile",
+              "GitPreRelease",
               "GitRelease",
               "Pack",
               "PackageBuilder",
+              "PrePack",
               "Release",
               "Sign",
               "Test"

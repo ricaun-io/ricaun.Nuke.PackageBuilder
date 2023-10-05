@@ -7,7 +7,7 @@
 
   <PropertyGroup>
     <PackageId>ricaun.Nuke.PackageBuilder</PackageId>
-    <Version>1.5.1</Version>
+    <Version Condition="'$(Version)' == ''">1.5.1</Version>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -37,6 +37,7 @@
     <RepositoryUrl>https://github.com/$(GitHubRepositoryOwner)/$(PackageId)</RepositoryUrl>
     <RepositoryType>github</RepositoryType>
     <PackageIcon>icon.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIconUrl />
   </PropertyGroup>
 
@@ -52,6 +53,22 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+      <Visible>false</Visible>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+      <Visible>false</Visible>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Tools.InnoSetup" Version="6.2.0" IncludeAssets="All" />
     <PackageReference Include="InnoSetup.ScriptBuilder" Version="*" />
     <PackageReference Include="Autodesk.PackageBuilder" Version="*" />
@@ -60,9 +77,6 @@
 
   <!--
   <ItemGroup>
-    <PackageReference Include="GitVersion.CommandLine" Version="*"/>
-    <PackageReference Include="NuGet.CommandLine" Version="*" />
-    <PackageReference Include="Nuke.Common" Version="*" />
     <Reference Include="ricaun.Nuke">
       <HintPath>..\..\ricaun.Nuke\ricaun.Nuke\bin\Release\ricaun.Nuke.dll</HintPath>
     </Reference>
