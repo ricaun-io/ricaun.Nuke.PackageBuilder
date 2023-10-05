@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Updated
 - Update `ricaun.Nuke` to `1.7.0`
 - Add `Title` in `IssConfiguration` class.
+- Update `IssRevitBuilder` to abstract `IssPackageBuilder`.
+- Update `IRevitPackageBuilder` to generic `T` and base `IssRevitBuilder`.
 ### Tests
 - Tests build with PackageBuilder `prerelease` version
 

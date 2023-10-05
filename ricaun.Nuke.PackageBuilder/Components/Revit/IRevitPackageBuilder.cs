@@ -14,7 +14,18 @@ namespace ricaun.Nuke.Components
     /// <summary>
     /// IRevitPackageBuilder
     /// </summary>
-    public interface IRevitPackageBuilder : IHazRevitPackageBuilder, IHazPackageBuilderProject, IHazInstallationFiles, IRelease, ISign, IHazPackageBuilder, IHazInput, IHazOutput, INukeBuild
+    public interface IRevitPackageBuilder : IRevitPackageBuilder<IssRevitBuilder>
+    {
+
+    }
+
+    /// <summary>
+    /// IRevitPackageBuilder
+    /// </summary>
+    public interface IRevitPackageBuilder<T> :
+        IHazRevitPackageBuilder, IHazPackageBuilderProject, IHazInstallationFiles,
+        IRelease, ISign, IHazPackageBuilder, IHazInput, IHazOutput, INukeBuild
+        where T : IssPackageBuilder, new()
     {
         /// <summary>
         /// Target PackageBuilder
@@ -69,13 +80,30 @@ namespace ricaun.Nuke.Components
             new RevitContentsBuilder(project, BundleDirectory, MiddleVersions, NewVersions)
                 .Build(BundleDirectory / "PackageContents.xml");
 
-            new IssRevitBuilder(project, PackageBuilderDirectory, IssConfiguration)
-                .CreateFile(PackageBuilderDirectory);
+            // Create Iss Files
+            try
+            {
+                Serilog.Log.Information($"IssPackageBuilder: {typeof(T)}");
+                var issPackageBuilder = new T();
+                issPackageBuilder
+                    .Initialize(project)
+                    .CreatePackage(PackageBuilderDirectory, IssConfiguration)
+                    .CreateFile(PackageBuilderDirectory);
+            }
+            catch (Exception)
+            {
+                Serilog.Log.Error($"Error on IssPackageBuilder: {typeof(T)}");
+                throw;
+            }
 
             // Deploy File
             var outputInno = OutputDirectory;
             var packageBuilderDirectory = GetMaxPathFolderOrTempFolder(PackageBuilderDirectory);
             var issFiles = Globbing.GlobFiles(packageBuilderDirectory, $"*{projectName}.iss");
+
+            if (issFiles.IsEmpty())
+                Serilog.Log.Error($"Not found any .iss file in {packageBuilderDirectory}");
+
             issFiles.ForEach(file =>
             {
                 InnoSetupTasks.InnoSetup(config => config
@@ -90,6 +118,12 @@ namespace ricaun.Nuke.Components
             // Zip exe Files
             var exeFiles = Globbing.GlobFiles(outputInno, "**/*.exe");
             exeFiles.ForEach(file => ZipExtension.ZipFileCompact(file, projectNameVersion));
+
+            if (exeFiles.IsEmpty())
+                Serilog.Log.Error($"Not found any .exe file in {outputInno}");
+
+            var message = string.Join(" | ", exeFiles.Select(e => e.Name));
+            ReportSummary(_ => _.AddPair("File", message));
 
             if (outputInno != ReleaseDirectory)
             {

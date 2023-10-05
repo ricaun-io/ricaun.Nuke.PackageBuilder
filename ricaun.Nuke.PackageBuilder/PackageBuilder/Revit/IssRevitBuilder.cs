@@ -2,43 +2,37 @@
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 using ricaun.Nuke.Extensions;
-using System.IO;
 
 namespace ricaun.Nuke.Components
 {
     /// <summary>
     /// IssRevitBuilder
     /// </summary>
-    public class IssRevitBuilder : IssBuilder
+    public class IssRevitBuilder : IssPackageBuilder
     {
-        private readonly Project project;
-
         /// <summary>
-        /// IssRevitBuilder
+        /// Initialize
         /// </summary>
-        /// <param name="project"></param>
         /// <param name="packageBuilderDirectory"></param>
         /// <param name="issConfiguration"></param>
-        public IssRevitBuilder(Project project,
-            AbsolutePath packageBuilderDirectory,
-            IssConfiguration issConfiguration)
+        /// <returns></returns>
+        public override IssPackageBuilder CreatePackage(AbsolutePath packageBuilderDirectory, IssConfiguration issConfiguration)
         {
-            this.project = project;
-            string title = project.GetTitle();
+            string title = Project.GetTitle();
 
             if (string.IsNullOrWhiteSpace(issConfiguration.Title) == false)
                 title = issConfiguration.Title;
 
-            string appCopyright = project.GetCopyright();
-            string appId = project.GetAppId();
+            string appCopyright = Project.GetCopyright();
+            string appId = Project.GetAppId();
 
             string app = $"{title}";
-            string appPath = $"{project.Name}";
-            string appVersion = project.GetInformationalVersion();
+            string appPath = $"{Project.Name}";
+            string appVersion = Project.GetInformationalVersion();
 
             string bundle = $"{appPath}.bundle";
-            string appPublisher = project.GetCompany();
-            string appComments = project.GetDescription();
+            string appPublisher = Project.GetCompany();
+            string appComments = Project.GetDescription();
 
             string sourceFiles = $@"{bundle}\*";
 
@@ -100,20 +94,8 @@ namespace ricaun.Nuke.Components
                 .CreateEntry()
                 .Parameter("Name", $"{InnoConstants.Directories.App}")
                 .Parameter("Permissions", $"users-full");
-        }
 
-        /// <summary>
-        /// CreateFile
-        /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        public string CreateFile(string path)
-        {
-            if (Path.GetExtension(path) != ".iss")
-                path = Path.Combine(path, $"{project.Name}.iss");
-
-            File.WriteAllText(path, ToString(), System.Text.Encoding.UTF8);
-            return path;
+            return this;
         }
     }
 }
