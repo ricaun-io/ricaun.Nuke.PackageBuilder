@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.6.1] / 2023-10-05
+### Features
+- Prerelease with unlist package.
+### Updated
+- Update `ricaun.Nuke` to `1.7.1`
+
 ## [1.6.0] / 2023-10-04
 ### Updated
 - Update `ricaun.Nuke` to `1.7.0`
@@ -254,6 +260,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - First Release
 
 [vNext]: ../../compare/1.0.0...HEAD
+[1.6.1]: ../../compare/1.6.0...1.6.1
 [1.6.0]: ../../compare/1.5.1...1.6.0
 [1.5.1]: ../../compare/1.5.0...1.5.1
 [1.5.0]: ../../compare/1.4.3...1.5.0

@@ -10,6 +10,9 @@ namespace ricaun.Nuke.Components
     /// </summary>
     public abstract class IssPackageBuilder : IssBuilder
     {
+        /// <summary>
+        /// Project
+        /// </summary>
         protected Project Project;
 
         /// <summary>
