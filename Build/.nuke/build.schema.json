@@ -6,6 +6,9 @@
     "build": {
       "type": "object",
       "properties": {
+        "ApplicationType": {
+          "type": "string"
+        },
         "Continue": {
           "type": "boolean",
           "description": "Indicates to continue a previously failed build attempt"
@@ -42,14 +45,14 @@
             "VSCode"
           ]
         },
-        "IssConfiguration": {
-          "type": "string"
-        },
-        "MainName": {
+        "InstallationFiles": {
           "type": "string"
         },
         "MiddleVersions": {
           "type": "boolean"
+        },
+        "Name": {
+          "type": "string"
         },
         "NewVersions": {
           "type": "boolean"
@@ -57,14 +60,6 @@
         "NoLogo": {
           "type": "boolean",
           "description": "Disables displaying the NUKE logo"
-        },
-        "NugetApiKey": {
-          "type": "string",
-          "default": "Secrets must be entered via 'nuke :secrets [profile]'"
-        },
-        "NugetApiUrl": {
-          "type": "string",
-          "default": "Secrets must be entered via 'nuke :secrets [profile]'"
         },
         "Partition": {
           "type": "string",
@@ -93,9 +88,6 @@
         "ReleaseFolder": {
           "type": "string"
         },
-        "ReleaseNameVersion": {
-          "type": "boolean"
-        },
         "ReleasePackageBuilder": {
           "type": "boolean"
         },
@@ -120,14 +112,10 @@
               "Build",
               "Clean",
               "Compile",
-              "GitPreRelease",
               "GitRelease",
-              "Pack",
               "PackageBuilder",
-              "PrePack",
               "Release",
-              "Sign",
-              "Test"
+              "Sign"
             ]
           }
         },
@@ -144,25 +132,12 @@
               "Build",
               "Clean",
               "Compile",
-              "GitPreRelease",
               "GitRelease",
-              "Pack",
               "PackageBuilder",
-              "PrePack",
               "Release",
-              "Sign",
-              "Test"
+              "Sign"
             ]
           }
-        },
-        "TestBuildStopWhenFailed": {
-          "type": "boolean"
-        },
-        "TestProjectName": {
-          "type": "string"
-        },
-        "TestResults": {
-          "type": "boolean"
         },
         "VendorDescription": {
           "type": "string"
