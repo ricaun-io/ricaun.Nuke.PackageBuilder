@@ -72,67 +72,72 @@ namespace ricaun.Nuke.Components
 
             FileSystemTasks.CopyDirectoryRecursively(InputDirectory, ContentsDirectory);
 
-            CreateRevitAddinOnProjectFiles(project, ContentsDirectory);
+            if (ProjectRemoveTargetFrameworkFolder)
+            {
+                AppendTargetFrameworkExtension.RemoveAppendTargetFrameworkDirectory(ContentsDirectory);
+            }
 
-            // CopyInstallationFiles If Exists
-            CopyInstallationFilesTo(PackageBuilderDirectory);
+            CreateRevitAddinOnProjectFiles(project, ContentsDirectory);
 
             new RevitContentsBuilder(project, BundleDirectory, MiddleVersions, NewVersions)
                 .Build(BundleDirectory / "PackageContents.xml");
 
-            // Create Iss Files
-            try
-            {
-                Serilog.Log.Information($"IssPackageBuilder: {typeof(T)}");
-                var issPackageBuilder = new T();
-                issPackageBuilder
-                    .Initialize(project)
-                    .CreatePackage(PackageBuilderDirectory, IssConfiguration)
-                    .CreateFile(PackageBuilderDirectory);
-            }
-            catch (Exception)
-            {
-                Serilog.Log.Error($"Error on IssPackageBuilder: {typeof(T)}");
-                throw;
-            }
-
-            // Deploy File
-            var outputInno = OutputDirectory;
-            var packageBuilderDirectory = GetMaxPathFolderOrTempFolder(PackageBuilderDirectory);
-            var issFiles = Globbing.GlobFiles(packageBuilderDirectory, $"*{projectName}.iss");
-
-            if (issFiles.IsEmpty())
-                Serilog.Log.Error($"Not found any .iss file in {packageBuilderDirectory}");
-
-            issFiles.ForEach(file =>
-            {
-                InnoSetupTasks.InnoSetup(config => config
-                    .SetProcessToolPath(NuGetToolPathResolver.GetPackageExecutable("Tools.InnoSetup", "ISCC.exe"))
-                    .SetScriptFile(file)
-                    .SetOutputDir(outputInno));
-            });
-
-            // Sign outputInno
-            SignFolder(outputInno);
-
-            // Zip exe Files
-            var exeFiles = Globbing.GlobFiles(outputInno, "**/*.exe");
-            exeFiles.ForEach(file => ZipExtension.ZipFileCompact(file, projectNameVersion));
-
-            if (exeFiles.IsEmpty())
-                Serilog.Log.Error($"Not found any .exe file in {outputInno}");
-
-            var message = string.Join(" | ", exeFiles.Select(e => e.Name));
-            ReportSummary(_ => _.AddPair("File", message));
-
-            if (outputInno != ReleaseDirectory)
-            {
-                Globbing.GlobFiles(outputInno, "**/*.zip")
-                    .ForEach(file => FileSystemTasks.CopyFileToDirectory(file, ReleaseDirectory));
-            }
-
             if (releasePackageBuilder)
             {
+                // CopyInstallationFiles If Exists
+                CopyInstallationFilesTo(PackageBuilderDirectory);
+
+                // Create Iss Files
+                try
+                {
+                    Serilog.Log.Information($"IssPackageBuilder: {typeof(T)}");
+                    var issPackageBuilder = new T();
+                    issPackageBuilder
+                        .Initialize(project)
+                        .CreatePackage(PackageBuilderDirectory, IssConfiguration)
+                        .CreateFile(PackageBuilderDirectory);
+                }
+                catch (Exception)
+                {
+                    Serilog.Log.Error($"Error on IssPackageBuilder: {typeof(T)}");
+                    throw;
+                }
+
+                // Deploy File
+                var outputInno = OutputDirectory;
+                var packageBuilderDirectory = GetMaxPathFolderOrTempFolder(PackageBuilderDirectory);
+                var issFiles = Globbing.GlobFiles(packageBuilderDirectory, $"*{projectName}.iss");
+
+                if (issFiles.IsEmpty())
+                    Serilog.Log.Error($"Not found any .iss file in {packageBuilderDirectory}");
+
+                issFiles.ForEach(file =>
+                {
+                    InnoSetupTasks.InnoSetup(config => config
+                        .SetProcessToolPath(NuGetToolPathResolver.GetPackageExecutable("Tools.InnoSetup", "ISCC.exe"))
+                        .SetScriptFile(file)
+                        .SetOutputDir(outputInno));
+                });
+
+                // Sign outputInno
+                SignFolder(outputInno);
+
+                // Zip exe Files
+                var exeFiles = Globbing.GlobFiles(outputInno, "**/*.exe");
+                exeFiles.ForEach(file => ZipExtension.ZipFileCompact(file, projectNameVersion));
+
+                if (exeFiles.IsEmpty())
+                    Serilog.Log.Error($"Not found any .exe file in {outputInno}");
+
+                var message = string.Join(" | ", exeFiles.Select(e => e.Name));
+                ReportSummary(_ => _.AddPair("File", message));
+
+                if (outputInno != ReleaseDirectory)
+                {
+                    Globbing.GlobFiles(outputInno, "**/*.zip")
+                        .ForEach(file => FileSystemTasks.CopyFileToDirectory(file, ReleaseDirectory));
+                }
+
                 var folder = Path.GetFileName(PackageBuilderDirectory);
                 var releaseFileName = CreateReleaseFromDirectory(PackageBuilderDirectory, projectName, projectVersion, $".{folder}.zip");
                 Serilog.Log.Information($"Release: {releaseFileName}");
