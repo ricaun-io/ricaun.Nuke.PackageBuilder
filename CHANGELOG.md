@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Update `ReleasePackageBuilder` to not create the Inno installation when false.
 ### Updated
 - Update `Autodesk.PackageBuilder` to `1.0.6`
+- Update `ricaun.Nuke` to `1.7.3`
 ### Example
 - Update `AppendTargetFrameworkToOutputPath` to `true`.
 
