@@ -90,6 +90,9 @@
         "ProjectNameFolder": {
           "type": "boolean"
         },
+        "ProjectRemoveAppendTargetFrameworkFolder": {
+          "type": "boolean"
+        },
         "ProjectVersionFolder": {
           "type": "boolean"
         },

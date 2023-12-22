@@ -43,6 +43,12 @@ namespace ricaun.Nuke.Components
         bool ProjectVersionFolder => TryGetValue<bool?>(() => ProjectVersionFolder) ?? true;
 
         /// <summary>
+        /// Add ProjectRemoveTargetFrameworkFolder on the Contents (default: true)
+        /// </summary>
+        [Parameter]
+        bool ProjectRemoveTargetFrameworkFolder => TryGetValue<bool?>(() => ProjectRemoveTargetFrameworkFolder) ?? true;
+
+        /// <summary>
         /// GetPackageBuilderProject by the Name
         /// </summary>
         /// <returns></returns>

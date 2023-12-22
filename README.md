@@ -46,6 +46,7 @@ bool IHazPackageBuilderProject.ReleasePackageBuilder => true;
 bool IHazPackageBuilderProject.ReleaseBundle => true;
 bool IHazPackageBuilderProject.ProjectNameFolder => true;
 bool IHazPackageBuilderProject.ProjectVersionFolder => true;
+bool IHazPackageBuilderProject.ProjectRemoveTargetFrameworkFolder => true;
 ```
 
 ### IHazRevitPackageBuilder
