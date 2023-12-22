@@ -24,7 +24,7 @@ namespace ricaun.Nuke.Extensions
                         if (targetFrameworkDirectory.Parent.ContainsFile("*") == false)
                         {
                             Serilog.Log.Information($"CopyDirectoryRecursively: {directoryName} to {targetFrameworkDirectory.Parent.Name}");
-                            Serilog.Log.Warning($"RemoveTargetFrameworkDirectory: {directoryName} move to {targetFrameworkDirectory.Parent.Name}");
+                            Serilog.Log.Information($"RemoveTargetFrameworkDirectory: {directoryName} move to {targetFrameworkDirectory.Parent.Name}");
                             FileSystemTasks.CopyDirectoryRecursively(targetFrameworkDirectory, targetFrameworkDirectory.Parent, DirectoryExistsPolicy.Merge);
                             targetFrameworkDirectory.DeleteDirectory();
                         }
