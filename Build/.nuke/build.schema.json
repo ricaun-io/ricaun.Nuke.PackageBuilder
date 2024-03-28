@@ -90,7 +90,7 @@
         "ProjectNameFolder": {
           "type": "boolean"
         },
-        "ProjectRemoveAppendTargetFrameworkFolder": {
+        "ProjectRemoveTargetFrameworkFolder": {
           "type": "boolean"
         },
         "ProjectVersionFolder": {
@@ -171,6 +171,9 @@
           "type": "string"
         },
         "TestResults": {
+          "type": "boolean"
+        },
+        "UnlistNuget": {
           "type": "boolean"
         },
         "VendorDescription": {

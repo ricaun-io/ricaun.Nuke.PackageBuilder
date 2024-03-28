@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.6.4] / 2024-03-27
+### Features
+* Update `GetInformationalVersion` to find `nupkg` files. (Update: `ricaun.Nuke`)
+### Updated
+- Update `ricaun.Nuke` to `1.7.4`
+
 ## [1.6.3] / 2023-12-06 - 2023-12-22
 ### Features
 - Add `ProjectRemoveTargetFrameworkFolder` to remove `net` folder in `PackageBuilder`.
@@ -274,6 +280,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - First Release
 
 [vNext]: ../../compare/1.0.0...HEAD
+[1.6.4]: ../../compare/1.6.3...1.6.4
 [1.6.3]: ../../compare/1.6.2...1.6.3
 [1.6.2]: ../../compare/1.6.1...1.6.2
 [1.6.1]: ../../compare/1.6.0...1.6.1
