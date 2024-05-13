@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [1.7.1] / 2024-05-13
 ### Updated
 - Update `ricaun.Nuke` to `1.8.1`
+### Fixed
+- Fix `SignFolder` in `CreateRevitAddinOnProjectFiles`.
 
 ## [1.7.0] / 2024-03-27
 ### Features
