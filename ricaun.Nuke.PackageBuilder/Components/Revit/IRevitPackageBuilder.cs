@@ -70,7 +70,7 @@ namespace ricaun.Nuke.Components
             if (ProjectVersionFolder)
                 ContentsDirectory = ContentsDirectory / projectVersion;
 
-            AbsolutePathExtensions.CopyToDirectory(InputDirectory, ContentsDirectory);
+            AbsolutePathExtensions.Copy(InputDirectory, ContentsDirectory);
 
             if (ProjectRemoveTargetFrameworkFolder)
             {
