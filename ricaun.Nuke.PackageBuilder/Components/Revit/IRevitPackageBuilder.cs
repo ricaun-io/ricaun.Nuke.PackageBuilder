@@ -197,7 +197,7 @@ namespace ricaun.Nuke.Components
             if (max >= MAX_PATH)
             {
                 if (temp.DirectoryExists()) temp.DeleteDirectory();
-                AbsolutePathExtensions.CopyToDirectory(packageBuilderDirectory, temp);
+                AbsolutePathExtensions.Copy(packageBuilderDirectory, temp);
                 var limit = max - file.ToString().Length + temp.ToString().Length;
                 Serilog.Log.Information($"Path Max: {limit} - {temp}");
                 return (AbsolutePath)temp;
