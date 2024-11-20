@@ -81,7 +81,7 @@ IssConfiguration IHazInstallationFiles.IssConfiguration => new IssConfiguration(
 
 ## License
 
-This package is [licensed](LICENSE) under the [MIT Licence](https://en.wikipedia.org/wiki/MIT_License).
+This package is [licensed](LICENSE) under the [MIT License](https://en.wikipedia.org/wiki/MIT_License).
 
 ---
 
