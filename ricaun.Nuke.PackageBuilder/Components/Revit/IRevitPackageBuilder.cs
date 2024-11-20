@@ -70,7 +70,7 @@ namespace ricaun.Nuke.Components
             if (ProjectVersionFolder)
                 ContentsDirectory = ContentsDirectory / projectVersion;
 
-            FileSystemTasks.CopyDirectoryRecursively(InputDirectory, ContentsDirectory);
+            AbsolutePathExtensions.Copy(InputDirectory, ContentsDirectory);
 
             if (ProjectRemoveTargetFrameworkFolder)
             {
@@ -135,7 +135,7 @@ namespace ricaun.Nuke.Components
                 if (outputInno != ReleaseDirectory)
                 {
                     Globbing.GlobFiles(outputInno, "**/*.zip")
-                        .ForEach(file => FileSystemTasks.CopyFileToDirectory(file, ReleaseDirectory));
+                        .ForEach(file => AbsolutePathExtensions.CopyToDirectory(file, ReleaseDirectory));
                 }
 
                 var folder = Path.GetFileName(PackageBuilderDirectory);
@@ -197,7 +197,7 @@ namespace ricaun.Nuke.Components
             if (max >= MAX_PATH)
             {
                 if (temp.DirectoryExists()) temp.DeleteDirectory();
-                FileSystemTasks.CopyDirectoryRecursively(packageBuilderDirectory, temp);
+                AbsolutePathExtensions.Copy(packageBuilderDirectory, temp);
                 var limit = max - file.ToString().Length + temp.ToString().Length;
                 Serilog.Log.Information($"Path Max: {limit} - {temp}");
                 return (AbsolutePath)temp;

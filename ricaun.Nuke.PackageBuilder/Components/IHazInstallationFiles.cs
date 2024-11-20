@@ -49,7 +49,7 @@ namespace ricaun.Nuke.Components
             DownloadFilesAndUnzip(InstallationFiles, packageBuilderDirectory);
 
             Globbing.GlobFiles(InstallationFilesDirectory, "*")
-                .ForEach(file => FileSystemTasks.CopyFileToDirectory(file, packageBuilderDirectory));
+                .ForEach(file => AbsolutePathExtensions.CopyToDirectory(file, packageBuilderDirectory));
         }
 
         /// <summary>
