@@ -17,7 +17,7 @@
     <ProjectReference Include="..\ricaun.Nuke.PackageBuilder\ricaun.Nuke.PackageBuilder.csproj" />
   </ItemGroup>
 
-  <Import Project="..\ricaun.Nuke.PackageBuilder\build\ricaun.Nuke.PackageBuilder.targets" />
+  <!--<Import Project="..\ricaun.Nuke.PackageBuilder\build\ricaun.Nuke.PackageBuilder.targets" />-->
 
   <!--
   <ItemGroup>
