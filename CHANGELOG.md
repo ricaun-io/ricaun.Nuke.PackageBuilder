@@ -8,10 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Features
 - Enable sign files using `Azure Key Vault`.
 ### Build
-- [ ] Add import `build` with `.targets`
 ### Updated
 - Update `ricaun.Nuke` to `1.9.0`
-- [ ] Add `build` with `.targets` to install packages `AzureSignTool` and `NuGetKeyVaultSignTool`.
 
 ## [1.7.2] / 2024-11-20
 ### Updated

@@ -17,8 +17,6 @@
     <ProjectReference Include="..\ricaun.Nuke.PackageBuilder\ricaun.Nuke.PackageBuilder.csproj" />
   </ItemGroup>
 
-  <!--<Import Project="..\ricaun.Nuke.PackageBuilder\build\ricaun.Nuke.PackageBuilder.targets" />-->
-
   <!--
   <ItemGroup>
     <PackageReference Include="GitVersion.CommandLine" Version="*"/>
