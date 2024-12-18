@@ -6,8 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [1.8.0] / 2024-12-11
 ### Features
-- Enable sign files using `Azure Key Vault`.
-- Enable `IAssetRelease` to release assets before `GitRelease` and `GitPreRelease`.
+- Enable sign files using `Azure Key Vault`. (`ricaun.Nuke`)
+- Enable `IAssetRelease` to release assets before `GitRelease` and `GitPreRelease`. (`ricaun.Nuke`)
+- Enable `SkipForked` to skip release if forked repository. (`ricaun.Nuke`)
 ### Updated
 - Update `ricaun.Nuke` to `1.9.0`
 
