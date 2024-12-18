@@ -29,7 +29,7 @@ jobs:
 
           # SignFile: ${{ secrets.SIGN_FILE }}
           # SignPassword: ${{ secrets.SIGN_PASSWORD }}
-          SignFile: ${{ secrets.AZURE_KEY_VAULT_FILE }}
-          SignPassword: ${{ secrets.AZURE_KEY_VAULT_PASSWORD }}
+          SignFile: ${{ secrets.SIGN_FILE_AZURE }}
+          SignPassword: ${{ secrets.SIGN_PASSWORD_AZURE }}
 
           InstallationFiles: ${{ secrets.INSTALLATION_FILES }}
