@@ -13,9 +13,6 @@
   <PropertyGroup>
     <PackageAssemblyVersion></PackageAssemblyVersion>
   </PropertyGroup>
-  <PropertyGroup Condition="$(Configuration.Contains('Debug'))">
-    <PackageAssemblyVersion>.Dev</PackageAssemblyVersion>
-  </PropertyGroup>
 
   <PropertyGroup>
     <Company>ricaun</Company>
@@ -72,7 +69,7 @@
     <PackageReference Include="Tools.InnoSetup" Version="6.2.0" IncludeAssets="All" />
     <PackageReference Include="InnoSetup.ScriptBuilder" Version="*" />
     <PackageReference Include="Autodesk.PackageBuilder" Version="*" />
-    <PackageReference Include="ricaun.Nuke" Version="*-*" />
+    <PackageReference Include="ricaun.Nuke" Version="*" />
   </ItemGroup>
 
   <!--
