@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [1.8.0] / 2024-12-11
+## [1.8.0] / 2024-12-11 - 2024-12-19
 ### Features
 - Enable sign files using `Azure Key Vault`. (`ricaun.Nuke`)
 - Enable `IAssetRelease` to release assets before `GitRelease` and `GitPreRelease`. (`ricaun.Nuke`)
