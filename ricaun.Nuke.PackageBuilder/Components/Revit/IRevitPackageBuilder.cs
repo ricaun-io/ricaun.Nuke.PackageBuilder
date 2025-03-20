@@ -58,6 +58,11 @@ namespace ricaun.Nuke.Components
             var projectName = project.Name;
             var projectVersion = project.GetInformationalVersion();
 
+            if (projectVersion is null)
+            {
+                throw new Exception($"Project {projectName} has no version, assembly file not found. Make sure your project name is the same as the assembly file name.");
+            }
+
             var projectNameVersion = GetReleaseFileNameVersion(projectName, projectVersion);
 
             var bundleName = $"{projectName}.bundle";

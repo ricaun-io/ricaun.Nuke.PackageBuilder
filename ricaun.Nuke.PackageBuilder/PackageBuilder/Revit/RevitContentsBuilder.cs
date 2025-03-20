@@ -37,7 +37,7 @@ namespace ricaun.Nuke.Components
                 .RevitApplication()
                 .Name(appName)
                 .ProductCode(project.GetAppId())
-                .AppVersion(project.GetVersion());
+                .AppVersion(project.GetInformationalVersion());
 
             CompanyDetails
                 .Create(project.GetCompany());

@@ -4,11 +4,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [1.8.2] / 2024-01-19
+## [1.8.3] / 2025-03-20
+### Updated
+- Update `ricaun.Nuke` to `1.9.3`
+- Update `GetPackageBuilderProject` to exception and message when null.
+- Update `CreatePackageBuilder` to exception and message when assembly file is not found.
+- Update `RevitContentsBuilder` to use `GetInformationalVersion` or `ProductVersion`.
+- Update `Example` with Revit 2025 configuration.
+
+## [1.8.2] / 2025-01-19
 ### Updated
 - Update `ricaun.Nuke` to `1.9.2`
 
-## [1.8.1] / 2024-01-03
+## [1.8.1] / 2025-01-03
 ### Updated
 - Update `ricaun.Nuke` to `1.9.1`
 
@@ -315,6 +323,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - First Release
 
 [vNext]: ../../compare/1.0.0...HEAD
+[1.8.3]: ../../compare/1.8.2...1.8.3
 [1.8.2]: ../../compare/1.8.1...1.8.2
 [1.8.1]: ../../compare/1.8.0...1.8.1
 [1.8.0]: ../../compare/1.7.2...1.8.0
