@@ -56,7 +56,8 @@ namespace ricaun.Nuke.Components
         {
             if (Solution.GetOtherProject(Name) is Project project)
                 return project;
-            return Solution.GetOtherProjects(Name).First();
+            return Solution.GetOtherProjects(Name).FirstOrDefault() ?? 
+                throw new System.Exception($"{nameof(GetPackageBuilderProject)} is null using '{Name}', use 'string {nameof(IHazPackageBuilderProject)}.{nameof(Name)} => \"YourPackageBuilderProject\"'.");
         }
     }
 }
