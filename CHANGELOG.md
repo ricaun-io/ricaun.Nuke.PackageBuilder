@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Update `ricaun.Nuke` to `1.9.3`
 - Update `GetPackageBuilderProject` to exception and message when null.
 - Update `CreatePackageBuilder` to exception and message when assembly file is not found.
+- Update `RevitContentsBuilder` to use `GetInformationalVersion` or `ProductVersion`.
 
 ## [1.8.2] / 2025-01-19
 ### Updated
