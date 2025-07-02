@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.9.0] / 2025-07-02
+### Features
+- Support AutoCAD `IPublishAutoCAD` to publish AutoCAD `AppBundle`.
+### Updated
+- Add `IPublishAutoCAD`
+- Add `IAutoCADPackageBuilder` and `IHazAutoCADPackageBuilder`.
+- Add `AutoCADExtension` to detect AutoCAD version.
+- Add `AutoCADContentsBuilder` to build AutoCAD `AppBundle`.
+
 ## [1.8.3] / 2025-03-20
 ### Updated
 - Update `ricaun.Nuke` to `1.9.3`
@@ -323,6 +332,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - First Release
 
 [vNext]: ../../compare/1.0.0...HEAD
+[1.9.0]: ../../compare/1.8.3...1.9.0
 [1.8.3]: ../../compare/1.8.2...1.8.3
 [1.8.2]: ../../compare/1.8.1...1.8.2
 [1.8.1]: ../../compare/1.8.0...1.8.1
