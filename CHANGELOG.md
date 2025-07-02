@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Features
 - Support AutoCAD `IPublishAutoCAD` to publish AutoCAD `AppBundle`.
 - Update `Autodesk.PackageBuilder` to `2.0.0` to support AutoCAD.
+- Add `SymbolPackageFormat` and `IncludeSymbols` in the package.
 ### Updated
 - Add `IPublishAutoCAD`
 - Add `IAutoCADPackageBuilder` and `IHazAutoCADPackageBuilder`.
