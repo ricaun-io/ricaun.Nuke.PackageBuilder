@@ -1,9 +1,9 @@
 ﻿namespace ricaun.Nuke.Components
 {
     /// <summary>
-    /// IssRevitBuilder
+    /// IssAutoCADBuilder
     /// </summary>
-    public class IssRevitBuilder : IssAppBundleBuilder
+    public class IssAutoCADBuilder : IssAppBundleBuilder
     {
        
     }
