@@ -11,6 +11,10 @@ namespace ricaun.Nuke.Components
     public class IssAppBundleBuilder : IssPackageBuilder
     {
         /// <summary>
+        /// Gets or sets a value indicating whether to enable installation to the user's AppData directory.
+        /// </summary>
+        public bool EnableUserAppData { get; set; }
+        /// <summary>
         /// Initialize
         /// </summary>
         /// <param name="packageBuilderDirectory"></param>
@@ -36,6 +40,10 @@ namespace ricaun.Nuke.Components
 
             string sourceFiles = $@"{bundle}\*";
 
+            string appDataFolder = InnoConstants.Shell.CommonAppData;
+            if (EnableUserAppData)
+                appDataFolder = InnoConstants.Shell.UserAppData;
+
             var setup =
                 Setup.Create(app)
                     .AppVerName(app)
@@ -44,8 +52,9 @@ namespace ricaun.Nuke.Components
                     .AppPublisher(appPublisher)
                     .AppComments(appComments)
                     .AppCopyright(appCopyright)
-                    .DefaultDirName($@"{InnoConstants.Shell.CommonAppData}\Autodesk\ApplicationPlugins\{bundle}")
-                    .OutputBaseFilename($"{title} {appVersion}")
+                    .UsePreviousAppDir(YesNo.No) // Force to install in the new folder.
+                    .DefaultDirName($@"{appDataFolder}\Autodesk\ApplicationPlugins\{bundle}")
+                    .OutputBaseFilename($"{title}.{appVersion}")
                     .UninstallDisplayIcon($@"{InnoConstants.Directories.App}\unins000.exe")
                     .DisableWelcomePage(YesNo.No)
                     .DisableDirPage(YesNo.Yes)
@@ -85,15 +94,28 @@ namespace ricaun.Nuke.Components
                 .Parameter("Type", "filesandordirs")
                 .Parameter("Name", $@"{InnoConstants.Directories.App}\*");
 
-            Sections.CreateParameterSection("InstallDelete")
+            // this is used to delete the files inside the Contents folder, to remove old Loader files.
+            var InstallDelete = Sections.CreateParameterSection("InstallDelete")
                 .CreateEntry()
                 .Parameter("Type", "files")
                 .Parameter("Name", $@"{InnoConstants.Directories.App}\Contents\*");
 
-            Sections.CreateParameterSection("Dirs")
-                .CreateEntry()
-                .Parameter("Name", $"{InnoConstants.Directories.App}")
-                .Parameter("Permissions", $"users-full");
+            if (EnableUserAppData)
+            {
+                // Delete PackageContents.xml after install in the `CommonAppData`
+                InstallDelete
+                    .CreateEntry()
+                    .Parameter("Type", "files")
+                    .Parameter("Name", $@"{InnoConstants.Shell.CommonAppData}\Autodesk\ApplicationPlugins\{bundle}\PackageContents.xml");
+            }
+
+            if (!EnableUserAppData)
+            {
+                Sections.CreateParameterSection("Dirs")
+                    .CreateEntry()
+                    .Parameter("Name", $"{InnoConstants.Directories.App}")
+                    .Parameter("Permissions", $"users-full");
+            }
 
             return this;
         }

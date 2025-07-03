@@ -16,6 +16,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add `AutoCADContentsBuilder` to build AutoCAD `AppBundle`
 - Add `IssAppBundleBuilder` and `IssAutoCADBuilder`.
 - Update `IssRevitBuilder` to inherit from `IssPackageBuilder`.
+- Add `EnableUserAppData` in the `IssAppBundleBuilder` to install in current `UserAppData`.
+- Enable `EnableUserAppData` in `IssAutoCADBuilder` to install in current `UserAppData`.
 
 ## [1.8.3] / 2025-03-20
 ### Updated
