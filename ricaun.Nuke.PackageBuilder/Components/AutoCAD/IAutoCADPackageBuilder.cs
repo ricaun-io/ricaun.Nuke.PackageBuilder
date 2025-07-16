@@ -155,6 +155,7 @@ public interface IAutoCADPackageBuilder<T> :
         {
             var releaseFileName = CreateReleaseFromDirectory(BundleDirectory, projectName, projectVersion, ".bundle.zip", true);
             Serilog.Log.Information($"Release: {releaseFileName}");
+            Serilog.Log.Information($"AppBundleTool -a \"{ReleaseDirectory / releaseFileName}\" -i");
         }
     }
 
