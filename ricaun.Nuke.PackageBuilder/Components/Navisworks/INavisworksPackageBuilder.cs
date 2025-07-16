@@ -15,18 +15,18 @@ using System.Linq;
 namespace ricaun.Nuke.Components;
 
 /// <summary>
-/// IAutoCADPackageBuilder
+/// INavisworksPackageBuilder
 /// </summary>
-public interface IAutoCADPackageBuilder : IAutoCADPackageBuilder<IssAutoCADBuilder>
+public interface INavisworksPackageBuilder : INavisworksPackageBuilder<IssNavisworksBuilder>
 {
 
 }
 
 /// <summary>
-/// IAutoCADPackageBuilder
+/// INavisworksPackageBuilder
 /// </summary>
-public interface IAutoCADPackageBuilder<T> :
-    IHazAutoCADPackageBuilder, IHazPackageBuilderProject, IHazInstallationFiles,
+public interface INavisworksPackageBuilder<T> :
+    IHazNavisworksPackageBuilder, IHazPackageBuilderProject, IHazInstallationFiles,
     IRelease, ISign, IHazPackageBuilder, IHazInput, IHazOutput, INukeBuild
     where T : IssPackageBuilder, new()
 {
@@ -85,9 +85,9 @@ public interface IAutoCADPackageBuilder<T> :
             AppendTargetFrameworkExtension.RemoveAppendTargetFrameworkDirectory(ContentsDirectory);
         }
 
-        var autoCADFiles = CreateAutoCADAddinOnProjectFiles(project, ContentsDirectory);
+        var navisworksFiles = CreateNavisworksAddinOnProjectFiles(project, ContentsDirectory);
 
-        new AutoCADContentsBuilder(project, BundleDirectory, autoCADFiles, MiddleVersions, NewVersions)
+        new NavisworksContentsBuilder(project, BundleDirectory, navisworksFiles)
             .Build(BundleDirectory / "PackageContents.xml");
 
         if (releasePackageBuilder)
@@ -155,7 +155,10 @@ public interface IAutoCADPackageBuilder<T> :
         {
             var releaseFileName = CreateReleaseFromDirectory(BundleDirectory, projectName, projectVersion, ".bundle.zip", true);
             Serilog.Log.Information($"Release: {releaseFileName}");
+            Serilog.Log.Information($"AppBundleTool -a \"{ReleaseDirectory / releaseFileName}\" -i");
         }
+
+
     }
 
     /// <summary>
@@ -163,10 +166,10 @@ public interface IAutoCADPackageBuilder<T> :
     /// </summary>
     /// <param name="project"></param>
     /// <param name="directory"></param>
-    private IEnumerable<AbsolutePath> CreateAutoCADAddinOnProjectFiles(Project project, AbsolutePath directory)
+    private IEnumerable<AbsolutePath> CreateNavisworksAddinOnProjectFiles(Project project, AbsolutePath directory)
     {
         var addInFiles = Globbing.GlobFiles(directory, $"**/*{project.Name}*.dll")
-                        .Where(e => AutoCADExtension.HasAutoCADVersion(e));
+                        .Where(e => NavisworksExtension.HasNavisworksVersion(e));
 
         addInFiles.ForEach(file =>
         {

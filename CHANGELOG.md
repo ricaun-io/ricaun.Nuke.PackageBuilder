@@ -7,10 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [1.9.0] / 2025-07-02
 ### Features
 - Support AutoCAD `IPublishAutoCAD` to publish AutoCAD `AppBundle`.
-- Update `Autodesk.PackageBuilder` to `2.0.0` to support AutoCAD.
+- Support Navisworks `IPublishNavisworks` to publish Navisworks `AppBundle`.
+- Update `Autodesk.PackageBuilder` to `2.0.1` to support AutoCAD and Navisworks.
 - Add `SymbolPackageFormat` and `IncludeSymbols` in the package.
 ### Updated
-- Add `IPublishAutoCAD`
+- Add `IPublishAutoCAD` to build AutoCAD `AppBundle`.
 - Add `IAutoCADPackageBuilder` and `IHazAutoCADPackageBuilder`.
 - Add `AutoCADExtension` to detect AutoCAD version.
 - Add `AutoCADContentsBuilder` to build AutoCAD `AppBundle`
@@ -18,6 +19,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Update `IssRevitBuilder` to inherit from `IssPackageBuilder`.
 - Add `EnableUserAppData` in the `IssAppBundleBuilder` to install in current `UserAppData`.
 - Enable `EnableUserAppData` in `IssAutoCADBuilder` to install in current `UserAppData`.
+- Add `IPublishNavisworks` to build AutoCAD `AppBundle`.
+- Add `INavisworksPackageBuilder` and `IHazNavisworksPackageBuilder`.
+- Add `NavisworksExtension` to detect Navisworks version.
+- Add `NavisworksContentsBuilder` to build Navisworks `AppBundle`
+- Add `IssNavisworksBuilder` with `EnableUserAppData` to install in current `UserAppData`.
 
 ## [1.8.3] / 2025-03-20
 ### Updated
