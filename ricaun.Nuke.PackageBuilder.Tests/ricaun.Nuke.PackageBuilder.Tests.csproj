@@ -35,6 +35,9 @@
     <None Update="Example\2023\RevitAddin.PackageBuilder.Example.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Example\2025\RevitAddin.PackageBuilder.Example.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

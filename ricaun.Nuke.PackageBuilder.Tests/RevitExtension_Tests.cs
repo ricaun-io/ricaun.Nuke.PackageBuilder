@@ -11,6 +11,7 @@ namespace ricaun.Nuke.PackageBuilder.Tests
         [TestCase(2021)]
         [TestCase(2022)]
         [TestCase(2023)]
+        [TestCase(2025)]
         public void RevitVersion_ShouldBe(int version)
         {
             var location = $@"Example\{version}\RevitAddin.PackageBuilder.Example.dll";
