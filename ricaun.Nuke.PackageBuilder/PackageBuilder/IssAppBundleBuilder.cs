@@ -60,6 +60,9 @@ namespace ricaun.Nuke.Components
                     .DisableDirPage(YesNo.Yes)
                     .ShowLanguageDialog(YesNo.No);
 
+            if (EnableUserAppData)
+                setup.PrivilegesRequired(PrivilegesRequired.Lowest); // Use lowest privileges for UserAppData installation.
+
             if ((packageBuilderDirectory / issConfiguration.Icon).FileExists())
                 setup.SetupIconFile(issConfiguration.Icon);
 

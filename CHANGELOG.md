@@ -24,6 +24,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add `NavisworksExtension` to detect Navisworks version.
 - Add `NavisworksContentsBuilder` to build Navisworks `AppBundle`
 - Add `IssNavisworksBuilder` with `EnableUserAppData` to install in current `UserAppData`.
+- Update `IssAppBundleBuilder` to use `PrivilegesRequired.Lowest` when install with `UserAppData`.
 
 ## [1.8.3] / 2025-03-20
 ### Updated
