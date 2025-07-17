@@ -6,9 +6,14 @@ namespace ricaun.Nuke.PackageBuilder.Tests
 {
     public class AutoCADExtension_Tests
     {
-        [TestCase(2019, "23.0")]
-        [TestCase(2021, "24.0")]
-        [TestCase(2025, "25.0")]
+        [TestCase(2019, "23.0")] // net47
+        [TestCase(2020, "23.1")]
+        [TestCase(2021, "24.0")] // net48
+        [TestCase(2022, "24.1")]
+        [TestCase(2023, "24.2")]
+        [TestCase(2024, "24.3")]
+        [TestCase(2025, "25.0")] // net8.0
+        [TestCase(2026, "25.1")]
         public void AutoCADVersion_ShouldBe(int version, string expectedVersion)
         {
             var location = $@"Example\AutoCADAddin.{version}.dll";
