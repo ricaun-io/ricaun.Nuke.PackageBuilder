@@ -25,6 +25,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add `NavisworksContentsBuilder` to build Navisworks `AppBundle`
 - Add `IssNavisworksBuilder` with `EnableUserAppData` to install in current `UserAppData`.
 - Update `IssAppBundleBuilder` to use `PrivilegesRequired.Lowest` when install with `UserAppData`.
+### Tests
+- Add `AutoCADExtension` tests with `AutoCADAddin` files for version `2019`, `2021` and `2025`.
 
 ## [1.8.3] / 2025-03-20
 ### Updated
