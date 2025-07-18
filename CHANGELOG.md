@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [1.9.0] / 2025-07-02
+### Warning Changes
+- The `IRevitPackageBuilder` installation default folder is now `UserAppData` instead of `ProgramFiles`.
 ### Features
 - Support AutoCAD `IPublishAutoCAD` to publish AutoCAD `AppBundle`.
 - Support Navisworks `IPublishNavisworks` to publish Navisworks `AppBundle`.
@@ -26,6 +28,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add `IssNavisworksBuilder` with `EnableUserAppData` to install in current `UserAppData`.
 - Update `IssAppBundleBuilder` to use `PrivilegesRequired.Lowest` when install with `UserAppData`.
 - Add `FileEditorExtension` extension to edit license files to replace keys like `$AppName$` and `$Year$`
+- Update `IssRevitBuilder` with `EnableUserAppData` to install in current `UserAppData`.
 ### Tests
 - Add `AutoCADExtension` tests with `AutoCADAddin` files for version `2019` to `2026`.
 - Add `NavisworksExtension` tests with `NavisworksAddin` files for version `2021` to `2026`.
