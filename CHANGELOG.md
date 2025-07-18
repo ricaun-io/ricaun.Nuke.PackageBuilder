@@ -4,6 +4,35 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.9.0] / 2025-07-02 - 2025-07-18
+### Warning Changes
+- The `IRevitPackageBuilder` installation default folder is now `UserAppData` instead of `ProgramFiles`.
+### Features
+- Support AutoCAD `IPublishAutoCAD` to publish AutoCAD `AppBundle`.
+- Support Navisworks `IPublishNavisworks` to publish Navisworks `AppBundle`.
+- Update `Autodesk.PackageBuilder` to `2.0.1` to support AutoCAD and Navisworks.
+- Add `SymbolPackageFormat` and `IncludeSymbols` in the package.
+### Updated
+- Add `IPublishAutoCAD` to build AutoCAD `AppBundle`.
+- Add `IAutoCADPackageBuilder` and `IHazAutoCADPackageBuilder`.
+- Add `AutoCADExtension` to detect AutoCAD version.
+- Add `AutoCADContentsBuilder` to build AutoCAD `AppBundle`
+- Add `IssAppBundleBuilder` and `IssAutoCADBuilder`.
+- Update `IssRevitBuilder` to inherit from `IssPackageBuilder`.
+- Add `EnableUserAppData` in the `IssAppBundleBuilder` to install in current `UserAppData`.
+- Enable `EnableUserAppData` in `IssAutoCADBuilder` to install in current `UserAppData`.
+- Add `IPublishNavisworks` to build AutoCAD `AppBundle`.
+- Add `INavisworksPackageBuilder` and `IHazNavisworksPackageBuilder`.
+- Add `NavisworksExtension` to detect Navisworks version.
+- Add `NavisworksContentsBuilder` to build Navisworks `AppBundle`
+- Add `IssNavisworksBuilder` with `EnableUserAppData` to install in current `UserAppData`.
+- Update `IssAppBundleBuilder` to use `PrivilegesRequired.Lowest` when install with `UserAppData`.
+- Add `FileEditorExtension` extension to edit license files to replace keys like `$AppName$` and `$Year$`
+- Update `IssRevitBuilder` with `EnableUserAppData` to install in current `UserAppData`.
+### Tests
+- Add `AutoCADExtension` tests with `AutoCADAddin` files for version `2019` to `2026`.
+- Add `NavisworksExtension` tests with `NavisworksAddin` files for version `2021` to `2026`.
+
 ## [1.8.3] / 2025-03-20
 ### Updated
 - Update `ricaun.Nuke` to `1.9.3`
@@ -323,6 +352,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - First Release
 
 [vNext]: ../../compare/1.0.0...HEAD
+[1.9.0]: ../../compare/1.8.3...1.9.0
 [1.8.3]: ../../compare/1.8.2...1.8.3
 [1.8.2]: ../../compare/1.8.1...1.8.2
 [1.8.1]: ../../compare/1.8.0...1.8.1

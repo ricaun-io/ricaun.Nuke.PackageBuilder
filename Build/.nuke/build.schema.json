@@ -21,100 +21,6 @@
         "VSCode"
       ]
     },
-    "IssConfiguration": {
-      "type": "object",
-      "properties": {
-        "Title": {
-          "type": [
-            "null",
-            "string"
-          ]
-        },
-        "Image": {
-          "type": [
-            "null",
-            "string"
-          ]
-        },
-        "ImageSmall": {
-          "type": [
-            "null",
-            "string"
-          ]
-        },
-        "Icon": {
-          "type": [
-            "null",
-            "string"
-          ]
-        },
-        "Licence": {
-          "type": [
-            "null",
-            "string"
-          ]
-        },
-        "Language": {
-          "oneOf": [
-            {
-              "type": "null"
-            },
-            {
-              "$ref": "#/definitions/IssLanguage"
-            }
-          ]
-        },
-        "IssLanguageLicences": {
-          "type": [
-            "array",
-            "null"
-          ],
-          "items": {
-            "$ref": "#/definitions/IssLanguageLicence"
-          }
-        }
-      }
-    },
-    "IssLanguage": {
-      "type": "object",
-      "properties": {
-        "Name": {
-          "type": [
-            "null",
-            "string"
-          ]
-        },
-        "MessagesFile": {
-          "type": [
-            "null",
-            "string"
-          ]
-        }
-      }
-    },
-    "IssLanguageLicence": {
-      "type": "object",
-      "properties": {
-        "Name": {
-          "type": [
-            "null",
-            "string"
-          ]
-        },
-        "MessagesFile": {
-          "type": [
-            "null",
-            "string"
-          ]
-        },
-        "Licence": {
-          "type": [
-            "null",
-            "string"
-          ]
-        }
-      }
-    },
     "ExecutableTarget": {
       "type": "string",
       "enum": [
@@ -211,9 +117,6 @@
         "GitHubToken": {
           "type": "string",
           "default": "Secrets must be entered via 'nuke :secrets [profile]'"
-        },
-        "IssConfiguration": {
-          "$ref": "#/definitions/IssConfiguration"
         },
         "MainName": {
           "type": "string"

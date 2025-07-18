@@ -40,6 +40,9 @@
 
   <PropertyGroup Condition="!$(Configuration.Contains('Debug'))">
     <DocumentationFile>bin\Release\$(AssemblyName).xml</DocumentationFile>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <DebugType>portable</DebugType>
   </PropertyGroup>
 
   <ItemGroup>

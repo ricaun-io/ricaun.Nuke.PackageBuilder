@@ -1,39 +1,43 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ricaun.Nuke.Extensions
 {
     /// <summary>
-    /// RevitExtension
+    /// Provides extension methods for working with RevitAPI referenced assemblies.
     /// </summary>
     public static class RevitExtension
     {
+        private const string AssemblyName = "RevitAPI";
+
         /// <summary>
-        /// HasRevitVersion RevitAPI ReferencedAssemblies
+        /// Determines whether the specified DLL references a RevitAPI assembly and has a valid Revit version.
         /// </summary>
-        /// <param name="dll"></param>
-        /// <returns></returns>
+        /// <param name="dll">The path to the DLL file to inspect.</param>
+        /// <returns>
+        /// <c>true</c> if the DLL references a RevitAPI assembly and the version is greater than 0; otherwise, <c>false</c>.
+        /// </returns>
         public static bool HasRevitVersion(string dll)
         {
             return GetRevitVersion(dll) > 0;
         }
 
         /// <summary>
-        /// GetRevitVersion using the RevitAPI ReferencedAssemblies
+        /// Gets the major version of the RevitAPI assembly referenced by the specified DLL.
         /// </summary>
-        /// <param name="dll"></param>
-        /// <returns></returns>
+        /// <param name="dll">The path to the DLL file to inspect.</param>
+        /// <returns>
+        /// The major version of the referenced RevitAPI assembly, or 0 if not found.
+        /// If the version is less than 2000, 2000 is added to the version.
+        /// </returns>
         public static int GetRevitVersion(string dll)
         {
             var assemblyTest = Assembly.Load(File.ReadAllBytes(dll));
 
             var revit = assemblyTest.GetReferencedAssemblies()
-                .FirstOrDefault(e => e.Name.StartsWith("RevitAPI"));
+                .FirstOrDefault(e => e.Name.StartsWith(AssemblyName, StringComparison.InvariantCultureIgnoreCase));
 
             if (revit == null) return 0;
 

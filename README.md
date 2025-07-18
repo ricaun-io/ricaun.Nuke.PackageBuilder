@@ -1,16 +1,20 @@
 # ricaun.Nuke.PackageBuilder
 
-This package is to simplify the build automation system using to RevitAddin Application. 
-- [ricaun.Nuke](https://www.nuget.org/packages/ricaun.Nuke) 
-- [Autodesk.PackageBuilder](https://www.nuget.org/packages/Autodesk.PackageBuilder/)
-- [InnoSetup.ScriptBuilder](https://www.nuget.org/packages/InnoSetup.ScriptBuilder/)
+[![Autodesk](https://img.shields.io/badge/Autodesk-black?logo=autodesk&logoColor=white)](https://github.com/ricaun-io/ricaun.Nuke.PackageBuilder)
+[![Revit](https://img.shields.io/badge/Revit-186BFF.svg)](https://github.com/ricaun-io/ricaun.Nuke.PackageBuilder)
+[![AutoCAD](https://img.shields.io/badge/AutoCAD-E51050.svg)](https://github.com/ricaun-io/ricaun.Nuke.PackageBuilder)
+[![Navisworks](https://img.shields.io/badge/Navisworks-186BFF.svg)](https://github.com/ricaun-io/ricaun.Nuke.PackageBuilder)
 
-[![Revit 2017](https://img.shields.io/badge/Revit-2017+-blue.svg)](https://github.com/ricaun-io/ricaun.Nuke.PackageBuilder)
 [![Visual Studio 2022](https://img.shields.io/badge/Visual%20Studio-2022-blue)](https://github.com/ricaun-io/ricaun.Nuke.PackageBuilder)
 [![Nuke](https://img.shields.io/badge/Nuke-Build-blue)](https://nuke.build/)
 [![License MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Build](https://github.com/ricaun-io/ricaun.Nuke.PackageBuilder/actions/workflows/Build.yml/badge.svg)](https://github.com/ricaun-io/ricaun.Nuke.PackageBuilder/actions)
 [![Release](https://img.shields.io/nuget/v/ricaun.Nuke.PackageBuilder?logo=nuget&label=release&color=blue)](https://www.nuget.org/packages/ricaun.Nuke.PackageBuilder)
+
+This package is to simplify the build automation system using to RevitAddin/AutoCADAddin/NavisworksAddin Application. 
+- [ricaun.Nuke](https://www.nuget.org/packages/ricaun.Nuke) 
+- [Autodesk.PackageBuilder](https://www.nuget.org/packages/Autodesk.PackageBuilder/)
+- [InnoSetup.ScriptBuilder](https://www.nuget.org/packages/InnoSetup.ScriptBuilder/)
 
 # Example
 
