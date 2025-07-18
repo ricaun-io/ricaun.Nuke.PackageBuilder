@@ -73,7 +73,15 @@ namespace ricaun.Nuke.Components
                 setup.WizardSmallImageFile(issConfiguration.ImageSmall);
 
             if ((packageBuilderDirectory / issConfiguration.Licence).FileExists())
+            {
                 setup.LicenseFile(issConfiguration.Licence);
+                (packageBuilderDirectory / issConfiguration.Licence)
+                    .UpdateKeyAppName(app)
+                    .UpdateKeyAppVersion(appVersion)
+                    .UpdateKeyAppPublisher(appPublisher)
+                    .UpdateKeyCompany(appPublisher)
+                    .UpdateKeyYear();
+            }
 
             Files.CreateEntry(source: sourceFiles, destDir: $@"\\?\{InnoConstants.Directories.App}")
                 .Flags(FileFlags.IgnoreVersion | FileFlags.RecurseSubdirs);
@@ -89,7 +97,15 @@ namespace ricaun.Nuke.Components
                         messagesFile: IssLanguageLicence.MessagesFile);
 
                     if ((packageBuilderDirectory / IssLanguageLicence.Licence).FileExists())
+                    {
                         language.LicenseFile(IssLanguageLicence.Licence);
+                        (packageBuilderDirectory / IssLanguageLicence.Licence)
+                            .UpdateKeyAppName(app)
+                            .UpdateKeyAppVersion(appVersion)
+                            .UpdateKeyAppPublisher(appPublisher)
+                            .UpdateKeyCompany(appPublisher)
+                            .UpdateKeyYear();
+                    }
                 }
             }
             Sections.CreateParameterSection("UninstallDelete")

@@ -7,6 +7,12 @@ using ricaun.Nuke.Components;
 class Build : NukeBuild, IPublishPack, IRevitPackageBuilder, ITest, IPrePack
 {
     string IHazInstallationFiles.InstallationFiles => "InstallationFiles";
+    IssConfiguration IHazInstallationFiles.IssConfiguration => new IssConfiguration()
+    {
+        IssLanguageLicences = new[] {
+            new IssLanguageLicence() { Name="br", Licence = "License-br.txt", MessagesFile = @"compiler:Languages\BrazilianPortuguese.isl"}
+        }
+    };
     string IHazPackageBuilderProject.Name => "Example";
     string IHazRevitPackageBuilder.Application => "Revit.App";
     string IHazRevitPackageBuilder.ApplicationType => "Application";
