@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Updated
 - Remove warning message in the `IssRevitBuilder`.
 - Update `EnableUserAppData` to default `true` and make `protected set` to disable installation in the `CommonAppData` folder.
+### Tests
+- Update `Tests` to use `net8.0` framework.
 
 ## [1.9.0] / 2025-07-02 - 2025-07-18
 ### Warning Changes
