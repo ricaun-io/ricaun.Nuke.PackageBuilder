@@ -15,7 +15,6 @@
         {
             // Default to true for Revit plugins, allowing installation to the user's AppData directory.
             EnableUserAppData = true;
-            Serilog.Log.Warning("IssRevitBuilder set 'EnableUserAppData' to true for Revit plugins by default. This force the AppBundle to be installed in the current user AppData folder.");
         }
     }
 }

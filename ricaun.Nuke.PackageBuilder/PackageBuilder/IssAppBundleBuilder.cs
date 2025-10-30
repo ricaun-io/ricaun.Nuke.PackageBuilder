@@ -2,6 +2,7 @@
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 using ricaun.Nuke.Extensions;
+using System;
 
 namespace ricaun.Nuke.Components
 {
@@ -13,7 +14,10 @@ namespace ricaun.Nuke.Components
         /// <summary>
         /// Gets or sets a value indicating whether to enable installation to the user's AppData directory.
         /// </summary>
-        public bool EnableUserAppData { get; set; }
+        /// <remarks>
+        /// AutoCAD disable the CommonAppData installation folder in AutoCAD 2026, other Autodesk products may follow this change in the future like Revit 2027.
+        /// </remarks>
+        public bool EnableUserAppData { get; protected set; } = true;
         /// <summary>
         /// Initialize
         /// </summary>

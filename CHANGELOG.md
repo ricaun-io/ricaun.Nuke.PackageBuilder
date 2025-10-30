@@ -4,9 +4,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.9.1] / 2025-10-30
+### Warning Changes
+- The `IRevitPackageBuilder` installation default folder is now `UserAppData` instead of `CommonAppData`.
+- The `CommonAppData` is deprecated in Autodesk applications, AutoCAD 2026 already remove the folder, other Autodesk applications will follow in the next release.
+### Updated
+- Remove warning message in the `IssRevitBuilder`.
+- Update `EnableUserAppData` to default `true` and make `protected set` to disable installation in the `CommonAppData` folder.
+
 ## [1.9.0] / 2025-07-02 - 2025-07-18
 ### Warning Changes
-- The `IRevitPackageBuilder` installation default folder is now `UserAppData` instead of `ProgramFiles`.
+- The `IRevitPackageBuilder` installation default folder is now `UserAppData` instead of `CommonAppData`.
 ### Features
 - Support AutoCAD `IPublishAutoCAD` to publish AutoCAD `AppBundle`.
 - Support Navisworks `IPublishNavisworks` to publish Navisworks `AppBundle`.
@@ -352,6 +360,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - First Release
 
 [vNext]: ../../compare/1.0.0...HEAD
+[1.9.1]: ../../compare/1.9.0...1.9.1
 [1.9.0]: ../../compare/1.8.3...1.9.0
 [1.8.3]: ../../compare/1.8.2...1.8.3
 [1.8.2]: ../../compare/1.8.1...1.8.2
