@@ -2,7 +2,6 @@
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 using ricaun.Nuke.Extensions;
-using System;
 
 namespace ricaun.Nuke.Components
 {
