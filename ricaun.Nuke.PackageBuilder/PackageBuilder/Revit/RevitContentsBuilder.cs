@@ -18,7 +18,7 @@ namespace ricaun.Nuke.Components
         /// <summary>
         /// Default plus year if lastVersionRevit is true
         /// </summary>
-        private const int LAST_VERSION_PLUS_YEAR = 1;
+        private const int LAST_VERSION_PLUS_YEAR = 2;
 
         /// <summary>
         /// RevitContentsBuilder

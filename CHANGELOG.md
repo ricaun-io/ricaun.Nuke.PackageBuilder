@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Features
 - Update `ricaun.Nuke` to `1.10.0`.
 - Update to `net8.0` and `net10.0` framework.
+### Updated
+- Update `LAST_VERSION_PLUS_YEAR` to 2.
 
 ## [1.9.1] / 2025-10-30
 ### Warning Changes
