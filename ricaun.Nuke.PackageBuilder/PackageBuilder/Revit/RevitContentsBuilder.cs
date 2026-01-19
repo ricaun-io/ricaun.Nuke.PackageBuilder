@@ -21,6 +21,12 @@ namespace ricaun.Nuke.Components
         private const int LAST_VERSION_PLUS_YEAR = 2;
 
         /// <summary>
+        /// Gets or sets the number of years to add beyond the current year when generating last version Revit components.
+        /// Default value is 2 years.
+        /// </summary>
+        public int LastVersionPlusYear { get; set; } = LAST_VERSION_PLUS_YEAR;
+
+        /// <summary>
         /// RevitContentsBuilder
         /// </summary>
         /// <param name="project"></param>
@@ -43,16 +49,6 @@ namespace ricaun.Nuke.Components
                 .Create(project.GetCompany());
 
             var addinFiles = Globbing.GlobFiles(bundleDirectory, $"**/*{project.Name}*.addin");
-
-            //var lastVersion = 0;
-            //foreach (var addinFile in addinFiles)
-            //    lastVersion = AddRevitComponentsByFileVersion(project, addinFile, bundleDirectory);
-
-            //if (lastVersionRevit)
-            //    while (lastVersion <= DateTime.Now.Year + LAST_VERSION_PLUS_YEAR)
-            //    {
-            //        lastVersion = AddRevitComponentsByFileVersion(project, addinFiles.Last(), bundleDirectory, lastVersion + 1);
-            //    }
 
             var fileVersion = new Dictionary<int, AbsolutePath>();
 
@@ -79,10 +75,10 @@ namespace ricaun.Nuke.Components
                 }
             }
 
-            if (lastVersionRevit)
+            if (lastVersionRevit && LastVersionPlusYear > 0)
             {
                 Serilog.Log.Information($"Components Last Version");
-                while (lastVersion <= DateTime.Now.Year + LAST_VERSION_PLUS_YEAR)
+                while (lastVersion <= DateTime.Now.Year + LastVersionPlusYear)
                 {
                     lastVersion = AddRevitComponentsByFileVersion(project, addinFiles.Last(), bundleDirectory, lastVersion + 1);
                 }

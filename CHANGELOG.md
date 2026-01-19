@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Update `LAST_VERSION_PLUS_YEAR` to 2.
 - Update `GenerateDocumentationFile` in `csproj` file.
 - Update `PackagePath` in `csproj` file. 
+- Update `RevitContentsBuilder` with public property `LastVersionPlusYear` to how many years to add to the last Revit version.
 
 ## [1.9.1] / 2025-10-30
 ### Warning Changes
