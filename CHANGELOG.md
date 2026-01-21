@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.10.0] / 2026-01-12 - 2026-01-21
+### Features
+- Update `ricaun.Nuke` to `1.10.0`.
+- Update to `net8.0` and `net10.0` framework.
+### Updated
+- Update `LAST_VERSION_PLUS_YEAR` to 2.
+- Update `GenerateDocumentationFile` in `csproj` file.
+- Update `PackagePath` in `csproj` file. 
+- Update `RevitContentsBuilder` with public property `LastVersionPlusYear` to how many years to add to the last Revit version.
+
 ## [1.9.1] / 2025-10-30
 ### Warning Changes
 - The `IRevitPackageBuilder` installation default folder is now `UserAppData` instead of `CommonAppData`.
@@ -362,6 +372,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - First Release
 
 [vNext]: ../../compare/1.0.0...HEAD
+[1.10.0]: ../../compare/1.9.1...1.10.0
 [1.9.1]: ../../compare/1.9.0...1.9.1
 [1.9.0]: ../../compare/1.8.3...1.9.0
 [1.8.3]: ../../compare/1.8.2...1.8.3

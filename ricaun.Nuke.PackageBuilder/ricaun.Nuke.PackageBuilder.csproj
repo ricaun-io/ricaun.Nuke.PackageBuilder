@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
+    <AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -39,40 +39,23 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="!$(Configuration.Contains('Debug'))">
-    <DocumentationFile>bin\Release\$(AssemblyName).xml</DocumentationFile>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile >
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <DebugType>portable</DebugType>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="Resources\icon.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
+    <None Include="..\README.md" Pack="true" PackagePath="\" Visible="false" />
+    <None Include="..\LICENSE" Pack="true" PackagePath="\" Visible="false" />
+    <None Include="Resources\icon.png" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\README.md">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-      <Visible>false</Visible>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="..\LICENSE">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-      <Visible>false</Visible>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Tools.InnoSetup" Version="6.2.0" IncludeAssets="All" />
+    <PackageReference Include="Tools.InnoSetup" Version="6.7.0" IncludeAssets="All" />
     <PackageReference Include="InnoSetup.ScriptBuilder" Version="*" />
     <PackageReference Include="Autodesk.PackageBuilder" Version="*" />
-    <PackageReference Include="ricaun.Nuke" Version="*" />
+    <PackageReference Include="ricaun.Nuke" Version="*-*" />
   </ItemGroup>
 
   <!--
