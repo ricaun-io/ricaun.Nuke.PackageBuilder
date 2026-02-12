@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.11.0] / 2026-02-11
+### Features
+- Update `ricaun.Nuke` to `1.11.0` to change `MSBuild` to `DotNet`.
+### Build 
+- Update `Build` project to `net10.0`.
+
 ## [1.10.0] / 2026-01-12 - 2026-01-21
 ### Features
 - Update `ricaun.Nuke` to `1.10.0`.
@@ -372,6 +378,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - First Release
 
 [vNext]: ../../compare/1.0.0...HEAD
+[1.11.0]: ../../compare/1.10.0...1.11.0
 [1.10.0]: ../../compare/1.9.1...1.10.0
 [1.9.1]: ../../compare/1.9.0...1.9.1
 [1.9.0]: ../../compare/1.8.3...1.9.0

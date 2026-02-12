@@ -58,6 +58,10 @@
     <PackageReference Include="ricaun.Nuke" Version="*-*" />
   </ItemGroup>
 
+  <PropertyGroup Condition="!$(Configuration.Contains('Debug'))">
+    <NoWarn>NU1903</NoWarn>
+  </PropertyGroup>
+
   <!--
   <ItemGroup>
     <Reference Include="ricaun.Nuke">
