@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [1.11.0] / 2026-02-11
 ### Features
 - Update `ricaun.Nuke` to `1.11.0` to change `MSBuild` to `DotNet`.
+### Build 
+- Update `Build` project to `net10.0`.
 
 ## [1.10.0] / 2026-01-12 - 2026-01-21
 ### Features
