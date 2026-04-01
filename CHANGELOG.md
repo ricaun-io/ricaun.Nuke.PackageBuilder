@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [1.11.2] / 2026-03-22
 ### Features
 - Update `ricaun.Nuke` to `1.11.2` to support `.sln` and/or `.slnx` in the `Solution` in `net10.0`
+### Updates
+- Update csproj `PackageLicenseFile` to `LICENSE`.
+- Update `Build` to use `net10.0` and show `.nuke`.
 
 ## [1.11.1] / 2026-02-12
 ### Features
