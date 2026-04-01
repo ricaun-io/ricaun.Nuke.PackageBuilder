@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.11.2] / 2026-03-22 - 2026-03-30
+### Features
+- Update `ricaun.Nuke` to `1.11.2` to support `.sln` and/or `.slnx` in the `Solution` in `net10.0`
+### Updates
+- Update csproj `PackageLicenseFile` to `LICENSE`.
+- Update `Build` to use `net10.0` and show `.nuke`.
+- Update `ricaun.Nuke.PackageBuilder.sln` to `ricaun.Nuke.PackageBuilder.slnx` and test if works with current `parameters.json`.
+
 ## [1.11.1] / 2026-02-12
 ### Features
 - Update `ricaun.Nuke` to `1.11.1` fix `SignExtension.HasSignature`.
@@ -382,6 +390,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - First Release
 
 [vNext]: ../../compare/1.0.0...HEAD
+[1.11.2]: ../../compare/1.11.1...1.11.2
 [1.11.1]: ../../compare/1.11.0...1.11.1
 [1.11.0]: ../../compare/1.10.0...1.11.0
 [1.10.0]: ../../compare/1.9.1...1.10.0
