@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add `IHazRevitPackageBuilder.RevitContextIsolation` to enable `ManifestSettings.UseRevitContext` to `false` in the addin build.
 - Add `IHazRevitPackageBuilder.RevitContextName` to set the `ManifestSettings.ContextName` in the addin build.
 - Add `IHazRevitPackageBuilder.RevitContextVersion` to set the lowest version that support the `ManifestSettings` in the addin build.
+- Add `RevitProjectAddInsBuilderExtension` to enable `AddInContextIsolation`.
 
 ## [1.11.2] / 2026-03-22 - 2026-03-30
 ### Features

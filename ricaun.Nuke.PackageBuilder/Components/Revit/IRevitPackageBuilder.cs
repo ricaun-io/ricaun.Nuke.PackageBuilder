@@ -170,20 +170,9 @@ namespace ricaun.Nuke.Components
             {
                 var folder = file.Parent;
                 SignFolder(folder, $"*{project.Name}*");
-                var builder = new RevitProjectAddInsBuilder(project, file, Application, ApplicationType, VendorId, VendorDescription);
-                if (RevitContextIsolation || RevitContextName != null)
-                {
-                    var fileRevitVersion = RevitExtension.GetRevitVersion(file);
-                    const int ManifestSettingsSupportVersion = 2026;
-                    if (fileRevitVersion >= RevitContextVersion && fileRevitVersion >= ManifestSettingsSupportVersion)
-                    {
-                        var manifestSettings = builder.CreateManifestSettings();
-                        manifestSettings.UseRevitContext = false;
-                        manifestSettings.ContextName = RevitContextName;
-                        Serilog.Log.Information($"Create AddIns ManifestSettings.UseRevitContext in Revit {fileRevitVersion} with ContextName '{RevitContextName}'");
-                    }
-                }
-                builder.Build(file);
+                new RevitProjectAddInsBuilder(project, file, Application, ApplicationType, VendorId, VendorDescription)
+                    .AddInContextIsolation(file, RevitContextIsolation, RevitContextName, RevitContextVersion)
+                    .Build(file);
             });
         }
 
