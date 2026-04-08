@@ -54,14 +54,20 @@ namespace ricaun.Nuke.Components
         string VendorDescription => TryGetValue(() => VendorDescription) ?? VendorId;
 
         /// <summary>
-        /// RevitContext (Support in Revit 2027+)
+        /// RevitContextIsolation (Support in Revit 2027+) (Default: false)
         /// </summary>
+        /// <remarks>
+        /// When enabled the `ManifestSettings.UseRevitContext` is set to false and the addin is loaded in a isolated context.
+        /// </remarks>
         [Parameter]
-        bool RevitContext => TryGetValue<bool?>(() => RevitContext) ?? false;
+        bool RevitContextIsolation => TryGetValue<bool?>(() => RevitContextIsolation) ?? false;
 
         /// <summary>
         /// RevitContextName (Support in Revit 2027+)
         /// </summary>
+        /// <remarks>
+        /// When used the `ManifestSettings.UseRevitContext` is set to false and the addin is loaded in a isolated context with a custom `ManifestSettings.ContextName`.
+        /// </remarks>
         [Parameter]
         string RevitContextName => TryGetValue(() => RevitContextName) ?? null;
 
