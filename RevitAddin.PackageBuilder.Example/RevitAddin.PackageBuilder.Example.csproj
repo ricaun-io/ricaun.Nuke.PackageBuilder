@@ -8,7 +8,7 @@
     <LangVersion>Latest</LangVersion>
     <AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
     <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
-    <Configurations>Debug 2019;2019;Debug 2020;2020;Debug 2021;2021;Debug 2022;2022;2023;2017;2025</Configurations>
+    <Configurations>Debug 2019;2019;Debug 2020;2020;Debug 2021;2021;Debug 2022;2022;2023;2017;2025;2027</Configurations>
   </PropertyGroup>
 
   <!-- RevitVersion -->
@@ -71,6 +71,12 @@
       <PropertyGroup>
         <RevitVersion>2026</RevitVersion>
         <TargetFramework>net8.0-windows</TargetFramework>
+      </PropertyGroup>
+    </When>
+    <When Condition="$(Configuration.Contains('2027'))">
+      <PropertyGroup>
+        <RevitVersion>2027</RevitVersion>
+        <TargetFramework>net10.0-windows</TargetFramework>
       </PropertyGroup>
     </When>
     <Otherwise>
@@ -150,7 +156,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Revit_All_Main_Versions_API_x64" Version="$(RevitVersion).*" IncludeAssets="build; compile" PrivateAssets="All" />
+    <PackageReference Include="Revit_All_Main_Versions_API_x64" Version="$(RevitVersion).*-*" IncludeAssets="build; compile" PrivateAssets="All" />
     <PackageReference Include="ricaun.Revit.UI" Version="*" />
   </ItemGroup>
 

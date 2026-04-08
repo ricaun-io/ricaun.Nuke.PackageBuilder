@@ -162,6 +162,13 @@
         "ReleasePackageBuilder": {
           "type": "boolean"
         },
+        "RevitContext": {
+          "type": "boolean"
+        },
+        "RevitContextVersion": {
+          "type": "integer",
+          "format": "int32"
+        },
         "SignFile": {
           "type": "string",
           "default": "Secrets must be entered via 'nuke :secrets [profile]'"

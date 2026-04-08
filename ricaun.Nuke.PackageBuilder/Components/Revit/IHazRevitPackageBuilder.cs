@@ -52,5 +52,23 @@ namespace ricaun.Nuke.Components
         /// </summary>
         [Parameter]
         string VendorDescription => TryGetValue(() => VendorDescription) ?? VendorId;
+
+        /// <summary>
+        /// RevitContext (Support in Revit 2027+)
+        /// </summary>
+        [Parameter]
+        bool RevitContext => TryGetValue<bool?>(() => RevitContext) ?? false;
+
+        /// <summary>
+        /// RevitContextName (Support in Revit 2027+)
+        /// </summary>
+        [Parameter]
+        string RevitContextName => TryGetValue(() => RevitContextName) ?? null;
+
+        /// <summary>
+        /// RevitContextVersion (Default 2027) (Lowest version to add `ManifestSettings.UseRevitContext` and `ManifestSettings.ContextName`)
+        /// </summary>
+        [Parameter]
+        int RevitContextVersion => TryGetValue<int?>(() => RevitContextVersion) ?? 2027;
     }
 }
