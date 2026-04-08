@@ -14,7 +14,8 @@ namespace RevitAddin.PackageBuilder.Example.Revit
             ribbonPanel = application.CreatePanel(GetRevitVersion());
             ribbonPanel.CreatePushButton<Commands.Command>(Properties.Resource.Text)
                 .SetLargeImage("/UIFrameworkRes;component/ribbon/images/revit.ico")
-                .SetLongDescription(ContextUtils.GetName());
+                .SetLongDescription($"{ContextUtils.GetName()}\n{ContextUtils.GetNumber()}");
+
             return Result.Succeeded;
         }
 
