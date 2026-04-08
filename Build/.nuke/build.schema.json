@@ -162,7 +162,7 @@
         "ReleasePackageBuilder": {
           "type": "boolean"
         },
-        "RevitContext": {
+        "RevitContextIsolation": {
           "type": "boolean"
         },
         "RevitContextVersion": {
