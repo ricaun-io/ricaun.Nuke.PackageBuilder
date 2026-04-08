@@ -13,7 +13,8 @@ namespace RevitAddin.PackageBuilder.Example.Revit
         {
             ribbonPanel = application.CreatePanel(GetRevitVersion());
             ribbonPanel.CreatePushButton<Commands.Command>(Properties.Resource.Text)
-                .SetLargeImage("/UIFrameworkRes;component/ribbon/images/revit.ico");
+                .SetLargeImage("/UIFrameworkRes;component/ribbon/images/revit.ico")
+                .SetLongDescription(ContextUtils.GetName());
             return Result.Succeeded;
         }
 
@@ -25,7 +26,7 @@ namespace RevitAddin.PackageBuilder.Example.Revit
 
         public static string GetRevitVersion()
         {
-#if Revit2017 
+#if Revit2017
             return "2017";
 #elif Revit2018
             return "2018";
@@ -39,6 +40,14 @@ namespace RevitAddin.PackageBuilder.Example.Revit
             return "2022";
 #elif Revit2023
             return "2023";
+#elif Revit2024
+            return "2024";
+#elif Revit2025
+            return "2025";
+#elif Revit2026
+            return "2026";
+#elif Revit2027
+            return "2027";
 #else
             return "Undefined";
 #endif
