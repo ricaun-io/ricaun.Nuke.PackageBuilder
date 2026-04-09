@@ -16,6 +16,8 @@ class Build : NukeBuild, IPublishPack, IRevitPackageBuilder, ITest, IPrePack
     string IHazPackageBuilderProject.Name => "Example";
     string IHazRevitPackageBuilder.Application => "Revit.App";
     string IHazRevitPackageBuilder.ApplicationType => "Application";
+    //bool IHazRevitPackageBuilder.RevitContextIsolation => true;
+    string IHazRevitPackageBuilder.RevitContextName => "MyContextName";
     public static int Main() => Execute<Build>(x => x.From<IPublishPack>().Build);
 
 }

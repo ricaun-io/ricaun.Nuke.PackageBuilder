@@ -7,6 +7,7 @@
     <BuildType Name="2022" />
     <BuildType Name="2023" />
     <BuildType Name="2025" />
+    <BuildType Name="2027" />
     <BuildType Name="Debug" />
     <BuildType Name="Release" />
   </Configurations>
@@ -23,6 +24,7 @@
     <BuildType Solution="2022|*" Project="Release" />
     <BuildType Solution="2023|*" Project="Release" />
     <BuildType Solution="2025|*" Project="Debug" />
+    <BuildType Solution="2027|*" Project="Debug" />
     <Build Project="false" />
   </Project>
   <Project Path="RevitAddin.PackageBuilder.Example/RevitAddin.PackageBuilder.Example.csproj">
@@ -38,6 +40,7 @@
     <BuildType Solution="2022|*" Project="Debug" />
     <BuildType Solution="2023|*" Project="Debug" />
     <BuildType Solution="2025|*" Project="Release" />
+    <BuildType Solution="2027|*" Project="Release" />
   </Project>
   <Project Path="ricaun.Nuke.PackageBuilder/ricaun.Nuke.PackageBuilder.csproj">
     <BuildType Solution="2017|*" Project="Release" />
@@ -47,6 +50,7 @@
     <BuildType Solution="2022|*" Project="Release" />
     <BuildType Solution="2023|*" Project="Release" />
     <BuildType Solution="2025|*" Project="Debug" />
+    <BuildType Solution="2027|*" Project="Debug" />
     <Build Solution="2017|*" Project="false" />
     <Build Solution="2019|*" Project="false" />
     <Build Solution="2020|*" Project="false" />
@@ -54,5 +58,6 @@
     <Build Solution="2022|*" Project="false" />
     <Build Solution="2023|*" Project="false" />
     <Build Solution="2025|*" Project="false" />
+    <Build Solution="2027|*" Project="false" />
   </Project>
 </Solution>

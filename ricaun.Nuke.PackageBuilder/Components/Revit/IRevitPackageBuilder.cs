@@ -171,6 +171,7 @@ namespace ricaun.Nuke.Components
                 var folder = file.Parent;
                 SignFolder(folder, $"*{project.Name}*");
                 new RevitProjectAddInsBuilder(project, file, Application, ApplicationType, VendorId, VendorDescription)
+                    .AddInContextIsolation(file, RevitContextIsolation, RevitContextName, RevitContextVersion)
                     .Build(file);
             });
         }
