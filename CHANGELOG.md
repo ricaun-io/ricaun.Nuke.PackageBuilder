@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.12.0] / 2026-04-30
+### Features
+- Update `ricaun.Nuke` to `1.12.0` to prefer build using `msbuild` and fallback to use `dotnet build`. (Fix: [ricaun.Nuke#90](https://github.com/ricaun-io/ricaun.Nuke/issues/90))
+
 ## [1.11.4] / 2026-04-16
 ### Updates
 - Update `ricaun.Nuke` to `1.11.3` to update packages and fix vulnerabilities.
@@ -403,6 +407,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - First Release
 
 [vNext]: ../../compare/1.0.0...HEAD
+[1.12.0]: ../../compare/1.11.4...1.12.0
 [1.11.4]: ../../compare/1.11.3...1.11.4
 [1.11.3]: ../../compare/1.11.2...1.11.3
 [1.11.2]: ../../compare/1.11.1...1.11.2
