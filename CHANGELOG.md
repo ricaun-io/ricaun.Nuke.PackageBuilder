@@ -5,6 +5,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [1.12.0] / 2026-04-30
+### Features
 - Update `ricaun.Nuke` to `1.12.0` to prefer build using `msbuild` and fallback to use `dotnet build`. (Fix: [ricaun.Nuke#90](https://github.com/ricaun-io/ricaun.Nuke/issues/90))
 
 ## [1.11.4] / 2026-04-16
