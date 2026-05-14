@@ -6,9 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [1.12.1] / 2026-05-14
 ### Features
+- Support existent `.addin` file inside the `.bundle`. (Fix: #79)
 ### Updates
 - Update `CreateRevitAddinOnProjectFiles` to ignore when `.addin` already exists. (Fix: #78) 
 - Update `CreateRevitAddinOnProjectFiles` to create a single `.addin` file per project. (Fix: #78) 
+- Update `RevitContentsBuilder` to support existent `.addin` file by grouping. (Fix: #79)
 
 ## [1.12.0] / 2026-04-30
 ### Features
