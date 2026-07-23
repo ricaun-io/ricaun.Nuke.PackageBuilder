@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Update `CreateRevitAddinOnProjectFiles` to ignore when `.addin` already exists. (Fix: #78) 
 - Update `CreateRevitAddinOnProjectFiles` to create a single `.addin` file per project. (Fix: #78) 
 - Update `RevitContentsBuilder` to support existent `.addin` file by grouping. (Fix: #79)
+- Update `ricaun.Nuke` to `1.12.1` to fix dependency issue.
 
 ## [1.12.0] / 2026-04-30
 ### Features
