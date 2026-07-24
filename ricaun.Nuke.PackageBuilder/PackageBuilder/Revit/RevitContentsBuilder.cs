@@ -48,42 +48,55 @@ namespace ricaun.Nuke.Components
             CompanyDetails
                 .Create(project.GetCompany());
 
-            var addinFiles = Globbing.GlobFiles(bundleDirectory, $"**/*{project.Name}*.addin");
+            var allAddinFiles = Globbing.GlobFiles(bundleDirectory, $"**/*.addin");
 
-            var fileVersion = new Dictionary<int, AbsolutePath>();
+            string ReplaceNumbers(string input) => new string(input.Select(c => char.IsDigit(c) ? '#' : c).ToArray());
 
-            var lastVersion = 0;
-            foreach (var addinFile in addinFiles)
+            var groupAddinFiles = allAddinFiles
+                .GroupBy(e => ReplaceNumbers(e.Name))
+                .ToDictionary(g => g.Key, g => g.ToList());
+
+            foreach (var groupAddinFile in groupAddinFiles)
             {
-                lastVersion = AddRevitComponentsByFileVersion(project, addinFile, bundleDirectory);
-                fileVersion[lastVersion] = addinFile;
-            }
+                var groupName = groupAddinFile.Key;
+                var addinFiles = groupAddinFile.Value;
 
-            if (middleVersionRevit)
-            {
-                Serilog.Log.Information($"Components Middle Version");
-                var versions = fileVersion.Keys.ToList();
-                var lowVersion = versions.Min();
-                for (int v = versions.Min(); v < versions.Max(); v++)
+                Serilog.Log.Information($"Group Addin Revit Files '{groupName}'");
+
+                var fileVersion = new Dictionary<int, AbsolutePath>();
+
+                var lastVersion = 0;
+                foreach (var addinFile in addinFiles)
                 {
-                    if (versions.Contains(v))
+                    lastVersion = AddRevitComponentsByFileVersion(project, addinFile, bundleDirectory);
+                    fileVersion[lastVersion] = addinFile;
+                }
+
+                if (middleVersionRevit)
+                {
+                    Serilog.Log.Information($"Components Middle Version");
+                    var versions = fileVersion.Keys.ToList();
+                    var lowVersion = versions.Min();
+                    for (int v = versions.Min(); v < versions.Max(); v++)
                     {
-                        lowVersion = v;
-                        continue;
+                        if (versions.Contains(v))
+                        {
+                            lowVersion = v;
+                            continue;
+                        }
+                        AddRevitComponentsByFileVersion(project, fileVersion[lowVersion], bundleDirectory, v);
                     }
-                    AddRevitComponentsByFileVersion(project, fileVersion[lowVersion], bundleDirectory, v);
                 }
-            }
 
-            if (lastVersionRevit && LastVersionPlusYear > 0)
-            {
-                Serilog.Log.Information($"Components Last Version");
-                while (lastVersion <= DateTime.Now.Year + LastVersionPlusYear)
+                if (lastVersionRevit && LastVersionPlusYear > 0)
                 {
-                    lastVersion = AddRevitComponentsByFileVersion(project, addinFiles.Last(), bundleDirectory, lastVersion + 1);
+                    Serilog.Log.Information($"Components Last Version");
+                    while (lastVersion <= DateTime.Now.Year + LastVersionPlusYear)
+                    {
+                        lastVersion = AddRevitComponentsByFileVersion(project, addinFiles.Last(), bundleDirectory, lastVersion + 1);
+                    }
                 }
             }
-
         }
 
         private int AddRevitComponentsByFileVersion(Project project, AbsolutePath addinFile, AbsolutePath bundleDirectory, int version = 0)
@@ -112,7 +125,7 @@ namespace ricaun.Nuke.Components
                 .ModuleName(moduleName)
                 .RevitPlatform(version);
 
-            Serilog.Log.Information($"Component Revit {version}: {Path.GetFileName(dll)}");
+            Serilog.Log.Information($"Component Revit {version}: {Path.GetFileName(addinFile)}");
 
             return version;
         }

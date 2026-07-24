@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.13.0] / 2026-05-14 - 2026-07-24
+### Features
+- Support existent `.addin` file inside the `.bundle`. (Fix: #79)
+### Updates
+- Update `CreateRevitAddinOnProjectFiles` to ignore when `.addin` already exists. (Fix: #78) 
+- Update `CreateRevitAddinOnProjectFiles` to create a single `.addin` file per project. (Fix: #78) 
+- Update `RevitContentsBuilder` to support existent `.addin` file by grouping. (Fix: #79)
+- Update `ricaun.Nuke` to `1.12.1` to fix dependency issue.
+
 ## [1.12.0] / 2026-04-30
 ### Features
 - Update `ricaun.Nuke` to `1.12.0` to prefer build using `msbuild` and fallback to use `dotnet build`. (Fix: [ricaun.Nuke#90](https://github.com/ricaun-io/ricaun.Nuke/issues/90))
@@ -407,6 +416,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - First Release
 
 [vNext]: ../../compare/1.0.0...HEAD
+[1.13.0]: ../../compare/1.12.0...1.13.0
 [1.12.0]: ../../compare/1.11.4...1.12.0
 [1.11.4]: ../../compare/1.11.3...1.11.4
 [1.11.3]: ../../compare/1.11.2...1.11.3

@@ -170,9 +170,16 @@ namespace ricaun.Nuke.Components
             {
                 var folder = file.Parent;
                 SignFolder(folder, $"*{project.Name}*");
+                var addinFile = file.WithExtension(".addin");
+                if (addinFile.FileExists())
+                {
+                    Serilog.Log.Information($"File {addinFile} already exists, skipping add-in creation.");
+                    return;
+                }
                 new RevitProjectAddInsBuilder(project, file, Application, ApplicationType, VendorId, VendorDescription)
                     .AddInContextIsolation(file, RevitContextIsolation, RevitContextName, RevitContextVersion)
                     .Build(file);
+                return;
             });
         }
 
