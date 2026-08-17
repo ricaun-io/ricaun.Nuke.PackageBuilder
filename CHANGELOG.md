@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.13.1] / 2026-08-17
+### Features
+- Update `ricaun.Nuke` to `1.12.2` to improve `GetAllProjectsOrderByName`.
+
 ## [1.13.0] / 2026-05-14 - 2026-07-24
 ### Features
 - Support existent `.addin` file inside the `.bundle`. (Fix: #79)
@@ -416,6 +420,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - First Release
 
 [vNext]: ../../compare/1.0.0...HEAD
+[1.13.1]: ../../compare/1.13.0...1.13.1
 [1.13.0]: ../../compare/1.12.0...1.13.0
 [1.12.0]: ../../compare/1.11.4...1.12.0
 [1.11.4]: ../../compare/1.11.3...1.11.4
