@@ -152,7 +152,8 @@ namespace ricaun.Nuke.Components
             {
                 var releaseFileName = CreateReleaseFromDirectory(BundleDirectory, projectName, projectVersion, ".bundle.zip", true);
                 Serilog.Log.Information($"Release: {releaseFileName}");
-                Serilog.Log.Information($"AppBundleTool -a \"{ReleaseDirectory / releaseFileName}\" -i");
+                if (IsLocalBuild)
+                    Serilog.Log.Warning($"AppBundleTool -a \"{ReleaseDirectory / releaseFileName}\" -i");
             }
         }
 
