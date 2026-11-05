@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [1.13.6] / 2026-11-04
 ### Features
-- Update `ricaun.Nuke` to `1.13.0`.
+- Update `ricaun.Nuke` to `1.13.0` (Support `NuGet Trusted Publishing` and `NuGetAddGitHubSource`)
 
 ## [1.13.5] / 2026-10-15
 ### Features
