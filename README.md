@@ -6,7 +6,7 @@
 [![Navisworks](https://img.shields.io/badge/Navisworks-186BFF.svg)](https://github.com/ricaun-io/ricaun.Nuke.PackageBuilder)
 
 [![Visual Studio 2026](https://img.shields.io/badge/Visual%20Studio-2026-blue)](https://github.com/ricaun-io/ricaun.Nuke.PackageBuilder)
-[![Nuke](https://img.shields.io/badge/Nuke-Build-blue)](https://www.nuget.org/packages/Nuke.Common/)
+[![Nuke](https://img.shields.io/badge/Nuke-Build-blue)](https://github.com/ricaun-io/ricaun.Nuke/)
 [![License MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Build](https://github.com/ricaun-io/ricaun.Nuke.PackageBuilder/actions/workflows/Build.yml/badge.svg)](https://github.com/ricaun-io/ricaun.Nuke.PackageBuilder/actions)
 [![Release](https://img.shields.io/nuget/v/ricaun.Nuke.PackageBuilder?logo=nuget&label=release&color=blue)](https://www.nuget.org/packages/ricaun.Nuke.PackageBuilder)
